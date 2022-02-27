@@ -1,5 +1,7 @@
 # shigoto-frontend
 
+![image description](assets/images/readmeimage.png)
+
 ## Build Setup
 
 ```bash
