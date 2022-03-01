@@ -14,6 +14,7 @@ import {taskWsActions, taskTypes} from "~/constants/ws";
 
 export default {
   name: "tasks",
+  middleware: 'auth',
   layout (context) {
     return 'dashboard'
   },

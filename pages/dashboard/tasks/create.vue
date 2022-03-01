@@ -5,6 +5,7 @@
 <script>
 export default {
   name: "create",
+  middleware: 'auth',
   layout (context) {
     return 'dashboard'
   },

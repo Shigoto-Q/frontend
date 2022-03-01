@@ -48,7 +48,7 @@ export default {
     middleware: []
   },
   axios: {
-    baseURL: 'http://127.0.0.1:8000/',
+    baseURL: process.env.BASE_URL,
   },
   auth: {
     strategies: {
@@ -64,12 +64,15 @@ export default {
           autoFetch: true
         },
         endpoints: {
-          login: { url: '/auth/jwt/create/', method: 'post' },
-          user: { url: '/auth/users/me/', method: 'get' }
+          login: { url: '/api/v1/token/', method: 'post' },
+          user: { url: '/auth/users/me/', method: 'get' },
+          logout: false,
         }
       }
     },
     redirect: {
+      login: '/onboarding/login',
+      logout: '/',
     }
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build

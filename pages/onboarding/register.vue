@@ -4,13 +4,13 @@
       Sign up
     </h1>
     <div class="flex justify-center w-auto">
-      <Form :model="model" :schema="schema" />
+      <Form :model="model" :schema="schema"  :handle-on-click="submitForm"/>
     </div>
   </div>
 </template>
 
 <script>
-
+import { NS_ONBOARDING_REGISTER } from "~/store/onboarding/namespace";
 import Form from "~/components/form/Form";
 export default {
   name: "register",
@@ -65,6 +65,11 @@ export default {
           }
         ]
       }
+    }
+  },
+  methods: {
+    async submitForm() {
+      await this.$store.dispatch(NS_ONBOARDING_REGISTER, this.model)
     }
   }
 }

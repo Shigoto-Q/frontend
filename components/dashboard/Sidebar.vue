@@ -17,11 +17,7 @@
           </div>
       </div>
       <hr class="my-2">
-      <div class="flex px-4 py-1 mb-2 border-2 rounded-lg self-center justify-center align-center bg-white">
-        <AvatarIcon class="w-10 h-10"/>
-        <p class="text-base font-semibold leading-none text-comet lg:text-xl text-center self-center">John Doe</p>
-        <ChevronDownIcon class="w-4 h-4 self-center ml-4"/>
-      </div>
+      <UserDropdown />
       <hr class="my-2">
       <div v-for="route in routes">
         <span class="font-light leading-relaxed text-stone ml-4 mt-4 uppercase">{{ route.title }}</span>
@@ -60,10 +56,12 @@ import Button from "~/components/shared/Button";
 import Input from "~/components/shared/Input";
 import ThemeToggle from "~/components/ThemeToggle";
 import ToggleInput from "~/components/shared/ToggleInput";
+import UserDropdown from "~/components/dashboard/UserDropdown";
 
 export default {
   name: "Sidebar",
   components: {
+    UserDropdown,
     ToggleInput,
     Input,
     Button,

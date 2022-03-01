@@ -5,6 +5,7 @@
 <script>
 export default {
   name: "docker",
+  middleware: 'auth',
   layout (context) {
     return 'dashboard'
   }

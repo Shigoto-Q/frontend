@@ -57,9 +57,8 @@
         <div v-if="!$auth.loggedIn">
           <LinkButton to="/onboarding/login" text="Login"/>
         </div>
-        <div v-else>
-          <LinkButton to="/dashboard" text="Dashboard" secondary="true"/>
-          <Button class="w-2 h-2" text="Log out" @click="logOut"/>
+        <div v-else class="">
+          <LinkButton to="/dashboard/tasks/manage" text="Dashboard" :secondary="true"/>
         </div>
       </nav>
     </div>
@@ -101,8 +100,8 @@ export default {
     onClick() {
       this.open = !this.open;
     },
-    logOut() {
-      this.$auth.logout();
+    async logOut() {
+      await this.$auth.logout();
     }
   },
 }

@@ -1,8 +1,8 @@
 <template>
   <div>
-  <form class="flex flex-col items-center justify-center mb-16">
+  <form class="flex flex-col items-center justify-center">
       <VueFormGenerator :id="vueForm" :model="model" :schema="schema" @model-updated="localModelUpdated" :key="formKey" />
-      <Button @click="handleOnClick" />
+      <Button v-show="showSubmitButton" v-on="$listeners" />
   </form>
   </div>
 </template>
@@ -32,6 +32,10 @@ export default {
     handleOnClick: {
       type: Function,
       required: true,
+    },
+    showSubmitButton: {
+      type: Boolean,
+      default: () => false,
     },
   },
   data() {
