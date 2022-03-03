@@ -25,6 +25,7 @@
     "vue": "^2.6.14",
     "vue-final-modal": "^2.4.1",
     "vue-form-generator": "^2.3.4",
+    "vue-good-table": "^2.21.11",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0"

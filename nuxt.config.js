@@ -65,7 +65,7 @@ export default {
         },
         endpoints: {
           login: { url: '/api/v1/token/', method: 'post' },
-          user: { url: '/auth/users/me/', method: 'get' },
+          user: false,
           logout: false,
         }
       }
