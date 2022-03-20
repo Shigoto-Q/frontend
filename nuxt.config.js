@@ -21,12 +21,17 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/main.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/internal/axios.client.js',
+    '~/plugins/internal/bus.js',
+    '~/plugins/internal/index.js',
     '~/plugins/vue-form-generators.js',
-    '~plugins/vue-final-modal.js',
+    '~/plugins/vue-final-modal.js',
+    '~/plugins/vue-multiselect.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -37,10 +42,14 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
+    '@nuxt-hero-icons/outline/nuxt',
+    '@nuxt-hero-icons/solid/nuxt',
+    '@braid/vue-formulate/nuxt',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxt/image',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
   ],
@@ -65,7 +74,7 @@ export default {
         },
         endpoints: {
           login: { url: '/api/v1/token/', method: 'post' },
-          user: false,
+          user: {url: '/api/v1/user/me/', method: 'get'},
           logout: false,
         }
       }

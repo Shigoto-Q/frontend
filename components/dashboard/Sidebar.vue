@@ -101,11 +101,6 @@ export default {
           title: 'Cron',
           children: [
             {
-              route: 'Create task',
-              url: '/dashboard/tasks/create',
-              icon: CreateTaskIcon,
-            },
-            {
               route: 'Task management',
               url: '/dashboard/tasks/manage',
               icon: TaskIcon,
@@ -122,9 +117,9 @@ export default {
             },
           ]
         }
-      ]
+      ],
     }
-  }
+  },
 }
 </script>
 

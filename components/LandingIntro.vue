@@ -4,28 +4,27 @@
     <div
       class="relative items-center w-full px-5 py-12 mx-auto  max-w-7xl md:px-12 lg:px-24"
     >
-      <div class="flex w-full mx-auto text-left lg:mt-4">
+      <div class="flex w-full mx-auto text-left lg:mt-1">
         <div class="relative inline-flex items-center m-auto align-middle">
-          <div class="max-w-6xl space-y-8 lg:text-center">
-            <span></span>
+          <div class="max-w-6xl space-y-4 lg:text-center">
             <h1
-              class="mb-4 text-4xl font-bold leading-snug tracking-tighter  text-comet lg:text-7xl"
+              class="-mb-6 text-xl font-bold leading-snug tracking-tighter  lg:text-5xl"
             >
               <div class="wrapper">
                 <span
-                  class="typing text-transparent  bg-clip-text bg-gradient-to-r from-aqua to-oyster lg:block"
+                  class="typing text-transparent  bg-clip-text bg-gradient-to-r from-oyster to-mana lg:block"
                 >
-                  Shigoto
+                  Shigoto,
                 </span>
               </div>
-              a superb cloud based solution.
+              The simplest way to run your code on Kubernetes.
             </h1>
             <div
               class="flex flex-col w-full gap-2 mt-6  lg:flex-col max-w-7xl lg:justify-center lg:items-center md:flex-row"
             >
               <div>
-                <p class="mb-6 text-lg font-light leading-relaxed text-club">
-                  Simply run any task on Kubernetes. Flawless one-click deployment.
+                <p class="mb-2 text-lg font-light leading-relaxed text-club">
+                  Make your DevOps life easier.
                 </p>
               </div>
               <div class="flex mt-3 rounded-lg sm:mt-4 md:flex-row">

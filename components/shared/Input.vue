@@ -4,7 +4,7 @@
   >
     <label
       :for="type"
-      class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white text-club -top-2 left-2"
+      class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white text-stone -top-2 left-2"
     >
       {{ label }}
     </label
@@ -16,7 +16,8 @@
       :id="type"
       :placeholder="placeholder"
       @input="onInput"
-      class="block w-full py-1 bg-white border-0 text-club placeholder-cat focus:ring-0 sm:text-sm"
+      @change="onChange"
+      class="block w-full py-1 bg-white border-0 text-vulcan placeholder-cat focus:ring-0 sm:text-sm rounded"
     />
   </div>
 </template>
@@ -49,12 +50,19 @@ export default {
   },
   data() {
     return {
-      inputModel: this.model,
+    }
+  },
+  computed: {
+    inputModel() {
+      return this.model;
     }
   },
   methods: {
     onInput(e) {
       this.$emit('input', e.target.value)
+    },
+    onChange(e) {
+      this.$emit('change', e.target.value)
     }
   }
 }

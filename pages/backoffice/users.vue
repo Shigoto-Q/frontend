@@ -5,14 +5,14 @@
     >
       Users
     </h1>
-    <Table endpoint="/api/v1/users/list/" :columns="columns"/>
+    <ServerTable endpoint="/api/v1/users/list/" :columns="columns"/>
   </div>
 </template>
 
 <script>
 import 'vue-good-table/dist/vue-good-table.css'
 import { VueGoodTable } from 'vue-good-table';
-import Table from "~/components/shared/Table";
+import ServerTable from "~/components/shared/ServerTable";
 
 export default {
   name: "users.vue",
@@ -20,7 +20,7 @@ export default {
     return 'backoffice'
   },
   components: {
-    Table,
+    ServerTable,
     VueGoodTable
   },
   data(){

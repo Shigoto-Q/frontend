@@ -1,19 +1,21 @@
 <template>
   <div class="md:h-screen md:grid md:grid-cols-6">
-    <section>
+    <section class="w-max">
       <Sidebar />
     </section>
-    <main class="md:col-span-5">
+    <main class="w-fit -ml-6 md:col-span-5">
       <Nuxt />
+      <Notification />
     </main>
   </div>
 </template>
 
 <script>
 import Sidebar from "~/components/dashboard/Sidebar";
+import Notification from '@/components/shared/Notification/Notification';
 export default {
   name: "dashboard",
-  components: {Sidebar}
+  components: {Sidebar, Notification,}
 }
 </script>
 

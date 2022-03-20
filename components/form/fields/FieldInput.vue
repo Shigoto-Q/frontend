@@ -7,6 +7,7 @@
     :placeholder="schema.placeholder"
     :label="schema.fieldLabel"
     @input="onInput"
+    @change="onChange"
   />
 </template>
 
@@ -24,7 +25,10 @@ export default {
   methods: {
     onInput(value) {
       this.value = value;
-    }
+    },
+    onChange(value) {
+      this.value = value;
+    },
   }
 }
 </script>

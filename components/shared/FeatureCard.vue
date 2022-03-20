@@ -71,10 +71,10 @@
             </div>
           </div>
         </div>
-        <div class="aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
+        <div class="md:aspect-w-2 md:aspect-h-1">
           <img
-            class="object-cover transform"
-            src="../../assets/images/dashboardSquare.png"
+            class="object-contain"
+            src="../../assets/images/dashboardSafari.png"
             alt="App screenshot"
           />
         </div>

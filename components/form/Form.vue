@@ -1,6 +1,6 @@
 <template>
   <div>
-  <form class="flex flex-col items-center justify-center">
+  <form class="" :class="classObject">
       <VueFormGenerator :id="vueForm" :model="model" :schema="schema" @model-updated="localModelUpdated" :key="formKey" />
       <Button v-show="showSubmitButton" v-on="$listeners" />
   </form>
@@ -31,12 +31,16 @@ export default {
     },
     handleOnClick: {
       type: Function,
-      required: true,
+      required: false,
     },
     showSubmitButton: {
       type: Boolean,
       default: () => false,
     },
+    classObject: {
+      type: String,
+      default: () => '',
+    }
   },
   data() {
     return {
@@ -52,5 +56,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

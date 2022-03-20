@@ -2,7 +2,7 @@
   <div class="flex flex-row px-4 py-1 mb-2 border-2 rounded-lg self-center justify-center align-center bg-white">
     <button @click="dropdownOpen = !dropdownOpen" class="flex relative z-10 block rounded-md bg-white p-2 focus:outline-none">
       <AvatarIcon class="w-10 h-10"/>
-      <span class="text-base font-semibold leading-none text-comet lg:text-xl text-center self-center">John Doe</span>
+      <span class="text-base font-semibold leading-none text-comet lg:text-base text-center self-center">{{ user.firstName }} {{ user.lastName }}</span>
       <ChevronDownIcon class="w-4 h-4 self-center ml-4"/>
       </button>
       <div v-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       dropdownOpen: false,
+      user: this.$auth.state.user,
     }
   },
   methods: {
