@@ -1,7 +1,7 @@
 <template>
   <div>
     <Button @click="showAlert" text="Alert me"/>
-    <Terminal :output="terminalOutput"/>
+    <Terminal />
     <Notification />
   </div>
 </template>
@@ -13,6 +13,7 @@ import Notification from '@/components/shared/Notification/Notification';
 import Button from '@/components/shared/Button';
 import Terminal from '@/components/shared/Terminal';
 import { notificationTypes } from '@/constants/notifications';
+import { M_TERMINAL_OUTPUT } from '@/store/terminal/mutation-types';
 
 export default {
   components: {
@@ -41,15 +42,6 @@ export default {
     }
   },
   mounted() {
-    this.connection = new WebSocket('ws://localhost:8080/ws')
-    this.connection.onopen = () => {
-      this.sendMessage(this.createImageData)
-    }
-    this.connection.onmessage = (message) => {
-      let data = JSON.parse(message.data)
-      this.terminalOutput.push(data);
-      this.terminalOutput.push(data);
-    }
   },
   beforeRouteLeave(to, from, next) {
     this.connection.close()
@@ -58,7 +50,16 @@ export default {
   },
   methods: {
    showAlert() {
-     this.$notify({
+    this.connection = new WebSocket('ws://localhost:8080/ws')
+    this.connection.onopen = () => {
+      this.sendMessage(this.createImageData)
+    }
+    this.connection.onmessage = (message) => {
+      let data = JSON.parse(message.data)
+      this.terminalOutput.push(data);
+      this.$store.commit(M_TERMINAL_OUTPUT, data)
+    }
+    this.$notify({
        title: 'Successful action event',
        duration: 3000,
        body: 'This is a test notification event.',

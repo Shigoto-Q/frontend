@@ -22,7 +22,14 @@
           <div class="flex justify-between mt-10">
           </div>
         </div>
+        <div class="flex justify-between mt-10">
+          <Button @click="showModal = false" text="Cancel" secondary/>
+          <Button @click="handleSubmit" text="Submit"/>
+        </div>
       </Modal>
+  </div>
+  <div class="mt-4 mb-4">
+  <Terminal />
   </div>
 </div>
 </template>
@@ -30,6 +37,11 @@
 <script>
 import ServerTable from "~/components/shared/ServerTable";
 import Modal from "@/components/shared/Modal";
+import Button from "@/components/shared/Button";
+import Terminal from '@/components/shared/Terminal';
+import { notificationTypes } from '@/constants/notifications';
+import { M_TERMINAL_OUTPUT, M_TERMINAL_OUTPUT_END } from '@/store/terminal/mutation-types';
+import {taskWsActions, taskTypes} from "~/constants/ws";
 
 export default {
   name: "docker",
@@ -40,9 +52,12 @@ export default {
   components: {
     ServerTable,
     Modal,
+    Button,
+    Terminal,
   },
   data(){
     return {
+      connection: null,
       formModel: {},
       showModal: false,
       columns: [
@@ -94,7 +109,7 @@ export default {
             fieldLabel: "Repository",
             name: "name",
             placeholder: 'https://github.com/Shigoto-Q/shigoto',
-            model: "repository",
+            model: "Repository",
           },
           {
             type: "myInput",
@@ -102,7 +117,7 @@ export default {
             fieldLabel: "Name",
             name: "name",
             placeholder: 'My repository name',
-            model: "name",
+            model: "Name",
           },
           {
             type: "myInput",
@@ -110,7 +125,7 @@ export default {
             fieldLabel: "Image name",
             name: "name",
             placeholder: 'My image name',
-            model: "imageName",
+            model: "ImageName",
           },
           {
             type: "myInput",
@@ -118,12 +133,39 @@ export default {
             fieldLabel: "Command",
             name: "name",
             placeholder: 'python main.py',
-            model: "command",
+            model: "Command",
           },
         ]
       }
   }},
   methods: {
+    handleSubmit() {
+      this.connection = new WebSocket('ws://localhost:8080/ws')
+      let createImageData = {
+        action: taskWsActions.createImage,
+        token: `Bearer ${this.$auth.strategy.token.get().split(' ')[1]}`,
+        topic: taskWsActions.createImage,
+        data: {
+          ...this.formModel
+        },
+      }
+      this.connection.onopen = () => {
+        this.sendMessage(createImageData)
+      }
+      this.showModal = false;
+      this.connection.onmessage = (message) => {
+        let data = JSON.parse(message.data)
+          if (data.status == 'This is the end') {
+            this.connection.close()
+            this.$store.commit(M_TERMINAL_OUTPUT_END, true)
+          } else {
+            this.$store.commit(M_TERMINAL_OUTPUT, data)
+          }
+      }
+    },
+    sendMessage(message) {
+      this.connection.send(JSON.stringify(message))
+    },
     onCreateNew() {
       this.showModal = true;
     },
