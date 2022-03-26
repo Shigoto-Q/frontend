@@ -1,32 +1,42 @@
 <template>
   <VueGoodTable
-    class="w-1/2"
+    class="w-full"
     mode="remote"
     theme="polar-bear"
     :columns="columns"
     :rows="rows"
     :total-rows="totalRows"
     :pagination-options="paginationOptions"
-    :search-options="{
-    enabled: true,
-    trigger: 'enter',
-    skipDiacritics: true,
-    placeholder: 'Search users',
-  }"
     @on-page-change="onPageChange"
     @on-sort-change="onSortChange"
     @on-column-filter="onColumnFilter"
     @on-per-page-change="onPerPageChange"
-  />
+  >
+    <template slot="table-row" slot-scope="props">
+      <span v-if="props.column.field == 'button'">
+        <Button :text="props.column.buttonText" />
+      </span>
+      <span v-else>
+        {{props.formattedRow[props.column.field]}}
+      </span>
+    </template>
+    <div slot="table-actions">
+      <Button v-show="showCreateButton" text="Create new" @click="handleCreateNew" />
+      <Button text="Reset filters" @click="resetTable" secondary/>
+    </div>
+  </VueGoodTable>
 </template>
 
 <script>
 import 'vue-good-table/dist/vue-good-table.css'
 import { VueGoodTable } from 'vue-good-table';
+import Button from '@/components/shared/Button';
+
 export default {
   name: "ServerTable",
   components: {
-    VueGoodTable
+    VueGoodTable,
+    Button,
   },
   props: {
     columns: {
@@ -36,16 +46,34 @@ export default {
     endpoint: {
       type: String,
       required: true,
+    },
+    showCreateButton: {
+      type: Boolean,
+      default: () => false,
+    },
+    createNew: {
+      type: Function,
+      default: () => {},
     }
   },
   data() {
       return {
-        rows: [],
+        initRows: [],
         totalRows: 0,
         paginationOptions: {
           enabled: true,
         }
       }
+  },
+  computed: {
+    rows: {
+      get() {
+        return this.initRows;
+      },
+      set(newValue) {
+        this.initRows = newValue;
+      }
+    }
   },
   mounted() {
     this.getFromServer({}).then((response) => {
@@ -54,6 +82,15 @@ export default {
     })
   },
   methods: {
+    handleCreateNew() {
+      if (this.createNew){
+        this.createNew()
+      }
+    },
+    resetTable() {
+      this.serverParams = {}
+      this.loadItems();
+    },
     getFromServer(params){
       const config = {
         headers: {
@@ -98,7 +135,7 @@ export default {
     loadItems() {
       this.getFromServer(this.serverParams).then(response => {
         this.totalRecords = response.totalRecords;
-        this.rows = response.rows;
+        this.rows = response.data;
       });
     }
   }

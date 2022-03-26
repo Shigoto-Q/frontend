@@ -1,14 +1,17 @@
 <template>
   <div>
     <Button @click="showAlert" text="Alert me"/>
+    <Terminal :output="terminalOutput"/>
     <Notification />
   </div>
 </template>
 <script>
 import CheckMarkIcon from '~/assets/icons/CheckMark.svg?inline';
+import {taskWsActions, taskTypes} from "~/constants/ws";
 import Alert from '@/components/shared/Alert';
 import Notification from '@/components/shared/Notification/Notification';
 import Button from '@/components/shared/Button';
+import Terminal from '@/components/shared/Terminal';
 import { notificationTypes } from '@/constants/notifications';
 
 export default {
@@ -17,13 +20,41 @@ export default {
     Alert,
     Button,
     Notification,
+    Terminal,
   },
   data() {
     return {
       show: false,
+      connection: null,
+      createImageData: {
+        action: taskWsActions.createImage,
+        token: `Bearer ${this.$auth.strategy.token.get().split(' ')[1]}`,
+        topic: taskWsActions.createImage,
+        data: {
+          Repository: 'https://github.com/Shigoto-Q/docker_deploy_test',
+          Name: 'docker_deploy_test',
+          ImageName: 'docker-deploy-test-from-docker4',
+          Command: "python app.py"
+        },
+      },
+      terminalOutput: [],
     }
   },
   mounted() {
+    this.connection = new WebSocket('ws://localhost:8080/ws')
+    this.connection.onopen = () => {
+      this.sendMessage(this.createImageData)
+    }
+    this.connection.onmessage = (message) => {
+      let data = JSON.parse(message.data)
+      this.terminalOutput.push(data);
+      this.terminalOutput.push(data);
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    this.connection.close()
+    this.terminalOutput = [];
+    next()
   },
   methods: {
    showAlert() {
@@ -33,7 +64,10 @@ export default {
        body: 'This is a test notification event.',
        type: notificationTypes.SUCCESS
      })
-   }
+   },
+    sendMessage(message) {
+      this.connection.send(JSON.stringify(message))
+    },
   },
 }
 </script>

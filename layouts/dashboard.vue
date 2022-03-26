@@ -3,7 +3,7 @@
     <section class="w-max">
       <Sidebar />
     </section>
-    <main class="w-fit -ml-6 md:col-span-5">
+    <main class="w-full -ml-6 md:col-span-5">
       <Nuxt />
       <Notification />
     </main>
