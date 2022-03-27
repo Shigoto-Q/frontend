@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="flex flex-col">
     <Button @click="showAlert" text="Alert me"/>
     <Terminal />
+    <InputWithIcon label="Some text"/>
     <Notification />
   </div>
 </template>
@@ -11,6 +12,7 @@ import {taskWsActions, taskTypes} from "~/constants/ws";
 import Alert from '@/components/shared/Alert';
 import Notification from '@/components/shared/Notification/Notification';
 import Button from '@/components/shared/Button';
+import InputWithIcon from '@/components/shared/InputWithIcon';
 import Terminal from '@/components/shared/Terminal';
 import { notificationTypes } from '@/constants/notifications';
 import { M_TERMINAL_OUTPUT } from '@/store/terminal/mutation-types';
@@ -22,6 +24,7 @@ export default {
     Button,
     Notification,
     Terminal,
+    InputWithIcon,
   },
   data() {
     return {

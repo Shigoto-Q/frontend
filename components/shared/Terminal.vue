@@ -1,27 +1,29 @@
 <template>
   <div class="w-full">
     <div class="coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-sm font-mono subpixel-antialiased 
-                bg-gray-800  pb-6 pt-4 rounded-lg leading-normal overflow-hidden h-80 overflow-y-auto">
-        <div class="top mb-2 flex">
+                bg-lilac  pb-6 pt-4 rounded-t-lg leading-normal overflow-hidden h-3">
+        <div class="top mb-2 flex sticky">
             <div class="h-3 w-3 bg-red-500 rounded-full"></div>
             <div class="ml-2 h-3 w-3 bg-orange-300 rounded-full"></div>
             <div class="ml-2 h-3 w-3 bg-green-500 rounded-full"></div>
         </div>
+        </div>
+    <div class="coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 text-sm font-mono subpixel-antialiased 
+                bg-lilac  pb-6 pt-4 rounded-b-lg leading-normal overflow-hidden h-80 overflow-y-auto scroll-smooth">
         <div class="mt-4 flex">
-            <span class="text-green-400 select-none">shigoto:~$</span>
-            <p class="flex-1 typing items-center pl-2">
+            <span class="text-mana select-none font-medium font-serif tracking-widest">shigoto:~$</span>
+            <p class="flex-1 typing items-center pl-2 text-vulcan font-sans tracking-wider">
                 docker push image
                 <br>
             </p>
         </div>
         <div v-for="msg in outputMessages" class="flex flex-col">
-            <span class="text-stone"> {{ msg }}</span>
+            <span class="text-vulcan font-sans tracking-wider"> {{ msg }}</span>
         </div>
         <div v-show="isEnd" class="mt-4 flex">
-            <span class="text-green-400 select-none">shigoto:~$</span>
-            <p class="flex-1 typing items-center pl-2">
-                done
-                <br>
+            <span class="text-mana select-none font-medium font-serif tracking-widest">shigoto:~$</span>
+            <p class="flex-1 typing items-center pl-2 text-vulcan font-sans tracking-wider">
+              <br>
             </p>
         </div>
     </div>

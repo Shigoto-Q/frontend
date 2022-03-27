@@ -27,6 +27,26 @@
           <Button @click="handleSubmit" text="Submit"/>
         </div>
       </Modal>
+      <Modal v-model="showSecretKeyModal">
+      <template v-slot:title>
+        <div class="flex flex-col">
+          <InfoWarningIcon class="self-center h-12 w-12"/>
+          <span class="font-serif text-comet">Secret key</span>
+        </div>
+      </template>
+
+      <div class="flex flex-col mt-4">
+          <Input label="Secret key" :model="secretKey" :disabled="true"/>
+          <div class="rounded-lg border-2 border-ghost">
+            <div class="font-serif text-justify text-comet m-4">
+              This secret key should be when you update your repository, to identify your image, so we can update your docker image.
+              It is unique to you and your repository, if you lose it, you can request new.
+              <br>
+              After closing this window, you will unable to see the key again.
+            </div>
+          </div>
+      </div>
+      </Modal>
   </div>
   <div class="mt-4 mb-4">
   <Terminal />
@@ -37,7 +57,9 @@
 <script>
 import ServerTable from "~/components/shared/ServerTable";
 import Modal from "@/components/shared/Modal";
+import InfoWarningIcon from "@/assets/icons/InfoWarningIcon.svg?inline";
 import Button from "@/components/shared/Button";
+import Input from "@/components/shared/Input";
 import Terminal from '@/components/shared/Terminal';
 import { notificationTypes } from '@/constants/notifications';
 import { M_TERMINAL_OUTPUT, M_TERMINAL_OUTPUT_END } from '@/store/terminal/mutation-types';
@@ -54,9 +76,13 @@ export default {
     Modal,
     Button,
     Terminal,
+    Input,
+    InfoWarningIcon,
   },
   data(){
     return {
+      secretKey: null,
+      showSecretKeyModal: false,
       connection: null,
       formModel: {},
       showModal: false,
@@ -79,17 +105,6 @@ export default {
         {
           label: 'Command',
           field: 'command',
-        },
-        {
-          label: 'Push',
-          field: 'button',
-          buttonText: 'Push',
-          action: this.onPush(),
-        },
-        {
-          label: 'Build',
-          field: 'button',
-          buttonText: 'Build',
         },
         {
           label: 'Delete',
@@ -155,6 +170,10 @@ export default {
       this.showModal = false;
       this.connection.onmessage = (message) => {
         let data = JSON.parse(message.data)
+          if (data.secretKey) {
+            this.secretKey = data.secretKey
+            this.showSecretKeyModal = true;
+          }
           if (data.status == 'This is the end') {
             this.connection.close()
             this.$store.commit(M_TERMINAL_OUTPUT_END, true)

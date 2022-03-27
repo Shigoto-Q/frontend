@@ -14,6 +14,7 @@
       :type="type"
       :name="name"
       :id="type"
+      :disabled="disabled"
       :placeholder="placeholder"
       @input="onInput"
       @change="onChange"
@@ -46,6 +47,10 @@ export default {
     type: {
       type: String,
       default: () => '',
+    },
+    disabled: {
+      type: Boolean,
+      default: () => false,
     }
   },
   data() {
