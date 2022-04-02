@@ -7,6 +7,7 @@
       Docker images
     </h1>
     <ServerTable
+      ref="dockerImagesTable"
       endpoint="/api/v1/docker/images/list/"
       :columns="columns"
       :show-create-button="true"
@@ -63,6 +64,7 @@ import Input from "@/components/shared/Input";
 import Terminal from '@/components/shared/Terminal';
 import { notificationTypes } from '@/constants/notifications';
 import { M_TERMINAL_OUTPUT, M_TERMINAL_OUTPUT_END } from '@/store/terminal/mutation-types';
+import { A_DELETE_IMAGE } from '@/store/docker/action-types'
 import {taskWsActions, taskTypes} from "~/constants/ws";
 
 export default {
@@ -88,6 +90,10 @@ export default {
       showModal: false,
       columns: [
         {
+          label: 'Task ID',
+          field: 'id',
+        },
+        {
           label: 'Repository url',
           field: 'repository',
         },
@@ -110,6 +116,7 @@ export default {
           label: 'Delete',
           field: 'button',
           buttonText: 'Delete',
+          action: this.deleteTask,
         },
       ],
     };
@@ -154,6 +161,10 @@ export default {
       }
   }},
   methods: {
+    deleteTask(taskId) {
+      this.$store.dispatch(A_DELETE_IMAGE, { imageId: taskId });
+      this.$refs.dockerImagesTable.loadItems();
+    },
     handleSubmit() {
       this.connection = new WebSocket('ws://localhost:8080/ws')
       let createImageData = {
@@ -173,6 +184,7 @@ export default {
           if (data.secretKey) {
             this.secretKey = data.secretKey
             this.showSecretKeyModal = true;
+            this.$refs.dockerImagesTable.loadItems();
           }
           if (data.status == 'This is the end') {
             this.connection.close()

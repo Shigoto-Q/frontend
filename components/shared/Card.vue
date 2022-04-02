@@ -95,7 +95,7 @@ export default {
   },
   watch: {
     successCount: function(newVal, oldVal) {
-      this._show = newValue;
+      return newVal
     },
     startedCount: function(newVal, oldVal) {
       return newVal

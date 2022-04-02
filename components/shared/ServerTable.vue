@@ -14,7 +14,7 @@
   >
     <template slot="table-row" slot-scope="props">
       <span v-if="props.column.field == 'button'">
-        <Button :text="props.column.buttonText" />
+        <Button :text="props.column.buttonText" @click="props.column.action(props.row.id)"/>
       </span>
       <span v-else>
         {{props.formattedRow[props.column.field]}}
@@ -50,6 +50,10 @@ export default {
     showCreateButton: {
       type: Boolean,
       default: () => false,
+    },
+    createNew: {
+      type: Function,
+      default: () => {},
     },
     createNew: {
       type: Function,
