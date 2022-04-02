@@ -53,7 +53,6 @@ export default {
     }
     this.connection.onmessage = (message) => {
       const parsedData = JSON.parse(message.data)
-      console.log(parsedData);
     }
   },
   beforeRouteLeave(to, from, next) {

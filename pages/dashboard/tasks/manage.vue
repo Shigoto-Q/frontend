@@ -109,7 +109,7 @@ export default {
       ],
     }
   },
-  computed: { 
+  computed: {
     schema() {
       return {
         fields: [
@@ -125,7 +125,7 @@ export default {
             type: "mySelect",
             fieldLabel: "Type",
             name: "name",
-            model: "taskType",
+            model: "type",
             options: [
               { name: 'Simple HTTP Operator', id: 0 },
               { name: 'Kubernetes', id: 1 },
@@ -215,8 +215,6 @@ export default {
       }
     },
     handleSubmit() {
-      console.log('submit');
-      console.log(this.values);
     }
 
   }

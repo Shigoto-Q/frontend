@@ -122,7 +122,6 @@ export default {
     },
 
     onSortChange(params) {
-      console.log(params)
       this.updateParams(
         {
           type: params[0].type,

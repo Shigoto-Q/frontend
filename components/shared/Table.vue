@@ -148,8 +148,8 @@ export default {
             type: "myInput",
             inputType: "text",
             fieldLabel: "Type",
-            name: "taskType",
-            model: "taskType",
+            name: "type",
+            model: "type",
           },
           {
             type: "myCheckbox",
@@ -189,7 +189,6 @@ export default {
              })
           })
           .catch((err) => {
-            console.log(err.response)
              this.$notify({
                title: `Error status: ${err.response.status}`,
                duration: 3000,
@@ -201,7 +200,6 @@ export default {
       show(task) {
         this.editFormModal = task;
         this.showModal = true;
-        console.log(this.editFormModal)
       },
       handleSubmit() {
 

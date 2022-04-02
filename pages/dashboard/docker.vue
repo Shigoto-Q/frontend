@@ -186,7 +186,7 @@ export default {
             this.showSecretKeyModal = true;
             this.$refs.dockerImagesTable.loadItems();
           }
-          if (data.status == 'This is the end') {
+          if (data.status === 'This is the end') {
             this.connection.close()
             this.$store.commit(M_TERMINAL_OUTPUT_END, true)
           } else {
@@ -201,7 +201,6 @@ export default {
       this.showModal = true;
     },
     onPush() {
-      console.log('pushing')
     }
   },
 }
