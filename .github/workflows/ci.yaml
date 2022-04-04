@@ -32,4 +32,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
       - run: npm install
