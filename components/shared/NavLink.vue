@@ -1,12 +1,6 @@
 <template>
   <NuxtLink
-    class="
-          px-1
-          py-6
-          text-base
-          md:px-3
-          text-club
-        "
+    class="px-1 py-6 text-base md:px-3 text-club"
     exact-active-class="border-b-2 border-oyster"
     :to="to"
   >
@@ -20,16 +14,14 @@ export default {
   props: {
     to: {
       type: String,
-      default: () => '/',
+      default: () => "/",
     },
     text: {
       type: String,
-      default: () => 'Link'
-    }
-  }
-}
+      default: () => "Link",
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

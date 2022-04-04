@@ -29,12 +29,10 @@ export default {
   props: {
     feature: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

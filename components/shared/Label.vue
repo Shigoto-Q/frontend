@@ -3,11 +3,11 @@
     :class="`formulate-input-element formulate-input-element--${context.class}`"
     :data-type="context.type"
   >
-  <label
-    class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white text-club -top-2 left-2"
-  >
-    {{ label }}
-  </label>
+    <label
+      class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white text-club -top-2 left-2"
+    >
+      {{ label }}
+    </label>
   </div>
 </template>
 
@@ -17,16 +17,14 @@ export default {
   props: {
     label: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     context: {
       type: Object,
       required: true,
     },
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

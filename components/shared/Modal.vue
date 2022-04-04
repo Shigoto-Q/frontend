@@ -8,7 +8,10 @@
   >
     <div class="mt-3 text-center sm:mt-5">
       <span class="text-lg leading-6 font-medium text-gray-900">
-        <slot class="text-lg leading-6 font-medium text-gray-900 mb-2" name="title"></slot>
+        <slot
+          class="text-lg leading-6 font-medium text-gray-900 mb-2"
+          name="title"
+        ></slot>
       </span>
     </div>
     <div>
@@ -21,11 +24,9 @@
 import Button from "~/components/shared/Button";
 export default {
   name: "Modal",
-  components: {Button},
+  components: { Button },
   inheritAttrs: false,
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

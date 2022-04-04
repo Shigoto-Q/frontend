@@ -6,10 +6,8 @@
 import LandingFeatures from "../components/LandingFeatures";
 export default {
   name: "features",
-  components: {LandingFeatures}
-}
+  components: { LandingFeatures },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

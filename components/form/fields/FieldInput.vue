@@ -15,13 +15,10 @@
 import Input from "~/components/shared/Input";
 import { abstractField } from "vue-form-generator";
 
-
 export default {
   name: "FieldInput",
-  components: {Input,},
-  mixins: [
-    abstractField,
-  ],
+  components: { Input },
+  mixins: [abstractField],
   methods: {
     onInput(value) {
       this.value = value;
@@ -29,10 +26,8 @@ export default {
     onChange(value) {
       this.value = value;
     },
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

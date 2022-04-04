@@ -1,27 +1,12 @@
 <template>
   <header class="w-full mx-auto bg-white border-b border-antiflash">
     <div
-      class="
-      flex flex-col
-      w-full
-      px-4
-      mx-auto
-      max-w-7xl
-      bg-bunker
-      md:items-center md:justify-between md:flex-row md:px-6
-      lg:px-20
-    "
+      class="flex flex-col w-full px-4 mx-auto max-w-7xl bg-bunker md:items-center md:justify-between md:flex-row md:px-6 lg:px-20"
     >
       <div class="flex flex-row items-center justify-between py-2 lg:py-0">
         <NuxtLink
           to="/"
-          class="
-          text-lg
-          font-semibold
-          rounded-lg
-          text-club
-          focus:outline-none focus:shadow-outline
-        "
+          class="text-lg font-semibold rounded-lg text-club focus:outline-none focus:shadow-outline"
         >
           <div class="inline-flex items-center">
             <ShigotoLogo />
@@ -51,14 +36,18 @@
         </button>
       </div>
       <nav :class="classObject">
-        <NavLink to="/" text="Home" class="lg:ml-auto"/>
+        <NavLink to="/" text="Home" class="lg:ml-auto" />
         <NavLink to="/features" text="Features" />
-        <NavLink to="/pricing" text="Pricing"  class="lg:mr-auto"/>
+        <NavLink to="/pricing" text="Pricing" class="lg:mr-auto" />
         <div v-if="!$auth.loggedIn">
-          <LinkButton to="/onboarding/login" text="Login"/>
+          <LinkButton to="/onboarding/login" text="Login" />
         </div>
         <div v-else class="">
-          <LinkButton to="/dashboard/tasks/manage" text="Dashboard" :secondary="true"/>
+          <LinkButton
+            to="/dashboard/tasks/manage"
+            text="Dashboard"
+            :secondary="true"
+          />
         </div>
       </nav>
     </div>
@@ -68,33 +57,33 @@
 <script>
 import LinkButton from "./shared/LinkButton";
 import NavLink from "./shared/NavLink";
-import ShigotoLogo from 'assets/logo.svg?inline'
+import ShigotoLogo from "assets/logo.svg?inline";
 import Button from "~/components/shared/Button";
 
 export default {
   name: "Navbar",
-  components: {Button, NavLink, LinkButton, ShigotoLogo},
+  components: { Button, NavLink, LinkButton, ShigotoLogo },
   data() {
     return {
       open: false,
-    }
+    };
   },
   computed: {
     classObject() {
       return {
-        'flex': this.open,
-          'flex-col': true,
-          'items-center': true,
-          'flex-grow': true,
-          'hidden': !this.open,
-          'px-5': true,
-          'md:pb-0': true,
-          'md:flex': true,
-          'md:justify-end': true,
-          'md:flex-row': true,
-          'mb-6': this.open
-      }
-    }
+        flex: this.open,
+        "flex-col": true,
+        "items-center": true,
+        "flex-grow": true,
+        hidden: !this.open,
+        "px-5": true,
+        "md:pb-0": true,
+        "md:flex": true,
+        "md:justify-end": true,
+        "md:flex-row": true,
+        "mb-6": this.open,
+      };
+    },
   },
   methods: {
     onClick() {
@@ -102,11 +91,9 @@ export default {
     },
     async logOut() {
       await this.$auth.logout();
-    }
+    },
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

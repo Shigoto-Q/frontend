@@ -16,24 +16,19 @@
 import Checkbox from "~/components/shared/Checkbox";
 import { abstractField } from "vue-form-generator";
 
-
 export default {
   name: "FieldCheckbox",
-  components: {Checkbox,},
-  mixins: [
-    abstractField,
-  ],
+  components: { Checkbox },
+  mixins: [abstractField],
   methods: {
     onInput(value) {
       this.value = value;
     },
     onChange(value) {
       this.value = value;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

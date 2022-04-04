@@ -1,26 +1,24 @@
 <template>
   <label>
-    <input type="checkbox">
+    <input type="checkbox" />
     <span class="check"></span>
   </label>
 </template>
 
 <script>
 export default {
-  name: "ToggleInput"
-}
+  name: "ToggleInput",
+};
 </script>
 
 <style scoped>
-
-input[type="checkbox"]
-{
+input[type="checkbox"] {
   -webkit-appearance: none;
   visibility: hidden;
   display: none;
 }
 
-.check{
+.check {
   position: relative;
   display: block;
   width: 50px;
@@ -32,13 +30,12 @@ input[type="checkbox"]
   transition: ease-in 0.5s;
 }
 
-input[type="checkbox"]:checked ~ .check
-{
+input[type="checkbox"]:checked ~ .check {
   background: #fff;
 }
 
-.check::before{
-  content: '';
+.check::before {
+  content: "";
   position: absolute;
   top: 1px;
   left: 1px;
@@ -49,13 +46,12 @@ input[type="checkbox"]:checked ~ .check
   transition: 0.5s;
 }
 
-input[type="checkbox"]:checked ~ .check::before
-{
+input[type="checkbox"]:checked ~ .check::before {
   transform: translateX(30px);
 }
 
-.check::after{
-  content: '';
+.check::after {
+  content: "";
   position: absolute;
   top: 1px;
   left: 1px;
@@ -67,8 +63,7 @@ input[type="checkbox"]:checked ~ .check::before
   transform: translateX(30px);
 }
 
-input[type="checkbox"]:checked ~ .check::after
-{
+input[type="checkbox"]:checked ~ .check::after {
   transform: translateX(0);
 }
 </style>

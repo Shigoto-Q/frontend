@@ -1,1 +1,1 @@
-export const A_LIST_IMAGES = 'kubernetes/listDockerImages';
+export const A_LIST_IMAGES = "kubernetes/listDockerImages";

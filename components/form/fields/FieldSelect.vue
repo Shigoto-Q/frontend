@@ -16,13 +16,10 @@
 import Select from "~/components/shared/Select";
 import { abstractField } from "vue-form-generator";
 
-
 export default {
   name: "FieldSelect",
-  components: {Select,},
-  mixins: [
-    abstractField,
-  ],
+  components: { Select },
+  mixins: [abstractField],
   methods: {
     onInput(value) {
       this.value = value;
@@ -30,10 +27,8 @@ export default {
     onChange(value) {
       this.value = value;
     },
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

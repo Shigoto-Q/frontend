@@ -10,7 +10,7 @@ export default {
   ],
   mode: "jit",
   purge: ["./src/**/*.html"],
-  //dark: "media", // or 'media' or 'class'
+  // dark: "media", // or 'media' or 'class'
   theme: {
     extend: {
       height: (theme) => ({
@@ -26,8 +26,10 @@ export default {
         indexHeroBg: "url('../images/indexHeroBg.png')",
       }),
       boxShadow: {
-        static: "0px 10px 0px -10px rgba(151,163,184,.5), 0px 20px 10px -20px rgba(151,163,184,.5),0px 30px 20px -25px rgba(151,163,184,.5),0px 40px 30px -30px rgba(151,163,184,.5),0px 50px 50px -35px rgba(151,163,184,.5);",
-        staticButton: "0px 10px 0px -10px rgba(43, 84, 248,.7), 0px 20px 10px -20px rgba(43, 84, 248,.7),0px 30px 20px -25px rgba(43, 84, 248,.7)",
+        static:
+          "0px 10px 0px -10px rgba(151,163,184,.5), 0px 20px 10px -20px rgba(151,163,184,.5),0px 30px 20px -25px rgba(151,163,184,.5),0px 40px 30px -30px rgba(151,163,184,.5),0px 50px 50px -35px rgba(151,163,184,.5);",
+        staticButton:
+          "0px 10px 0px -10px rgba(43, 84, 248,.7), 0px 20px 10px -20px rgba(43, 84, 248,.7),0px 30px 20px -25px rgba(43, 84, 248,.7)",
       },
       fontSize: {
         xs: "0.75rem",
@@ -56,7 +58,7 @@ export default {
         "20xl": "18rem",
       },
       colors: {
-        //wicked whites
+        // wicked whites
         ghost: "#f9fafe",
         antiflash: "#f2f2f5",
         lilac: "#e6e7eb",
@@ -76,7 +78,7 @@ export default {
         pearl: "#1f2129",
         vulcan: "#16181d",
 
-        //primary
+        // primary
         gitter: "#e4eeff",
         icy: "#d5ddfe",
         periwinkly: "#bfccfd",
@@ -90,7 +92,7 @@ export default {
         crayoln: "#2b54f8",
         palatinate: "#274cdf",
         azulo: "#2243c6",
-        //tertiary
+        // tertiary
         bubble: "#e9fdff",
         marvel: "#d7faff",
         onahau: "#c2f9fe",
@@ -101,7 +103,6 @@ export default {
         coise: "#3ae8fe",
         spiro: "#22e5ff",
         aqua: "#00e0fe",
-
       },
       fontFamily: {
         sans: [
@@ -130,15 +131,8 @@ export default {
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),
-    plugin(function ({
-      addVariant,
-      e,
-      postcss
-    }) {
-      addVariant("firefox", ({
-        container,
-        separator
-      }) => {
+    plugin(function ({ addVariant, e, postcss }) {
+      addVariant("firefox", ({ container, separator }) => {
         const isFirefoxRule = postcss.atRule({
           name: "-moz-document",
           params: "url-prefix()",

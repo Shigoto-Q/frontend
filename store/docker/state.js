@@ -1,1 +1,1 @@
-export const terminalOutput = {}
+export const terminalOutput = {};

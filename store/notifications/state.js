@@ -1,5 +1,5 @@
 export default () => ({
-  title: '',
-  type: '',
+  title: "",
+  type: "",
   duration: 500,
-})
+});

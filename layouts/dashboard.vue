@@ -12,13 +12,11 @@
 
 <script>
 import Sidebar from "~/components/dashboard/Sidebar";
-import Notification from '@/components/shared/Notification/Notification';
+import Notification from "@/components/shared/Notification/Notification";
 export default {
   name: "dashboard",
-  components: {Sidebar, Notification,}
-}
+  components: { Sidebar, Notification },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

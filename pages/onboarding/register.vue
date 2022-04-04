@@ -1,10 +1,12 @@
 <template>
   <div class="flex flex-col">
-    <h1 class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl">
+    <h1
+      class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl"
+    >
       Sign up
     </h1>
     <div class="flex justify-center w-auto">
-      <Form :model="model" :schema="schema"  :handle-on-click="submitForm"/>
+      <Form :model="model" :schema="schema" :handle-on-click="submitForm" />
     </div>
   </div>
 </template>
@@ -15,13 +17,12 @@ import Form from "~/components/form/Form";
 export default {
   name: "register",
   components: {
-    Form
+    Form,
   },
   data() {
     return {
-      model: {
-      }
-    }
+      model: {},
+    };
   },
   computed: {
     schema() {
@@ -55,26 +56,24 @@ export default {
             type: "myInput",
             inputType: "password",
             fieldLabel: "Password",
-            model: "age"
+            model: "age",
           },
           {
             type: "myInput",
             inputType: "password",
             fieldLabel: "Confirm password",
-            model: "age"
-          }
-        ]
-      }
-    }
+            model: "age",
+          },
+        ],
+      };
+    },
   },
   methods: {
     async submitForm() {
-      await this.$store.dispatch(NS_ONBOARDING_REGISTER, this.model)
-    }
-  }
-}
+      await this.$store.dispatch(NS_ONBOARDING_REGISTER, this.model);
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

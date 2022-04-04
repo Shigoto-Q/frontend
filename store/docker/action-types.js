@@ -1,1 +1,1 @@
-export const A_DELETE_IMAGE = 'docker/deleteDockerImage';
+export const A_DELETE_IMAGE = "docker/deleteDockerImage";

@@ -1,17 +1,30 @@
 <template>
   <div v-if="!$auth.loggedIn" class="flex flex-col">
-    <h1 class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl">
+    <h1
+      class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl"
+    >
       Log in
     </h1>
     <div class="w-max flex flex-col justify-center items-center self-center">
       <Form :model="model" :schema="schema" :handle-on-click="onClick" />
-      <NuxtLink class="mb-4 -mt-4 ml-auto text-sm text-widowmaker font-semibold" to="/onboarding/reset-password">Forgot password?</NuxtLink>
+      <NuxtLink
+        class="mb-4 -mt-4 ml-auto text-sm text-widowmaker font-semibold"
+        to="/onboarding/reset-password"
+        >Forgot password?</NuxtLink
+      >
       <Button @click="onClick" />
-      <Alert v-show="showAlert" :type="alertType" :title="alertTitle" :message="alertMessage" />
+      <Alert
+        v-show="showAlert"
+        :type="alertType"
+        :title="alertTitle"
+        :message="alertMessage"
+      />
     </div>
   </div>
   <div v-else>
-    <h1 class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl">
+    <h1
+      class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl"
+    >
       Logged in
     </h1>
   </div>
@@ -20,7 +33,7 @@
 <script>
 import Form from "~/components/form/Form";
 import Alert from "~/components/Alert";
-import {statusCodes} from "~/constants/onboarding";
+import { statusCodes } from "~/constants/onboarding";
 import Button from "~/components/shared/Button";
 
 export default {
@@ -33,11 +46,11 @@ export default {
   data() {
     return {
       model: {},
-      alertType: 'error',
-      alertMessage: '',
-      alertTitle: '',
+      alertType: "error",
+      alertMessage: "",
+      alertTitle: "",
       showAlert: false,
-    }
+    };
   },
   computed: {
     schema() {
@@ -53,31 +66,29 @@ export default {
             type: "myInput",
             inputType: "password",
             fieldLabel: "Password",
-            model: "password"
-          }
-        ]
-      }
-    }
+            model: "password",
+          },
+        ],
+      };
+    },
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     async onClick() {
       try {
-        await this.$auth.loginWith('local', {
+        await this.$auth.loginWith("local", {
           data: this.model,
-        })
+        });
       } catch (error) {
-        this.alertType = 'error';
-        this.alertMessage = error.response.data.detail + '\n Please try again.';
-        this.alertTitle = error.response.status +  ' ' + statusCodes[error.response.status];
+        this.alertType = "error";
+        this.alertMessage = error.response.data.detail + "\n Please try again.";
+        this.alertTitle =
+          error.response.status + " " + statusCodes[error.response.status];
         this.showAlert = true;
       }
     },
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

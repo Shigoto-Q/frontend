@@ -1,27 +1,17 @@
 <template>
   <li class="relative">
-    <NuxtLink class="
-    font-sans
-    flex items-center py-6 px-4
-    h-12 overflow-hidden
-    rounded-lg
-    text-ellipsis whitespace-nowrap
-    rounded hover:text-oyster-600
-    hover:bg-blue-50
-    transition duration-300
-    ease-in-out
-    "
-              active-class="text-oyster font-bold bg-blue-100"
-       :to="to"
+    <NuxtLink
+      class="font-sans flex items-center py-6 px-4 h-12 overflow-hidden rounded-lg text-ellipsis whitespace-nowrap rounded hover:text-oyster-600 hover:bg-blue-50 transition duration-300 ease-in-out"
+      active-class="text-oyster font-bold bg-blue-100"
+      :to="to"
     >
       <component class="w-8 h-8 mr-4" :is="icon" />
-       {{ text }}
+      {{ text }}
     </NuxtLink>
   </li>
 </template>
 
 <script>
-
 export default {
   name: "SidebarElement",
   props: {
@@ -36,11 +26,9 @@ export default {
     to: {
       type: String,
       required: true,
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

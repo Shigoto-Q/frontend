@@ -1,5 +1,5 @@
 export default {
-  setImages (state, payload) {
+  setImages(state, payload) {
     state.kubernetes.images = payload;
-  }
+  },
 };

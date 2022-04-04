@@ -13,22 +13,15 @@
               and stop worrying.
             </h1>
             <p class="mb-6 text-lg font-light leading-relaxed text-club">
-              Professional monitoring and notification, never worry about a cron job failing.
+              Professional monitoring and notification, never worry about a cron
+              job failing.
             </p>
           </div>
         </div>
       </div>
       <div>
         <div
-          class="
-          flex flex-col
-          items-center
-          justify-center
-          pt-24
-          mx-auto
-          rounded-lg
-          max-w-7xl
-        "
+          class="flex flex-col items-center justify-center pt-24 mx-auto rounded-lg max-w-7xl"
         >
           <img
             class="object-cover object-center w-full rounded-xl"
@@ -43,10 +36,8 @@
 
 <script>
 export default {
-  name: "LandingDescription"
-}
+  name: "LandingDescription",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

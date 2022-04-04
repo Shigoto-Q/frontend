@@ -2,24 +2,10 @@
   <div class="px-5 lg:px-0">
     <div class="mx-auto max-w-7xl">
       <div
-        class="
-              overflow-hidden
-              border
-              rounded-2xl
-              bg-white
-              lg:grid lg:grid-cols-2 lg:gap-4
-              shadow-static
-            "
+        class="overflow-hidden border rounded-2xl bg-white lg:grid lg:grid-cols-2 lg:gap-4 shadow-static"
       >
         <div
-          class="
-                px-6
-                pt-10
-                pb-12
-                sm:pt-16 sm:px-16
-                lg:py-16 lg:pr-0
-                xl:py-20 xl:px-20
-              "
+          class="px-6 pt-10 pb-12 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20"
         >
           <div class="space-y-4 lg:space-y-8 lg:self-center">
             <div class="flex items-center text-oyster">
@@ -39,9 +25,7 @@
                 />
               </svg>
             </div>
-            <h2
-              class="text-4xl font-bold leading-snug text-comet lg:text-3xl"
-            >
+            <h2 class="text-4xl font-bold leading-snug text-comet lg:text-3xl">
               {{ title }}
             </h2>
             <p class="text-lg font-light leading-relaxed text-club">
@@ -51,19 +35,7 @@
               <div class="my-3 rounded-lg sm:mt-0">
                 <NuxtLink
                   :to="to"
-                  class="
-                        text-base
-                        font-medium
-                        text-center
-                        transition
-                        duration-500
-                        ease-in-out
-                        transform
-                        rounded-t-none
-                        text-oyster
-                        hover:text-brink
-                        focus:outline-none
-                      "
+                  class="text-base font-medium text-center transition duration-500 ease-in-out transform rounded-t-none text-oyster hover:text-brink focus:outline-none"
                 >
                   Learn more &rarr;
                 </NuxtLink>
@@ -89,20 +61,18 @@ export default {
   props: {
     title: {
       type: String,
-      default: () => '',
+      default: () => "",
     },
     to: {
       type: String,
-      default: () => '/',
+      default: () => "/",
     },
     text: {
       type: String,
-      default: () => ''
-    }
-  }
-}
+      default: () => "",
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

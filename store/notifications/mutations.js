@@ -1,3 +1,5 @@
 export default {
-  GET_NOTIFICATION(state, notification) { state.notification = notification }
-}
+  GET_NOTIFICATION(state, notification) {
+    state.notification = notification;
+  },
+};

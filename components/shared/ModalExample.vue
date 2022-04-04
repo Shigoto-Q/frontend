@@ -1,12 +1,16 @@
 <template>
   <div>
-    <Modal v-model="show" @confirm="confirm" @cancel="cancel" :transition="{
+    <Modal
+      v-model="show"
+      @confirm="confirm"
+      @cancel="cancel"
+      :transition="{
         'enter-active-class': 'transition duration-200 ease-in-out transform',
         'enter-class': 'translate-y-full',
         'enter-to-class': 'translate-y-0',
         'leave-active-class': 'transition duration-200 ease-in-out transform',
         'leave-to-class': 'translate-y-full',
-        'leave-class': 'translate-y-0'
+        'leave-class': 'translate-y-0',
       }"
     >
       <template v-slot:title>Create task</template>
@@ -28,17 +32,17 @@ export default {
     Modal,
   },
   data: () => ({
-    show: false
+    show: false,
   }),
   methods: {
     confirm() {
       // some code...
-      this.show = false
+      this.show = false;
     },
     cancel(close) {
       // some code...
-      close()
-    }
-  }
-}
+      close();
+    },
+  },
+};
 </script>

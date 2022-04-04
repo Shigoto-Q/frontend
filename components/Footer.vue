@@ -1,7 +1,7 @@
 <template>
   <footer class="border-t border-antiflash bg-ghost">
     <div
-      class="px-5 py-12 mx-auto  max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-20"
+      class="px-5 py-12 mx-auto max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-20"
     >
       <div class="flex justify-center mb-8 space-x-6 md:order-last md:mb-0">
         <a href="#" class="text-club hover:text-white">
@@ -96,15 +96,13 @@
 </template>
 
 <script>
-import ShigotoLogo from 'assets/logo.svg?inline'
+import ShigotoLogo from "assets/logo.svg?inline";
 export default {
   name: "Footer",
   components: {
-    ShigotoLogo
-  }
-}
+    ShigotoLogo,
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

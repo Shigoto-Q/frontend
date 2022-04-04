@@ -7,8 +7,7 @@
       class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white text-stone -top-2 left-2"
     >
       {{ label }}
-    </label
-    >
+    </label>
     <input
       v-model="inputModel"
       :type="type"
@@ -24,55 +23,51 @@
 </template>
 
 <script>
-
 export default {
   name: "Input",
   props: {
     model: {
       type: String,
-      default: () => '',
+      default: () => "",
     },
     label: {
       type: String,
-      default: () => '',
+      default: () => "",
     },
     placeholder: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     name: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     type: {
       type: String,
-      default: () => '',
+      default: () => "",
     },
     disabled: {
       type: Boolean,
       default: () => false,
-    }
+    },
   },
   data() {
-    return {
-    }
+    return {};
   },
   computed: {
     inputModel() {
       return this.model;
-    }
+    },
   },
   methods: {
     onInput(e) {
-      this.$emit('input', e.target.value)
+      this.$emit("input", e.target.value);
     },
     onChange(e) {
-      this.$emit('change', e.target.value)
-    }
-  }
-}
+      this.$emit("change", e.target.value);
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

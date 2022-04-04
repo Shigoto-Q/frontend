@@ -9,9 +9,7 @@
           {{ title }}
         </h3>
       </div>
-      <div
-        class="flex items-baseline mt-4 text-6xl font-extrabold text-comet"
-      >
+      <div class="flex items-baseline mt-4 text-6xl font-extrabold text-comet">
         ${{ price }}
         <span class="ml-1 text-2xl font-medium text-club"> /mo </span>
       </div>
@@ -36,7 +34,7 @@
 import LinkButton from "~/components/shared/LinkButton";
 export default {
   name: "PricingCard",
-  components: {LinkButton},
+  components: { LinkButton },
   props: {
     price: {
       type: Number,
@@ -58,14 +56,12 @@ export default {
   data() {
     return {
       classObject: {
-        'flex flex-col overflow-hidden border-2 rounded-xl': true,
-        'border-oyster': this.isPromotional,
-      }
-    }
-  }
-}
+        "flex flex-col overflow-hidden border-2 rounded-xl": true,
+        "border-oyster": this.isPromotional,
+      },
+    };
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

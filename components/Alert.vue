@@ -5,7 +5,9 @@
         <ErrorIcon class="h-5 w-5" aria-hidden="true" />
       </div>
       <div class="ml-3">
-        <h3 class="text-sm font-medium" :class="titleClassObject">{{ title }}</h3>
+        <h3 class="text-sm font-medium" :class="titleClassObject">
+          {{ title }}
+        </h3>
         <div class="mt-2 text-sm" :class="messageClassObject">
           <p>{{ message }}</p>
         </div>
@@ -15,17 +17,17 @@
 </template>
 
 <script>
-import ErrorIcon from '~/assets/icons/Error.svg?inline'
+import ErrorIcon from "~/assets/icons/Error.svg?inline";
 
 export default {
   name: "Alert",
   components: {
-    ErrorIcon
+    ErrorIcon,
   },
   props: {
     type: {
       type: String,
-      default: 'info'
+      default: "info",
     },
     title: {
       type: String,
@@ -39,19 +41,17 @@ export default {
   data() {
     return {
       titleClassObject: {
-        'text-red-800': this.type === 'error',
+        "text-red-800": this.type === "error",
       },
       messageClassObject: {
-        'text-red-700': this.type === 'error',
+        "text-red-700": this.type === "error",
       },
       bgClassObject: {
-        'bg-red-50': this.type === 'error',
+        "bg-red-50": this.type === "error",
       },
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

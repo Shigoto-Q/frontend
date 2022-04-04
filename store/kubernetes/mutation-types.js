@@ -1,1 +1,1 @@
-export const M_SET_IMAGES = 'setImages';
+export const M_SET_IMAGES = "setImages";
