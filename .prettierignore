@@ -2,3 +2,9 @@
 build
 coverage
 .github
+README.md
+package.json
+package-lock.json
+tailwind.config.js
+nuxt.config.js
+.eslint.json
