@@ -1,17 +1,31 @@
-FROM node:11.13.0-alpine
+FROM node:lts as builder
 
-RUN mkdir -p /usr/src/nuxt-app
-WORKDIR /usr/src/nuxt-app
+WORKDIR /app
 
-RUN apk update && apk upgrade
-RUN apk add git
+COPY . .
 
-COPY . /usr/src/nuxt-app/
-RUN npm install
-RUN npm run build
+RUN yarn install \
+  --prefer-offline \
+  --frozen-lockfile \
+  --non-interactive \
+  --production=false
 
-EXPOSE 3000
+RUN yarn build
 
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=3000
-CMD [ "npm", "start" ]
+RUN rm -rf node_modules && \
+  NODE_ENV=production yarn install \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=true
+
+FROM node:lts
+
+WORKDIR /app
+
+COPY --from=builder /app  .
+
+ENV HOST 0.0.0.0
+EXPOSE 80
+
+CMD [ "yarn", "start" ]
