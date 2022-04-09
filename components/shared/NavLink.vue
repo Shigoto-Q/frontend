@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     class="px-1 py-6 text-base md:px-3 text-club"
-    exact-active-class="border-b-2 border-oyster"
+    exact-active-class="border-b-2 border-primary-light"
     :to="to"
   >
     {{ text }}

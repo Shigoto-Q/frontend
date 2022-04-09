@@ -13,7 +13,7 @@
               >
                 <div class="wrapper">
                   <span
-                    class="typing text-transparent bg-clip-text bg-gradient-to-r from-mana to-oyster lg:block"
+                    class="typing text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-primary lg:block"
                   >
                     Shigoto,
                   </span>
@@ -163,14 +163,14 @@
               </h2>
               <div class="mt-6 text-gray-500 space-y-6">
                 <p class="text-lg">
-                  Shigoto is a managed Kubernetes service that lets you deploy,
-                  monitor and manage your containers via an intuitive web
-                  interface.
+                  Shigoto is a primary-lightged Kubernetes service that lets you
+                  deploy, monitor and primary-lightge your containers via an
+                  intuitive web interface.
                 </p>
                 <p class="text-base leading-7">
                   With Shigoto, you don’t need to worry about operating servers
-                  or clusters. Deploying and managing your cluster is as easy as
-                  clicking a button.
+                  or clusters. Deploying and primary-lightging your cluster is
+                  as easy as clicking a button.
                 </p>
                 <p class="text-base leading-7">
                   Create powerful workflows. Scale up and down automatically,
@@ -194,20 +194,20 @@
                 Tailored for your requirements.
               </h2>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
-                Shigoto is a managed Kubernetes service that lets you deploy,
-                monitor and manage your containers via an intuitive web
-                interface.
+                Shigoto is a primary-lightged Kubernetes service that lets you
+                deploy, monitor and primary-lightge your containers via an
+                intuitive web interface.
               </p>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
                 With Shigoto, you don't need to worry about operating servers or
                 clusters.
               </p>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
-                Deploying and managing your cluster is as easy as clicking a
-                button.
+                Deploying and primary-lightging your cluster is as easy as
+                clicking a button.
               </p>
               <div class="mt-6">
-                <a href="#" class="text-base font-medium text-oyster">
+                <a href="#" class="text-base font-medium text-primary">
                   Meet our investors and advisors&nbsp&rarr;
                 </a>
               </div>

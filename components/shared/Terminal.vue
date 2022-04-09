@@ -14,7 +14,7 @@
     >
       <div class="mt-4 flex">
         <span
-          class="text-mana select-none font-medium font-serif tracking-widest"
+          class="text-bubble select-none font-medium font-serif tracking-widest"
           >shigoto:~$</span
         >
         <p
@@ -29,7 +29,7 @@
       </div>
       <div v-show="isEnd" class="mt-4 flex">
         <span
-          class="text-mana select-none font-medium font-serif tracking-widest"
+          class="text-primary select-none font-medium font-serif tracking-widest"
           >shigoto:~$</span
         >
         <p
