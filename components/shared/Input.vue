@@ -55,8 +55,13 @@ export default {
     return {};
   },
   computed: {
-    inputModel() {
-      return this.model;
+    inputModel: {
+      get() {
+        return this.model;
+      },
+      set(value) {
+        return (this.model = value);
+      },
     },
   },
   methods: {

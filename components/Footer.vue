@@ -13,12 +13,12 @@
               </h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.solutions" :key="item.name">
-                  <a
-                    :href="item.href"
+                  <NuxtLink
+                    :to="item.href"
                     class="text-base text-gray-500 hover:text-gray-900"
                   >
                     {{ item.name }}
-                  </a>
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -30,12 +30,12 @@
               </h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.support" :key="item.name">
-                  <a
-                    :href="item.href"
+                  <NuxtLink
+                    :to="item.href"
                     class="text-base text-gray-500 hover:text-gray-900"
                   >
                     {{ item.name }}
-                  </a>
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -49,12 +49,12 @@
               </h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.company" :key="item.name">
-                  <a
-                    :href="item.href"
+                  <NuxtLink
+                    :to="item.href"
                     class="text-base text-gray-500 hover:text-gray-900"
                   >
                     {{ item.name }}
-                  </a>
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -66,12 +66,12 @@
               </h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li v-for="item in navigation.legal" :key="item.name">
-                  <a
-                    :href="item.href"
+                  <NuxtLink
+                    :to="item.href"
                     class="text-base text-gray-500 hover:text-gray-900"
                   >
                     {{ item.name }}
-                  </a>
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -112,15 +112,15 @@
         class="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between"
       >
         <div class="flex space-x-6 md:order-2">
-          <a
+          <NuxtLink
             v-for="item in navigation.social"
             :key="item.name"
-            :href="item.href"
+            :to="item.href"
             class="text-gray-400 hover:text-gray-500"
           >
             <span class="sr-only">{{ item.name }}</span>
             <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
-          </a>
+          </NuxtLink>
         </div>
         <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
           &copy; 2022 Shigoto, Inc. All rights reserved.
@@ -243,5 +243,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

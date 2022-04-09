@@ -29,11 +29,11 @@
                   The simplest way to run your code on Kubernetes.
                 </h1>
               </div>
-              <form action="#" class="mt-12 sm:max-w-lg sm:w-full sm:flex">
+              <div class="mt-12 sm:max-w-lg sm:w-full sm:flex">
                 <div class="min-w-0 flex-1">
                   <UpdateMe />
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
