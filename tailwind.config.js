@@ -13,6 +13,12 @@ export default {
   // dark: "media", // or 'media' or 'class'
   theme: {
     extend: {
+      spacing: {
+        '1em': '1em'
+      },
+      width: {
+        '128': '32rem',
+      },
       height: (theme) => ({
         "screen/2": "50vh",
         "screen/3": "calc(100vh / 3)",
@@ -77,16 +83,16 @@ export default {
         cloud: "#383c4b",
         pearl: "#1f2129",
         vulcan: "#16181d",
+        subtitle: "#a0a0a0",
 
-        primary: "#44cfcb",
-        secondary: '#44cfcb',
-        mana: '#2a4494',
-        weaver: '#85BBF8',
-        nebo: '#c3dfff',
-        'dark-nebo': '#5C94D4',
-        bubble: "#224870",
+        primary: "#2f195f",
+        secondary: '#7353ba',
+        mana: '#38216b',
+        weaver: '#7353ba',
+        bubble: "#9d7de3",
         marvel: "#122c34",
-        'primary-light': "#47c5cf",
+        link: "#64afff",
+        'primary-light': "#7353ba",
         'medium-turquoise': '#64d7d4',
       },
       fontFamily: {
@@ -112,7 +118,6 @@ export default {
     extend: {},
   },
   plugins: [
-    require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),

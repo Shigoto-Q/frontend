@@ -3,7 +3,7 @@
     <section class="w-max">
       <Sidebar />
     </section>
-    <main class="w-full -ml-6 md:col-span-5">
+    <main class="dashboard w-full -ml-6 md:col-span-5">
       <Nuxt />
       <Notification />
     </main>
@@ -12,11 +12,12 @@
 
 <script>
 import Sidebar from "~/components/dashboard/Sidebar";
-import Notification from "@/components/shared/Notification/Notification";
+import Notification from "@/components/shared/notification/Notify";
 export default {
   name: "dashboard",
   components: { Sidebar, Notification },
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="-mt-8">
+  <div class="dashboard -mt-8">
     <main>
       <div class="pt-2 overflow-hidden sm:pt-12 lg:relative lg:py-48">
         <div
@@ -15,7 +15,7 @@
                   <span
                     class="typing text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-primary lg:block"
                   >
-                    Shigoto,
+                    {{ title }},
                   </span>
                 </div>
               </h1>
@@ -213,7 +213,7 @@
               </div>
             </div>
             <div
-              class="relative -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full"
+              class="feature__image relative -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full"
             >
               <img
                 class="scale-125 w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-full lg:max-w-none"
@@ -244,8 +244,22 @@ export default {
     UpdateMe,
   },
   data() {
-    return {};
+    return {
+      title: 'Shigoto',
+    };
   },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'The simplest way to run your code on Kubernetes.',
+          name: 'The simplest way to run your code on Kubernetes.',
+          content: 'Deploying and managing your cluster is as easy as clicking a button.'
+        }
+      ]
+    }
+  }
 };
 </script>
 <style scoped>
@@ -272,6 +286,17 @@ export default {
 @keyframes blink {
   50% {
     border-color: transparent;
+  }
+}
+@media (max-width: 800px) {
+  .dashboard {
+    margin-top: 6rem;
+  }
+  .feature__image {
+    width: 300px;
+    margin-top: 2rem;
+    transform: scale(0.8);
+    margin-left: 1.4rem;
   }
 }
 </style>

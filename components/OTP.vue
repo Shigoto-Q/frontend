@@ -1,17 +1,20 @@
 <template>
   <div>
     <div class="mt-20 lg:flex justify-center">
-      <div class="lg:w-1/2 xl:max-w-screen-sm shadow-lg rounded-lg">
+      <div class="lg:w-1/2 xl:max-w-screen-sm">
         <h1
-          class="mt-6 text-xl font-mono font-semibold text-center text-emerald-700"
+          class="mt-6 text-xl font-sans font-semibold text-center text-vulcan"
         >
           Two-factor authentication
         </h1>
         <div
           class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl"
         >
-          <form @submit.prevent="verifyOtp">
-            <div class="flex justify-center">
+          <span class="-ml-16 mb-4 text-sans text-lg font-normal leading-5 text-subtitle lg:text-sm">
+            If you have 2FA enabled, enter the 6-digit code from your app:
+          </span>
+            <div class="flex justify-center flex-col">
+              <form @submit.prevent="verifyOtp" class="flex justify-center">
               <SingleInput
                 v-for="(item, i) in numInputs"
                 :key="i"
@@ -27,9 +30,10 @@
                 @on-focus="handleOnFocus(i)"
                 @on-blur="handleOnBlur"
               />
+          </form>
             </div>
-            <div class="mt-12 mb-12">
-              <Button name="Continue" color="emerald" />
+            <div class="flex justify-center mt-12 mb-12">
+              <Button text="Continue" color="emerald" />
             </div>
             <div
               class="mt-12 mb-10 text-sm font-display font-semibold text-gray-700 text-center"
@@ -40,13 +44,12 @@
               >
                 <p>
                   <span
-                    class="font-sans font-semibold text-green-600 hover:text-indigo-800 cursor-pointer"
+                    class="font-sans font-semibold text-link hover:text-indigo-800 cursor-pointer"
                     >Cancel 2FA and go back</span
                   >
                 </p>
               </div>
             </div>
-          </form>
         </div>
       </div>
     </div>

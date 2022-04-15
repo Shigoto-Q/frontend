@@ -1,8 +1,8 @@
 <template>
   <li class="relative">
     <NuxtLink
-      class="font-sans flex items-center py-6 px-4 h-12 overflow-hidden rounded-lg text-ellipsis whitespace-nowrap rounded hover:text-secondary hover:bg-teal-100 transition duration-300 ease-in-out"
-      active-class="text-primary font-bold bg-teal-50"
+      class="font-sans flex items-center py-6 px-4 h-12 overflow-hidden rounded-lg text-ellipsis whitespace-nowrap rounded hover:text-secondary hover:bg-purple-100 transition duration-300 ease-in-out"
+      active-class="text-primary font-bold bg-purple-100"
       :to="to"
     >
       <component class="w-8 h-8 mr-4" :is="icon" />

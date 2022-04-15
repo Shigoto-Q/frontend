@@ -1,4 +1,4 @@
-import Notification from "@/components/shared/notification/Notification";
+import Notification from "@/components/shared/notification/Notify";
 import { events } from "@/plugins/internal/events";
 
 import Vue from "vue";
