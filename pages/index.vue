@@ -245,7 +245,7 @@ export default {
   },
   data() {
     return {
-      title: 'Shigoto',
+      title: "Shigoto",
     };
   },
   head() {
@@ -253,13 +253,14 @@ export default {
       title: this.title,
       meta: [
         {
-          hid: 'The simplest way to run your code on Kubernetes.',
-          name: 'The simplest way to run your code on Kubernetes.',
-          content: 'Deploying and managing your cluster is as easy as clicking a button.'
-        }
-      ]
-    }
-  }
+          hid: "The simplest way to run your code on Kubernetes.",
+          name: "The simplest way to run your code on Kubernetes.",
+          content:
+            "Deploying and managing your cluster is as easy as clicking a button.",
+        },
+      ],
+    };
+  },
 };
 </script>
 <style scoped>

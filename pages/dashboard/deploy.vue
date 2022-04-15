@@ -1,10 +1,19 @@
 <template>
   <div>
-    <CardWithActions :items="images" primary-action-name="Deploy" :primary-action="handleDeployment" :secondary-action="handleDeleteImage"/>
+    <CardWithActions
+      :items="images"
+      primary-action-name="Deploy"
+      :primary-action="handleDeployment"
+      :secondary-action="handleDeleteImage"
+    />
     <Modal v-model="showModal">
       <template v-slot:title>Deploy</template>
       <div class="flex flex-col">
-        <Form :schema="schema" :model="formModel" :handle-on-click="handleDeleteImage"/>
+        <Form
+          :schema="schema"
+          :model="formModel"
+          :handle-on-click="handleDeleteImage"
+        />
       </div>
       <div class="flex justify-between mt-10">
         <Button @click="showModal = false" text="Cancel" secondary />
@@ -15,9 +24,9 @@
 </template>
 
 <script>
-import {A_LIST_IMAGES} from "@/store/kubernetes/action-types";
-import {G_KUBERNETES_DOCKER_IMAGES} from "@/store/kubernetes/getter-types";
-import {mapGetters} from "vuex";
+import { A_LIST_IMAGES } from "@/store/kubernetes/action-types";
+import { G_KUBERNETES_DOCKER_IMAGES } from "@/store/kubernetes/getter-types";
+import { mapGetters } from "vuex";
 import CardWithActions from "@/components/shared/CardWithActions";
 import Modal from "@/components/shared/Modal";
 import Button from "@/components/shared/Button";
@@ -39,8 +48,7 @@ export default {
     return {
       showModal: false,
       formModel: {
-        imageName: '',
-
+        imageName: "",
       },
     };
   },
@@ -88,16 +96,16 @@ export default {
   },
   methods: {
     handleDeployment(image) {
-      this.formModel = {...image};
+      this.formModel = { ...image };
       this.showModal = true;
     },
     handleSubmit() {
-      console.log('handleSubmit', this.formModel);
+      console.log("handleSubmit", this.formModel);
     },
     handleDeleteImage(image) {
-      console.log('handleDeleteImage', image);
-    }
-  }
+      console.log("handleDeleteImage", image);
+    },
+  },
 };
 </script>
 

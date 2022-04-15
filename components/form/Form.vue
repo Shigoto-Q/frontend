@@ -1,14 +1,20 @@
 <template>
   <div class="flex flex-col mt-6 mb-6">
-      <VueFormGenerator
-        :class="classObject"
-        :id="vueForm"
-        :model="model"
-        :schema="schema"
-        @model-updated="localModelUpdated"
-        :key="formKey"
-      />
-      <Button class="form__button" v-show="showSubmitButton" v-on="$listeners" :classes="classObject + ' w-6/12'" @click="handleOnClick"/>
+    <VueFormGenerator
+      :class="classObject"
+      :id="vueForm"
+      :model="model"
+      :schema="schema"
+      @model-updated="localModelUpdated"
+      :key="formKey"
+    />
+    <Button
+      class="form__button"
+      v-show="showSubmitButton"
+      v-on="$listeners"
+      :classes="classObject + ' w-6/12'"
+      @click="handleOnClick"
+    />
   </div>
 </template>
 

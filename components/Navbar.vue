@@ -1,5 +1,7 @@
 <template>
-  <header class="w-full mx-auto bg-white border-b border-antiflash fixed z-50 drop-shadow-md">
+  <header
+    class="w-full mx-auto bg-white border-b border-antiflash fixed z-50 drop-shadow-md"
+  >
     <div
       class="flex flex-col w-full px-4 mx-auto max-w-full bg-bunker md:items-center md:justify-between md:flex-row md:px-6 lg:px-20"
     >

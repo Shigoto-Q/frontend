@@ -1,18 +1,29 @@
 <template>
-  <div v-if="!$auth.loggedIn" class="flex flex-col justify-center items-center mt-10">
+  <div
+    v-if="!$auth.loggedIn"
+    class="flex flex-col justify-center items-center mt-10"
+  >
     <h1
       class="text-sans mt-20 mb-2 self-center text-lg font-bold leading-none text-vulcan lg:text-4xl"
     >
       Log in
     </h1>
     <div class="action__text flex space-x-2">
-      <span class="text-sans text-lg font-normal leading-5 text-subtitle lg:text-sm">
+      <span
+        class="text-sans text-lg font-normal leading-5 text-subtitle lg:text-sm"
+      >
         Don't have an account?
       </span>
       <Link text="Register now for free." to="/onboarding/signup" />
     </div>
     <div class="form-wrapper">
-      <Form class="login__form" :model="model" :schema="schema" :handle-on-click="onClick" :show-submit-button="true"/>
+      <Form
+        class="login__form"
+        :model="model"
+        :schema="schema"
+        :handle-on-click="onClick"
+        :show-submit-button="true"
+      />
       <Alert
         class="mt-8"
         v-show="showAlert"
@@ -21,7 +32,11 @@
         :message="alertMessage"
       />
     </div>
-    <Link to="/onboarding/reset-password" text="Forgot password?" class="form__link"/>
+    <Link
+      to="/onboarding/reset-password"
+      text="Forgot password?"
+      class="form__link"
+    />
   </div>
   <div v-else>
     <h1
@@ -67,14 +82,14 @@ export default {
             inputType: "email",
             fieldLabel: "E-mail",
             model: "email",
-            placeholder: 'user@shigo.to'
+            placeholder: "user@shigo.to",
           },
           {
             type: "myInput",
             inputType: "password",
             fieldLabel: "Password",
             model: "password",
-            placeholder: 'password'
+            placeholder: "password",
           },
         ],
       };
@@ -102,7 +117,7 @@ export default {
 
 <style scoped lang="scss">
 body {
-  font-family: 'Roboto',cursive;
+  font-family: "Roboto", cursive;
 }
 .form-wrapper {
   display: flex;
@@ -113,7 +128,7 @@ body {
 }
 .login {
   &__form {
-   }
+  }
 }
 .form {
   &__link {

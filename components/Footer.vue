@@ -98,7 +98,7 @@
               placeholder="Enter your email"
             />
             <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <Button text="Subscribe" classes="w-full"/>
+              <Button text="Subscribe" classes="w-full" />
             </div>
           </form>
         </div>
