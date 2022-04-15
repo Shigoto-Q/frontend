@@ -1,7 +1,9 @@
 <template>
-  <header class="w-full mx-auto bg-white border-b border-antiflash">
+  <header
+    class="w-full mx-auto bg-white border-b border-antiflash fixed z-50 drop-shadow-md"
+  >
     <div
-      class="flex flex-col w-full px-4 mx-auto max-w-7xl bg-bunker md:items-center md:justify-between md:flex-row md:px-6 lg:px-20"
+      class="flex flex-col w-full px-4 mx-auto max-w-full bg-bunker md:items-center md:justify-between md:flex-row md:px-6 lg:px-20"
     >
       <div class="flex flex-row items-center justify-between py-2 lg:py-0">
         <NuxtLink
@@ -14,11 +16,11 @@
           </div>
         </NuxtLink>
         <button
-          class="md:hidden focus:outline-none"
+          class="navbar__button md:hidden focus:outline-none"
           @click="onClick"
           aria-label="hidden"
         >
-          <svg fill="#5576f9" viewBox="0 0 20 20" class="w-6 h-6">
+          <svg fill="#7353ba" viewBox="0 0 20 20" class="w-6 h-6">
             <path
               v-show="!open"
               fill-rule="evenodd"
@@ -40,7 +42,7 @@
         <NavLink to="/features" text="Features" />
         <NavLink to="/pricing" text="Pricing" class="lg:mr-auto" />
         <div v-if="!$auth.loggedIn">
-          <LinkButton to="/onboarding/login" text="Login" />
+          <LinkButton to="/onboarding/login" text="Log in" :secondary="true" />
         </div>
         <div v-else class="">
           <LinkButton
@@ -96,4 +98,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.navbar__button {
+  width: auto;
+}
+</style>

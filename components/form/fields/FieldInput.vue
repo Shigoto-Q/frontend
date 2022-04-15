@@ -1,6 +1,6 @@
 <template>
   <Input
-    class="form-control mt-4 mb-4"
+    class=""
     :model="value"
     :name="schema.name"
     :type="schema.inputType"

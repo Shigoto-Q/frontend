@@ -1,7 +1,6 @@
 <template>
   <NuxtLink
-    class="px-1 py-6 text-base md:px-3 text-club"
-    exact-active-class="border-b-2 border-primary-light"
+    class="ml-auto text-sm text-link font-semibold text-sans text-lg leading-5 lg:text-sm"
     :to="to"
   >
     {{ text }}
@@ -10,11 +9,11 @@
 
 <script>
 export default {
-  name: "NavLink",
+  name: "Link",
   props: {
     to: {
       type: String,
-      default: () => "/",
+      default: () => "",
     },
     text: {
       type: String,

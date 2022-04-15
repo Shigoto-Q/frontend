@@ -8,3 +8,5 @@ package-lock.json
 tailwind.config.js
 nuxt.config.js
 .eslint.json
+dist/
+.nuxt

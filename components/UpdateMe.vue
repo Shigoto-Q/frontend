@@ -6,6 +6,7 @@
     </h1>
     <div class="mt-2 space-y-6 lg:mt-0">
       <Input
+        class="mt-6"
         label="E-mail"
         type="email"
         placeholder="user@example.com"

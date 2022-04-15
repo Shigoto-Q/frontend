@@ -98,12 +98,7 @@
               placeholder="Enter your email"
             />
             <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <button
-                type="submit"
-                class="w-full bg-indigo-600 flex items-center justify-center border border-transparent rounded-md py-2 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Subscribe
-              </button>
+              <Button text="Subscribe" classes="w-full" />
             </div>
           </form>
         </div>
@@ -143,12 +138,14 @@ import VueCompositionAPI, {
 } from "@vue/composition-api/dist/vue-composition-api";
 import { h } from "@vue/composition-api";
 import Vue from "vue";
+import Button from "@/components/shared/Button";
 
 Vue.use(VueCompositionAPI);
 
 export default {
   name: "Footer",
   components: {
+    Button,
     ShigotoLogo,
     GithubIcon,
     DiscordIcon,

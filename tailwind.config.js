@@ -13,6 +13,12 @@ export default {
   // dark: "media", // or 'media' or 'class'
   theme: {
     extend: {
+      spacing: {
+        '1em': '1em'
+      },
+      width: {
+        '128': '32rem',
+      },
       height: (theme) => ({
         "screen/2": "50vh",
         "screen/3": "calc(100vh / 3)",
@@ -77,32 +83,17 @@ export default {
         cloud: "#383c4b",
         pearl: "#1f2129",
         vulcan: "#16181d",
+        subtitle: "#a0a0a0",
 
-        // primary
-        gitter: "#e4eeff",
-        icy: "#d5ddfe",
-        periwinkly: "#bfccfd",
-        pastel: "#aabbfc",
-        widowmaker: "#95aafc",
-        periblue: "#8098fb",
-        punch: "#6b87fa",
-        oyster: "#5576f9",
-        mana: "#4065f9",
-        ultramarine: "#445cff",
-        crayoln: "#2b54f8",
-        palatinate: "#274cdf",
-        azulo: "#2243c6",
-        // tertiary
-        bubble: "#e9fdff",
-        marvel: "#d7faff",
-        onahau: "#c2f9fe",
-        celeste: "#b0f6ff",
-        anakiwa: "#9cf3ff",
-        electric: "#87f2fe",
-        babe: "#4ceaff",
-        coise: "#3ae8fe",
-        spiro: "#22e5ff",
-        aqua: "#00e0fe",
+        primary: "#2f195f",
+        secondary: '#7353ba',
+        mana: '#38216b',
+        weaver: '#7353ba',
+        bubble: "#9d7de3",
+        marvel: "#122c34",
+        link: "#64afff",
+        'primary-light': "#7353ba",
+        'medium-turquoise': '#64d7d4',
       },
       fontFamily: {
         sans: [
@@ -127,7 +118,6 @@ export default {
     extend: {},
   },
   plugins: [
-    require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),

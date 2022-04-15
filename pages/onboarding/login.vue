@@ -1,25 +1,42 @@
 <template>
-  <div v-if="!$auth.loggedIn" class="flex flex-col">
+  <div
+    v-if="!$auth.loggedIn"
+    class="flex flex-col justify-center items-center mt-10"
+  >
     <h1
-      class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl"
+      class="text-sans mt-20 mb-2 self-center text-lg font-bold leading-none text-vulcan lg:text-4xl"
     >
       Log in
     </h1>
-    <div class="w-max flex flex-col justify-center items-center self-center">
-      <Form :model="model" :schema="schema" :handle-on-click="onClick" />
-      <NuxtLink
-        class="mb-4 -mt-4 ml-auto text-sm text-widowmaker font-semibold"
-        to="/onboarding/reset-password"
-        >Forgot password?</NuxtLink
+    <div class="action__text flex space-x-2">
+      <span
+        class="text-sans text-lg font-normal leading-5 text-subtitle lg:text-sm"
       >
-      <Button @click="onClick" />
+        Don't have an account?
+      </span>
+      <Link text="Register now for free." to="/onboarding/signup" />
+    </div>
+    <div class="form-wrapper">
+      <Form
+        class="login__form"
+        :model="model"
+        :schema="schema"
+        :handle-on-click="onClick"
+        :show-submit-button="true"
+      />
       <Alert
+        class="mt-8"
         v-show="showAlert"
         :type="alertType"
         :title="alertTitle"
         :message="alertMessage"
       />
     </div>
+    <Link
+      to="/onboarding/reset-password"
+      text="Forgot password?"
+      class="form__link"
+    />
   </div>
   <div v-else>
     <h1
@@ -35,13 +52,17 @@ import Form from "~/components/form/Form";
 import Alert from "~/components/Alert";
 import { statusCodes } from "~/constants/onboarding";
 import Button from "~/components/shared/Button";
+import Link from "@/components/shared/Link";
+import Input from "@/components/shared/Input";
 
 export default {
   name: "login",
   components: {
+    Input,
     Button,
     Form,
     Alert,
+    Link,
   },
   data() {
     return {
@@ -61,12 +82,14 @@ export default {
             inputType: "email",
             fieldLabel: "E-mail",
             model: "email",
+            placeholder: "user@shigo.to",
           },
           {
             type: "myInput",
             inputType: "password",
             fieldLabel: "Password",
             model: "password",
+            placeholder: "password",
           },
         ],
       };
@@ -74,7 +97,8 @@ export default {
   },
   mounted() {},
   methods: {
-    async onClick() {
+    async onClick(e) {
+      e.preventDefault();
       try {
         await this.$auth.loginWith("local", {
           data: this.model,
@@ -91,4 +115,39 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+body {
+  font-family: "Roboto", cursive;
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 900px;
+}
+.login {
+  &__form {
+  }
+}
+.form {
+  &__link {
+    margin: auto;
+    padding-left: 25rem;
+  }
+}
+
+.login__form >>> button {
+  width: 50%;
+}
+
+@media (max-width: 800px) {
+  .form-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .action__text {
+    flex-direction: column;
+  }
+}
+</style>

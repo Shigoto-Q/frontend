@@ -1,5 +1,5 @@
 <template>
-  <div class="-mt-8">
+  <div class="dashboard -mt-8">
     <main>
       <div class="pt-2 overflow-hidden sm:pt-12 lg:relative lg:py-48">
         <div
@@ -13,9 +13,9 @@
               >
                 <div class="wrapper">
                   <span
-                    class="typing text-transparent bg-clip-text bg-gradient-to-r from-mana to-oyster lg:block"
+                    class="typing text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-primary lg:block"
                   >
-                    Shigoto,
+                    {{ title }},
                   </span>
                 </div>
               </h1>
@@ -163,14 +163,14 @@
               </h2>
               <div class="mt-6 text-gray-500 space-y-6">
                 <p class="text-lg">
-                  Shigoto is a managed Kubernetes service that lets you deploy,
-                  monitor and manage your containers via an intuitive web
-                  interface.
+                  Shigoto is a primary-lightged Kubernetes service that lets you
+                  deploy, monitor and primary-lightge your containers via an
+                  intuitive web interface.
                 </p>
                 <p class="text-base leading-7">
                   With Shigoto, you don’t need to worry about operating servers
-                  or clusters. Deploying and managing your cluster is as easy as
-                  clicking a button.
+                  or clusters. Deploying and primary-lightging your cluster is
+                  as easy as clicking a button.
                 </p>
                 <p class="text-base leading-7">
                   Create powerful workflows. Scale up and down automatically,
@@ -194,26 +194,26 @@
                 Tailored for your requirements.
               </h2>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
-                Shigoto is a managed Kubernetes service that lets you deploy,
-                monitor and manage your containers via an intuitive web
-                interface.
+                Shigoto is a primary-lightged Kubernetes service that lets you
+                deploy, monitor and primary-lightge your containers via an
+                intuitive web interface.
               </p>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
                 With Shigoto, you don't need to worry about operating servers or
                 clusters.
               </p>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
-                Deploying and managing your cluster is as easy as clicking a
-                button.
+                Deploying and primary-lightging your cluster is as easy as
+                clicking a button.
               </p>
               <div class="mt-6">
-                <a href="#" class="text-base font-medium text-oyster">
+                <a href="#" class="text-base font-medium text-primary">
                   Meet our investors and advisors&nbsp&rarr;
                 </a>
               </div>
             </div>
             <div
-              class="relative -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full"
+              class="feature__image relative -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full"
             >
               <img
                 class="scale-125 w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-full lg:max-w-none"
@@ -244,7 +244,22 @@ export default {
     UpdateMe,
   },
   data() {
-    return {};
+    return {
+      title: "Shigoto",
+    };
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: "The simplest way to run your code on Kubernetes.",
+          name: "The simplest way to run your code on Kubernetes.",
+          content:
+            "Deploying and managing your cluster is as easy as clicking a button.",
+        },
+      ],
+    };
   },
 };
 </script>
@@ -272,6 +287,17 @@ export default {
 @keyframes blink {
   50% {
     border-color: transparent;
+  }
+}
+@media (max-width: 800px) {
+  .dashboard {
+    margin-top: 6rem;
+  }
+  .feature__image {
+    width: 300px;
+    margin-top: 2rem;
+    transform: scale(0.8);
+    margin-left: 1.4rem;
   }
 }
 </style>

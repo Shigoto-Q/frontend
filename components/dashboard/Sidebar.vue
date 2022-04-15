@@ -26,7 +26,7 @@
       <hr class="my-2" />
       <div v-for="route in routes">
         <span
-          class="font-light leading-relaxed text-stone ml-4 mt-4 uppercase"
+          class="font-light leading-relaxed text-onahau ml-4 mt-4 uppercase"
           >{{ route.title }}</span
         >
         <ul class="relative px-1" v-for="r in route.children">

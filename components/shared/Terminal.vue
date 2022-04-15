@@ -14,7 +14,7 @@
     >
       <div class="mt-4 flex">
         <span
-          class="text-mana select-none font-medium font-serif tracking-widest"
+          class="text-primary select-none font-medium font-serif tracking-widest"
           >shigoto:~$</span
         >
         <p
@@ -25,11 +25,11 @@
         </p>
       </div>
       <div v-for="msg in outputMessages" class="flex flex-col">
-        <span class="text-vulcan font-sans tracking-wider"> {{ msg }}</span>
+        <span class="text-primary font-sans tracking-wider"> {{ msg }}</span>
       </div>
       <div v-show="isEnd" class="mt-4 flex">
         <span
-          class="text-mana select-none font-medium font-serif tracking-widest"
+          class="text-primary select-none font-medium font-serif tracking-widest"
           >shigoto:~$</span
         >
         <p
