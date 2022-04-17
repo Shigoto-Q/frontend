@@ -14,7 +14,7 @@
       >
         Don't have an account?
       </span>
-      <Link text="Register now for free." to="/onboarding/signup" />
+      <Link text="Register now for free." to="/onboarding/register" />
     </div>
     <div class="form-wrapper">
       <Form
@@ -145,6 +145,7 @@ body {
   .form-wrapper {
     flex-direction: column;
     align-items: stretch;
+    width: 350px;
   }
   .action__text {
     flex-direction: column;

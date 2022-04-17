@@ -7,7 +7,6 @@
         >
           <div>
             <div class="flex">
-              <ShigotoLogo />
               <h1
                 class="text-xl font-bold leading-snug tracking-tighter text-comet lg:text-5xl"
               >
@@ -15,7 +14,7 @@
                   <span
                     class="typing text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-primary lg:block"
                   >
-                    {{ title }},
+                    {{ pageTitle }},
                   </span>
                 </div>
               </h1>
@@ -23,7 +22,7 @@
             <div class="mt-2">
               <div class="mt-6 sm:max-w-xl">
                 <h1
-                  class="text-3xl font-extrabold text-comet tracking-tight sm:text-4xl"
+                  class="typewriter text-3xl font-extrabold text-comet tracking-tight sm:text-4xl"
                 >
                   The simplest way to run your code on Kubernetes.
                 </h1>
@@ -34,6 +33,46 @@
                 </div>
               </div>
             </div>
+            <dl
+              class="mt-8 rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3"
+            >
+              <div
+                class="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r"
+              >
+                <dt
+                  class="order-2 mt-2 text-lg leading-6 font-medium text-bubble"
+                >
+                  Deployments
+                </dt>
+                <dd class="order-1 text-5xl font-extrabold text-gray-500">
+                  {{ totalDeployments }}
+                </dd>
+              </div>
+              <div
+                class="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r"
+              >
+                <dt
+                  class="order-2 mt-2 text-lg leading-6 font-medium text-bubble"
+                >
+                  Images built
+                </dt>
+                <dd class="order-1 text-5xl font-extrabold text-gray-500">
+                  {{ totalDockerImages }}
+                </dd>
+              </div>
+              <div
+                class="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l"
+              >
+                <dt
+                  class="order-2 mt-2 text-lg leading-6 font-medium text-bubble"
+                >
+                  Jobs ran
+                </dt>
+                <dd class="order-1 text-5xl font-extrabold text-gray-500">
+                  {{ totalTaskResults }}
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
 
@@ -79,10 +118,15 @@
               </svg>
             </div>
             <div
-              class="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12"
+              class="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:pl-12"
             >
               <img
-                class="w-fit rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
+                class="feature__image-main rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto"
+                src="../assets/images/dashboardSafari.png"
+                alt="dashboardOne"
+              />
+              <img
+                class="feature__image-main rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto"
                 src="../assets/images/dashboardSafari.png"
                 alt=""
               />
@@ -163,14 +207,14 @@
               </h2>
               <div class="mt-6 text-gray-500 space-y-6">
                 <p class="text-lg">
-                  Shigoto is a primary-lightged Kubernetes service that lets you
-                  deploy, monitor and primary-lightge your containers via an
-                  intuitive web interface.
+                  Shigoto is a managed Kubernetes service that lets you deploy,
+                  monitor and manage your containers via an intuitive web
+                  interface.
                 </p>
                 <p class="text-base leading-7">
                   With Shigoto, you don’t need to worry about operating servers
-                  or clusters. Deploying and primary-lightging your cluster is
-                  as easy as clicking a button.
+                  or clusters. Deploying and managing your cluster is as easy as
+                  clicking a button.
                 </p>
                 <p class="text-base leading-7">
                   Create powerful workflows. Scale up and down automatically,
@@ -194,17 +238,17 @@
                 Tailored for your requirements.
               </h2>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
-                Shigoto is a primary-lightged Kubernetes service that lets you
-                deploy, monitor and primary-lightge your containers via an
-                intuitive web interface.
+                Shigoto is a managed Kubernetes service that lets you deploy,
+                monitor and manage your containers via an intuitive web
+                interface.
               </p>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
                 With Shigoto, you don't need to worry about operating servers or
                 clusters.
               </p>
               <p class="mt-6 max-w-3xl text-lg leading-7 text-gray-500">
-                Deploying and primary-lightging your cluster is as easy as
-                clicking a button.
+                Deploying and managing your cluster is as easy as clicking a
+                button.
               </p>
               <div class="mt-6">
                 <a href="#" class="text-base font-medium text-primary">
@@ -235,6 +279,7 @@ import VueCompositionAPI from "@vue/composition-api";
 import DockerIcon from "../assets/icons/DockerIcon.svg?inline";
 import ShigotoLogo from "../assets/logo.svg?inline";
 import UpdateMe from "../components/UpdateMe.vue";
+import { taskTypes, taskWsActions } from "@/constants/ws";
 
 Vue.use(VueCompositionAPI);
 export default {
@@ -245,7 +290,29 @@ export default {
   },
   data() {
     return {
-      title: "Shigoto",
+      connection: null,
+      totalTaskResults: 0,
+      totalDockerImages: 0,
+      totalDeployments: 0,
+      title: "Shigoto - Deploy and run code on Kubernetes",
+      pageTitle: "Shigoto",
+      resultSubscribe: {
+        action: taskWsActions.SUBSCRIBE,
+        token: "",
+        topic: taskTypes.shigotoStats,
+      },
+    };
+  },
+  created() {
+    this.connection = new WebSocket("ws://localhost:8080/ws");
+    this.connection.onopen = () => {
+      this.sendMessage(this.resultSubscribe);
+    };
+    this.connection.onmessage = (message) => {
+      const parsedData = JSON.parse(message.data);
+      this.totalDeployments = parsedData.totalKubernetesDeployments;
+      this.totalDockerImages = parsedData.totalDockerImages;
+      this.totalTaskResults = parsedData.totalTaskResults;
     };
   },
   head() {
@@ -260,6 +327,15 @@ export default {
         },
       ],
     };
+  },
+  beforeRouteLeave(to, from, next) {
+    this.connection.close();
+    next();
+  },
+  methods: {
+    sendMessage(message) {
+      this.connection.send(JSON.stringify(message));
+    },
   },
 };
 </script>
@@ -297,6 +373,12 @@ export default {
     width: 300px;
     margin-top: 2rem;
     transform: scale(0.8);
+    margin-left: 1.4rem;
+  }
+  .feature__image-main {
+    width: 300px;
+    margin-top: 2rem;
+    transform: scale(1.2);
     margin-left: 1.4rem;
   }
 }

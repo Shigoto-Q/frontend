@@ -11,7 +11,7 @@
                 class="mb-4 text-4xl font-bold leading-none tracking-tighter text-comet lg:text-7xl"
               >
                 <span
-                  class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-anakiwa"
+                  class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-bubble"
                 >
                   An amazing pricing
                 </span>

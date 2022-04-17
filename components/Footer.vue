@@ -168,6 +168,7 @@ export default {
         ],
         company: [
           { name: "About", href: "#" },
+          { name: "The team", href: "/team" },
           { name: "Blog", href: "#" },
           { name: "Jobs", href: "#" },
         ],

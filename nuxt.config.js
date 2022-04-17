@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Shigoto",
+    title: "Shigoto - Deploy and run code on Kubernetes",
     htmlAttrs: {
       lang: "en",
     },
