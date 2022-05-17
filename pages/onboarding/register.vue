@@ -1,12 +1,15 @@
 <template>
   <div class="flex flex-col">
     <h1
-      class="mt-20 mb-8 self-center text-lg font-bold leading-none text-comet lg:text-6xl"
+      class="form__title"
     >
-      Sign up
+      Welcome to Shigoto!
     </h1>
+    <h2 class="form__subtitle">
+      To start, create an account.
+    </h2>
     <div class="flex justify-center w-auto">
-      <Form :model="model" :schema="schema" :handle-on-click="submitForm" />
+      <Form :model="model" :schema="schema" :handle-on-click="submitForm" :show-submit-button="true" />
     </div>
   </div>
 </template>
@@ -43,6 +46,7 @@ export default {
           {
             type: "myInput",
             inputType: "email",
+            styleClasses: 'flex-100',
             fieldLabel: "E-mail",
             model: "email",
           },
@@ -51,6 +55,12 @@ export default {
             inputType: "country",
             fieldLabel: "Country",
             model: "country",
+          },
+          {
+            type: "myInput",
+            inputType: "company",
+            fieldLabel: "Company",
+            model: "company",
           },
           {
             type: "myInput",
@@ -76,4 +86,20 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.form {
+  &__title {
+    margin-top: 7rem;
+    font-size: 24px;
+    align-self: center;
+  }
+  &__subtitle {
+    color: $subtitle-color;
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+}
+.flex-100 {
+  flex: 100%
+}
+</style>

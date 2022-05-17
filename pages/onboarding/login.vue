@@ -14,7 +14,7 @@
       >
         Don't have an account?
       </span>
-      <Link text="Register now for free." to="/onboarding/signup" />
+      <Link text="Register now for free." to="/onboarding/register" />
     </div>
     <div class="form-wrapper">
       <Form
@@ -81,6 +81,7 @@ export default {
             type: "myInput",
             inputType: "email",
             fieldLabel: "E-mail",
+            styleClasses: 'flex-100',
             model: "email",
             placeholder: "user@shigo.to",
           },
@@ -88,6 +89,7 @@ export default {
             type: "myInput",
             inputType: "password",
             fieldLabel: "Password",
+            styleClasses: 'flex-100',
             model: "password",
             placeholder: "password",
           },
@@ -97,8 +99,7 @@ export default {
   },
   mounted() {},
   methods: {
-    async onClick(e) {
-      e.preventDefault();
+    async onClick() {
       try {
         await this.$auth.loginWith("local", {
           data: this.model,
@@ -145,6 +146,7 @@ body {
   .form-wrapper {
     flex-direction: column;
     align-items: stretch;
+    width: 350px;
   }
   .action__text {
     flex-direction: column;

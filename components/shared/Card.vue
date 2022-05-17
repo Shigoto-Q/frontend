@@ -1,234 +1,261 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div>
-    <dl class="flex flex-row mt-5">
-      <div
-        v-for="item in stats"
-        :key="item.id"
-        class="relative ml-2 bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden w-64"
+  <div class="chart__area">
+    <div>
+      <line-chart
+        :style="chartStyles"
+        :chart-data="chartData.chartData"
+        :gradient-colors="chartData.gradientColors"
+        :gradient-stops="chartData.gradientStops"
+        :extra-options="chartData.extraOptions"
       >
-        <dt>
-          <div class="absolute rounded-md p-3">
-            <component
-              :is="item.icon"
-              class="h-8 w-8 text-white"
-              aria-hidden="true"
-            />
-          </div>
-          <p class="ml-16 text-sm font-medium text-gray-500 truncate">
-            {{ item.name }}
-          </p>
-        </dt>
-        <dd class="ml-16 pb-6 flex items-baseline sm:pb-7">
-          <p class="text-2xl font-semibold text-gray-900">
-            {{ item.stat }}
-          </p>
-          <div class="heart-rate">
-            <svg
-              version="1.0"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              x="0px"
-              y="0px"
-              width="64px"
-              height="32px"
-              viewBox="0 0 150 73"
-              enable-background="new 0 0 150 73"
-              xml:space="preserve"
-            >
-              <polyline
-                fill="none"
-                stroke="green"
-                stroke-width="3"
-                stroke-miterlimit="10"
-                points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
-              />
-            </svg>
-            <div class="fade-in"></div>
-            <div class="fade-out"></div>
-          </div>
-          <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
-            <div class="text-sm">
-              <a
-                href="#"
-                class="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                View all<span class="sr-only"> {{ item.name }} stats</span></a
-              >
-            </div>
-          </div>
-        </dd>
-      </div>
-    </dl>
+      </line-chart>
+    </div>
   </div>
 </template>
 
 <script>
-import SuccessIcon from "~/assets/icons/Success.svg?inline";
-import FailedIcon from "assets/icons/Failed.svg?inline";
-import PendingIcon from "assets/icons/Pending.svg?inline";
 import ArrowUp from "assets/icons/ArrowUp.svg?inline";
 import ArrowDown from "assets/icons/ArrowDown.svg?inline";
-import StartIcon from "assets/icons/Start.svg?inline";
-import ReceiveIcon from "assets/icons/Receive.svg?inline";
-import RejectIcon from "assets/icons/Reject.svg?inline";
+import LineChart from "@/components/charts/LineChart";
+import * as chartConfigs from '@/components/charts/config';
+import config from '@/config';
+import {taskTypes, taskWsActions} from "@/constants/ws";
 
 export default {
   name: "Card",
   components: {
     ArrowUp,
     ArrowDown,
+    LineChart,
   },
   props: {
-    successCount: {
-      type: Number,
-      default: 0,
+    countData: {
+      type: Array,
+      default: () => [],
     },
-    receivedCount: {
-      type: Number,
-      default: 0,
-    },
-    startedCount: {
-      type: Number,
-      default: 0,
-    },
-    rejectedCount: {
-      type: Number,
-      default: 0,
-    },
-    ignoredCount: {
-      type: Number,
-      default: 0,
-    },
-    failCount: {
-      type: Number,
-      default: 0,
-    },
-    pendingCount: {
-      type: Number,
-      default: 0,
-    },
+  },
+  data() {
+    return {
+      stats: {},
+      labels: ['14:00', "14:01", "14:02", "14:03", "14:04", "14:05", "14:06"],
+      successData: [20, 45, 65, 87, 121, 152, 252],
+      failureData: [10, 32, 105, 93, 25, 10, 50],
+      pendingData: new this.Cache(10),
+      receivedData: new this.Cache(10),
+      startedData: new this.Cache(10),
+      ignoredData: new this.Cache(10),
+      rejectedData: new this.Cache(10),
+      purpleLineChart: null,
+      connection: null,
+      resultSubscribe: {
+        action: taskWsActions.SUBSCRIBE,
+        token: this.$auth.strategy.token.get().split(" ")[1],
+        topic: taskTypes.taskCount,
+      },
+    };
+  },
+  created() {
+    this.connection = new WebSocket("ws://localhost:8080/ws");
+    this.connection.onopen = () => {
+      this.sendMessage(this.resultSubscribe);
+    };
+    this.connection.onmessage = (message) => {
+      this.stats = JSON.parse(message.data);
+      const timestamp = new Date(this.stats[0].timestamp)
+      const st = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`
+      this.labels.store(st)
+      for(const n of this.stats) {
+          if (n.status === 'success')
+            this.successData.store(n.count)
+          else if (n.status === 'failure')
+            this.failureData.store(n.count)
+          else if (n.status === 'pending')
+            this.pendingData.store(n.count)
+           else if (n.status === 'started')
+            this.startedData.store(n.count)
+          else if (n.status === 'ignored')
+            this.ignoredData.store(n.count)
+          else if (n.status === 'rejected')
+            this.rejectedData.store(n.count)
+      }
+    };
+  },
+  beforeRouteLeave(to, from, next) {
+    this.connection.close();
+    next();
   },
   computed: {
-    stats() {
-      return [
-        { id: 1, name: "Started", stat: this.startedCount, icon: StartIcon },
-        { id: 2, name: "Success", stat: this.successCount, icon: SuccessIcon },
-        {
-          id: 3,
-          name: "Received",
-          stat: this.receivedCount,
-          icon: ReceiveIcon,
-        },
-        { id: 4, name: "Pending", stat: this.pendingCount, icon: PendingIcon },
-        { id: 5, name: "Rejected", stat: this.rejectedCount, icon: RejectIcon },
-        { id: 6, name: "Failed", stat: this.failCount, icon: FailedIcon },
-      ];
+    chartStyles () {
+      return {
+        height: '250px',
+        width: '100%'
+      }
     },
+    chartData() {
+      return {
+        extraOptions: chartConfigs.purpleChartOptions,
+        chartData: {
+          labels: this.labels,
+          datasets: [
+            {
+              label: 'Successful',
+              fill: true,
+              borderColor: config.colors.primary,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.primary,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.primary,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: this.successData,
+            },
+            {
+              label: 'Failed',
+              fill: true,
+              borderColor: config.colors.danger,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.danger,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.purpleGradient,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: this.failureData,
+            },
+            {
+              label: 'Pending',
+              fill: true,
+              borderColor: config.colors.orange,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.orange,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.purpleGradient,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: this.pendingData.values,
+            },
+            {
+              label: 'Started',
+              fill: true,
+              borderColor: config.colors.info,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.info,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.purpleGradient,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: this.startedData.values,
+            },
+            {
+              label: 'Received',
+              fill: true,
+              borderColor: config.colors.teal,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.teal,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.purpleGradient,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: this.receivedData.values,
+            },
+            {
+              label: 'Rejected',
+              fill: true,
+              borderColor: config.colors.magenta,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.magenta,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.purpleGradient,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: this.rejectedData.values,
+            },
+            {
+              label: 'Ignored',
+              fill: true,
+              borderColor: config.colors.marvel,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.marvel,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.purpleGradient,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: this.ignoredData.values,
+            }
+          ]
+        },
+        gradientColors: config.colors.primaryGradient,
+        gradientStops: [1, 0.2, 0]
+      }
+    }
+  },
+  mounted() {
+    console.log(this.countData)
   },
   watch: {
-    successCount: function (newVal, oldVal) {
-      return newVal;
-    },
-    startedCount: function (newVal, oldVal) {
-      return newVal;
-    },
-    receivedCount: function (newVal, oldVal) {
-      return newVal;
-    },
-    pendingCount: function (newVal, oldVal) {
-      return newVal;
-    },
-    rejectedCount: function (newVal, oldVal) {
-      return newVal;
-    },
-    failCount: function (newVal, oldVal) {
-      return newVal;
-    },
-    ignoredCount: function (newVal, oldVal) {
+    countData: function (newVal, oldVal) {
       return newVal;
     },
   },
+  methods: {
+    Cache(maxLength) {
+      this.values = [];
+
+      this.store = function(data) {
+        if(this.values.length >= maxLength) {
+          this.getLast();
+        }
+        return this.values.push(data);
+      }
+
+      this.getLast = function() {
+        return this.values.splice(0,1)[0];
+      }
+    },
+    sendMessage(message) {
+      this.connection.send(JSON.stringify(message));
+    },
+  }
 };
 </script>
-<style scoped>
-.heart-rate {
-  margin-left: 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.fade-in {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  top: 0;
-  right: 0;
-  animation: heartRateIn 4.5s linear infinite;
-}
-
-.fade-out {
-  position: absolute;
-  width: 120%;
-  height: 100%;
-  top: 0;
-  left: -120%;
-  animation: heartRateOut 4.5s linear infinite;
-  background: rgba(255, 255, 255, 1);
-  background: -moz-linear-gradient(
-    left,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background: -webkit-linear-gradient(
-    left,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background: -ms-linear-gradient(
-    left,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 80%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-@keyframes heartRateIn {
-  0% {
-    width: 100%;
+<style scoped lang="scss">
+.chart {
+  &__area {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 2.5rem;
+    gap: 2px;
+    grid-auto-rows: minmax(100px, auto);
   }
-  50% {
-    width: 0%;
-  }
-  100% {
-    width: 0;
-  }
-}
-
-@keyframes heartRateOut {
-  0% {
-    left: -120%;
-  }
-  30% {
-    left: -120%;
-  }
-  100% {
-    left: 0;
+  &__title {
+    margin-bottom: 1rem;
   }
 }
 </style>

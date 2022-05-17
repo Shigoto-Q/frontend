@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mt-6 mb-6">
+  <div class="form-wrapper flex flex-col mt-6 mb-6">
     <VueFormGenerator
       :class="classObject"
       :id="vueForm"
@@ -9,12 +9,12 @@
       :key="formKey"
     />
     <Button
-      class="form__button"
       v-show="showSubmitButton"
       v-on="$listeners"
-      :classes="classObject + ' w-6/12'"
-      @click="handleOnClick"
-    />
+      @click="handleLocalOnClick"
+    >
+      Submit
+    </Button>
   </div>
 </template>
 
@@ -58,6 +58,12 @@ export default {
     };
   },
   methods: {
+    handleLocalOnClick() {
+      if (this.handleOnClick) {
+        this.handleOnClick()
+      } else
+        console.log('Clicked!')
+    },
     localModelUpdated() {
       this.$emit("modelUpdated", this.model);
     },
@@ -66,6 +72,10 @@ export default {
 </script>
 
 <style lang="scss">
+.form-wrapper {
+  width: 100%;
+}
+
 input:focus {
   outline: none !important;
   border-bottom-width: 2px;
@@ -82,7 +92,19 @@ input:focus + label {
 }
 
 .form-group {
-  width: 400px;
+  width: 100%;
+  flex: 40%;
+
+}
+
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.flex-100 {
+  flex: 100%;
 }
 
 @media (max-width: 800px) {

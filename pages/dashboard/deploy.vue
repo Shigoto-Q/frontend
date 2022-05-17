@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Heading class="mt-4" title="Kubernetes"/>
     <CardWithActions
       :items="images"
       primary-action-name="Deploy"
@@ -16,10 +17,16 @@
         />
       </div>
       <div class="flex justify-between mt-10">
-        <Button @click="showModal = false" text="Cancel" secondary />
-        <Button @click="handleSubmit" text="Submit" />
+        <Button @click="showModal = false" secondary>Cancel</Button>
+        <Button @click="handleSubmit">Submit</Button>
       </div>
     </Modal>
+    <Divider title="Deployments" class="mb-4 mt-4"/>
+    <SimpleTable :columns="columns"/>
+    <Divider title="Services" class="mb-4 mt-4"/>
+    <List />
+    <Divider title="Ingress" class="mb-4 mt-4"/>
+    <StackedList />
   </div>
 </template>
 
@@ -31,10 +38,21 @@ import CardWithActions from "@/components/shared/CardWithActions";
 import Modal from "@/components/shared/Modal";
 import Button from "@/components/shared/Button";
 import Form from "@/components/form/Form";
+import StackedList from "@/components/shared/StackedList";
+import Divider from "@/components/shared/Divider";
+import SimpleTable from "@/components/shared/SimpleTable";
+import List from "@/components/shared/List";
+import Heading from "@/components/shared/Heading";
+import {notificationTypes} from "@/constants/notifications";
 
 export default {
   name: "deploy",
   components: {
+    Heading,
+    List,
+    SimpleTable,
+    Divider,
+    StackedList,
     Form,
     Modal,
     CardWithActions,
@@ -46,9 +64,10 @@ export default {
   },
   data() {
     return {
+      columns: ['Name', 'Age', 'Status', 'Restarts', 'Ready'],
       showModal: false,
       formModel: {
-        imageName: "",
+        image: "",
       },
     };
   },
@@ -100,7 +119,29 @@ export default {
       this.showModal = true;
     },
     handleSubmit() {
-      console.log("handleSubmit", this.formModel);
+      const postData = {
+        image: this.formModel.imageName,
+        name: this.formModel.name,
+      }
+      console.log(postData)
+      this.$axios.post('/api/v1/kubernetes/deploy/', postData)
+        .then(() => {
+          this.$notify({
+            title: "Successfully deployed!",
+            duration: 3000,
+            body: `Docker image ${postData.image} has been deployed.`,
+            type: notificationTypes.SUCCESS,
+          });
+        })
+        .catch((err) => {
+          this.showModal = false;
+          this.$notify({
+            title: `Error status: ${err.response.status}`,
+            duration: 3000,
+            body: `${err.response.data.message}`,
+            type: notificationTypes.ERROR,
+          });
+        })
     },
     handleDeleteImage(image) {
       console.log("handleDeleteImage", image);

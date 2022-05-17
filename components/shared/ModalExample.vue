@@ -16,7 +16,7 @@
       <template v-slot:title>Create task</template>
       <Input />
     </Modal>
-    <Button @click="show = true" text="Open modal" />
+    <Button @click="show = true">Open modal</Button>
   </div>
 </template>
 

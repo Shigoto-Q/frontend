@@ -54,7 +54,7 @@
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-sm text-gray-900">{{ task.taskType }}</div>
                   <div class="text-sm text-gray-500">
-                    {{ types[task.taskType] }}
+                    {{ types[task.taskType ? task.taskType : 0] }}
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -83,10 +83,10 @@
                   <XIcon v-else />
                 </td>
                 <td class="px-1 py-4 text-center">
-                  <Button text="Run" @click="runTask(task.externalTaskId)" />
+                  <Button @click="runTask(task.externalTaskId)">Run</Button>
                 </td>
                 <td class="px-1 py-1 text-center">
-                  <Button text="Edit" @click="show(task)" />
+                  <Button @click="show(task)">Edit</Button>
                 </td>
               </tr>
             </tbody>
@@ -105,8 +105,8 @@
         />
       </div>
       <div class="flex justify-between mt-10">
-        <Button @click="showModal = false" text="Cancel" secondary />
-        <Button @click="handleSubmit" text="Submit" />
+        <Button @click="showModal = false" secondary>Cancel</Button>
+        <Button @click="handleSubmit">Submit</Button>
       </div>
     </Modal>
   </div>
@@ -162,6 +162,7 @@ export default {
             type: "myInput",
             inputType: "text",
             fieldLabel: "Name",
+            styleClasses: 'flex-100',
             name: "name",
             placeholder: "My fabolous task",
             model: "name",
@@ -169,6 +170,7 @@ export default {
           {
             type: "myInput",
             inputType: "text",
+            styleClasses: 'flex-100',
             fieldLabel: "Type",
             name: "type",
             model: "type",
@@ -176,6 +178,7 @@ export default {
           {
             type: "myCheckbox",
             inputType: "switch",
+            styleClasses: 'flex-100',
             fieldLabel: "Enabled",
             description: "If false, task will not be executed.",
             model: "enabled",
@@ -185,6 +188,7 @@ export default {
             type: "myCheckbox",
             inputType: "switch",
             fieldLabel: "One off",
+            styleClasses: 'flex-100',
             description:
               "If checked, the schedule will only run the task a single time.",
             model: "oneOff",
@@ -195,6 +199,7 @@ export default {
             inputType: "text",
             fieldLabel: "Schedule",
             model: "schedule",
+            styleClasses: 'flex-100',
           },
         ],
       };

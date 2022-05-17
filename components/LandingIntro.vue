@@ -1,4 +1,3 @@
-<!-- Please remove this file from your project -->
 <template>
   <section class="relative w-full">
     <div
@@ -8,11 +7,11 @@
         <div class="relative inline-flex items-center m-auto align-middle">
           <div class="max-w-6xl space-y-4 lg:text-center">
             <h1
-              class="-mb-6 text-xl font-bold leading-snug tracking-tighter lg:text-5xl"
+              class="landing__heading -mb-6 text-xl font-bold leading-snug tracking-tighter lg:text-5xl"
             >
               <div class="wrapper">
                 <span
-                  class="typing text-transparent bg-clip-text bg-gradient-to-r from-oyster to-mana lg:block"
+                  class="typing text-transparent bg-clip-text lg:block"
                 >
                   Shigoto,
                 </span>
@@ -50,7 +49,7 @@ export default {
   components: { LinkButton },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .wrapper {
   display: flex;
   align-items: center;
@@ -58,6 +57,8 @@ export default {
 }
 
 .typing {
+  font-family:"MonoLisa-Regular" !important;
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
   width: 22ch;
   animation: typing 2s steps(22), blink 0.8s step-end infinite alternate;
   white-space: nowrap;
@@ -75,5 +76,8 @@ export default {
   50% {
     border-color: transparent;
   }
+}
+.landing__heading {
+  font-family:"MonoLisa-Regular" !important;
 }
 </style>

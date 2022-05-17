@@ -7,7 +7,10 @@
 <script>
 import OTP from "@/components/OTP";
 export default {
-  name: "two-factor-auth",
+  name: "index",
+  components: {
+    OTP,
+  },
 };
 </script>
 

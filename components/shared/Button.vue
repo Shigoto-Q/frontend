@@ -2,16 +2,15 @@
   <button
     v-on="$listeners"
     type="submit"
-    class="inline-flex items-center px-3 py-2 text-sm text-sm leading-4 font-medium text-center self-center flex justify-center"
-    :class="classObject"
+    :class="`btn button__${secondary ? secondaryClass : primaryClass}`"
   >
-    <span class="text-white">
-      {{ text }}
-    </span>
+      <slot />
   </button>
 </template>
 
 <script>
+/*<button class="button-36" role="button">Button 36</button>*/
+// inline-flex items-center px-3 py-2 text-sm text-sm leading-4 font-medium text-center self-center flex justify-center
 export default {
   name: "Button",
   props: {
@@ -23,29 +22,12 @@ export default {
       type: Boolean,
       default: () => false,
     },
-    classes: {
-      type: String,
-      default: () => "",
-    },
   },
   data() {
-    return {};
-  },
-  computed: {
-    classObject() {
-      let className =
-        "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm  hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-weaver";
-      // let className = 'md:mt-0 items-center text-center block px-1 py-2 mt-2 text-base font-medium text-center transition duration-500 ease-in-out transform border rounded-lg border-antiflash shadow-static lg:px-12 '
-      if (this.secondary) {
-        className = className + "text-weaver border-weaver border-2 text-blue";
-      } else if (!this.secondary) {
-        className =
-          className +
-          "text-ghost border-primary-light hover:border-primary-light bg-bubble ";
-      }
-      className += this.classes;
-      return className;
-    },
+    return {
+      primaryClass: 'primary',
+      secondaryClass: 'secondary'
+    };
   },
   methods: {
     handleClick() {
@@ -55,4 +37,67 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.btn {
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 500;
+  height: auto;
+  min-height: 3rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  line-height: normal;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+
+}
+.button {
+  &__primary {
+    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  }
+
+  &__primary:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+  }
+  &__secondary {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #1A1A1A;
+    color: #3B3B3B;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  }
+  &__secondary:disabled {
+    pointer-events: none;
+  }
+
+  &__secondary:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  }
+
+  &__secondary:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+}
+
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 0 2.6rem;
+  }
+}
+
+</style>

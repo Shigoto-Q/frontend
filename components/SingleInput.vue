@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center flex-col">
     <input
       class="mx-5 block w-16 border-0 border-b-2 border-gray-600 focus:ring-0 focus:border-green text-lg border-b focus:outline-none font-sans text-center"
       ref="input"
@@ -7,15 +7,19 @@
       min="0"
       max="9"
       maxlength="1"
-      pattern="[0-9]"
+      :pattern="pattern"
       v-model="model"
       :class="inputClasses"
+      :value="value"
       @input="handleOnChange"
       @keydown="handleOnKeyDown"
       @paste="handleOnPaste"
       @focus="handleOnFocus"
       @blur="handleOnBlur"
     />
+    <label class="input__label">
+      {{ label }}
+    </label>
   </div>
 </template>
 
@@ -28,6 +32,10 @@ export default {
     },
     separator: {
       type: String,
+    },
+    pattern: {
+      type: String,
+      required: true,
     },
     focus: {
       type: Boolean,
@@ -43,6 +51,9 @@ export default {
       default() {
         return "tel";
       },
+    },
+    label: {
+      type: String
     },
     isLastChild: {
       type: Boolean,
@@ -116,3 +127,8 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+.input__label {
+  margin-top: 0.5rem;
+}
+</style>

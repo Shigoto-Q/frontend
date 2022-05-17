@@ -98,7 +98,7 @@
               placeholder="Enter your email"
             />
             <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <Button text="Subscribe" classes="w-full" />
+              <Button classes="w-full">Subscribe</Button>
             </div>
           </form>
         </div>
@@ -168,6 +168,7 @@ export default {
         ],
         company: [
           { name: "About", href: "#" },
+          { name: "The team", href: "/team" },
           { name: "Blog", href: "#" },
           { name: "Jobs", href: "#" },
         ],

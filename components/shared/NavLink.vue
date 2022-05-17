@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
-    class="px-1 py-6 text-base md:px-3 text-club"
-    exact-active-class="border-b-2 border-primary-light"
+    class="nav px-1 py-6 md:px-3"
+    exact-active-class="nav__active"
     :to="to"
   >
     {{ text }}
@@ -24,4 +24,18 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.nav {
+  &__active {
+    color: $primary-color;
+    border-color: $primary-color;
+    border-bottom-width: 2px;
+  }
+}
+
+.nav:hover {
+  font-weight: 600;
+  border-bottom-width: 2px;
+  border-color: $primary-color;
+}
+</style>
