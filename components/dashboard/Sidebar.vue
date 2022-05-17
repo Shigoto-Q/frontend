@@ -1,52 +1,33 @@
 <template>
-  <div
-    v-if="!collapse"
-    class="flex flex-col w-64 h-full shadow-md bg-ghost transition-all ease-in-out delay-500"
-  >
-    <div class="flex flex-col">
-      <div class="pt-4 pb-2 px-6">
-        <div class="flex items-center">
-          <div class="shrink-0">
-            <ShigotoIcon />
-          </div>
-          <div class="grow ml-3">
-            <p class="text-4xl font-bold leading-none text-comet lg:text-xl">
-              shigoto
-            </p>
-          </div>
-          <div>
-            <button @click="collapse = !collapse">
-              <ChevronLeftIcon class="w-7 h-7 rounded-md border-2" />
-            </button>
-          </div>
+  <div>
+    <div :class="sidebarClasses">
+      <div class="logo">
+        <img src="../../assets/branding/logo/LogoWithoutText.png" alt="logo" id="logo_img" @click="onImageClick">
+        <div class="logo_text">SHIGOTO</div>
+        <i class="bx bx-menu-alt-right" id="btn" @click="onImageClick"></i>
+      </div>
+      <div class="nav_list">
+        <div v-for="route in routes">
+          <span v-show="collapse" class="route__title mt-4">
+          </span>
+        <ul>
+          <li v-for="r in route.children">
+            <NuxtLink :to="r.url" active-class="route__active">
+              <component class="w-8 h-8 ml-6" :is="r.icon" />
+              <span class="links_name">{{ r.route }}</span>
+            </NuxtLink>
+            <span class="tooltip">{{ r.route }}</span>
+          </li>
+          </ul>
+        </div>
+        <div class="logout">
+          <a href="#">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+          <span class="tooltip">Log out</span>
         </div>
       </div>
-      <hr class="my-2" />
-      <UserDropdown />
-      <hr class="my-2" />
-      <div v-for="route in routes">
-        <span
-          class="font-light leading-relaxed text-onahau ml-4 mt-4 uppercase"
-          >{{ route.title }}</span
-        >
-        <ul class="relative px-1" v-for="r in route.children">
-          <SidebarElement :text="r.route" :icon="r.icon" :to="r.url" />
-        </ul>
-        <hr class="my-2" />
-      </div>
-    </div>
-    <div class="flex justify-center align-center mt-auto">
-      <ToggleInput class="w-6 h-6 mb-6" />
-    </div>
-  </div>
-  <div
-    v-else
-    class="flex flex-col w-12 h-full shadow-md bg-white items-center transition-all ease-in-out delay-200"
-  >
-    <div>
-      <button @click="collapse = !collapse">
-        <ChevronLeftIcon class="w-7 h-7 rounded-md border-2" />
-      </button>
     </div>
   </div>
 </template>
@@ -90,7 +71,7 @@ export default {
   },
   data() {
     return {
-      collapse: false,
+      collapse: true,
       routes: [
         {
           title: "Deployment",
@@ -130,7 +111,290 @@ export default {
       ],
     };
   },
+  computed: {
+   sidebarClasses() {
+     return {
+       sidebar: true,
+       open: this.collapse
+     };
+   }
+  },
+  methods: {
+    onImageClick() {
+      this.collapse = !this.collapse;
+    }
+  }
 };
+
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+.sidebar
+{
+  position: fixed;
+  height: 100vh;
+  width: 78px;
+  background: rgba(86, 67, 204, 0.05);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 99;
+  transition: width .5s;
+}
+.sidebar.open
+{
+  width: 250px;
+}
+.sidebar .logo
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+.sidebar .logo #logo_img
+{
+  height: 40px;
+  position: absolute;
+  top: 25px;
+  left: 19px;
+}
+.sidebar .logo .logo_text
+{
+  margin-left: 70px;
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(60deg, $primary-color, $primary-color-light);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateX(-250px);
+  opacity: 0;
+  transition: .5s;
+}
+.sidebar.open .logo .logo_text
+{
+  opacity: 1;
+  transform: translateX(0);
+}
+.sidebar .logo #btn
+{
+  color: #575f66;
+  margin-right: 20px;
+  font-size: 30px;
+  transform: translateX(-250px);
+  opacity: 0;
+  transition: .5s;
+}
+.sidebar.open .logo #btn
+{
+  opacity: 1;
+  transform: translateX(0);
+}
+ul
+{
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+ul li,
+.route__title
+{
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+}
+ul li a,
+.logout a,
+.route__title
+{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+ul li a i,
+.logout a i,
+.route__title
+{
+  position: relative;
+  color: #575f66;
+  font-size: 25px;
+  margin-left: calc((78px - 25px)/2);
+  z-index: 10;
+}
+.sidebar ul li a .links_name,
+.sidebar .logout a .links_name,
+.route__title
+{
+  color: #575f66;
+  margin: auto 30px;
+  width: 110px;
+  transform: translateX(-250px);
+  opacity: 0;
+  transition: .5s;
+}
+.sidebar.open ul li a .links_name,
+.sidebar.open .logout a .links_name,
+.route__title
+{
+  opacity: 1;
+  transform: translateX(0);
+}
+ul li a:hover i,
+ul li a:hover .links_name
+{
+  color: $primary-color;
+  transition: .5s;
+}
+.route__active >>> span {
+ color: $primary-color-light;
+}
+.sidebar ul li .tooltip,
+.sidebar .logout .tooltip
+{
+  color: #575f66;
+  background: #fff;
+  width: 110px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  z-index: 8;
+  transition: .5s;
+}
+.sidebar ul li:hover .tooltip,
+.sidebar .logout:hover .tooltip
+{
+  opacity: 1;
+  left: 85px;
+}
+.sidebar.open ul li .tooltip,
+.sidebar.open .logout .tooltip
+{
+  display: none;
+}
+.sidebar .info
+{
+  position: relative;
+  margin-top: 10px;
+}
+.sidebar .info a .avator
+{
+  width: 78px;
+  position: relative;
+  z-index: 10;
+  transition: .5s;
+}
+.sidebar.open .info a .avator
+{
+  transform: translateX(86px);
+}
+.sidebar .info a .table
+{
+  position: absolute;
+  z-index: 8;
+  top: 30px;
+  width: 70%;
+  left: 15%;
+  height: 0;
+  margin: 0 auto;
+  color: #fff;
+  background: linear-gradient(60deg, #4d6fff, #aa6deb);
+  border-radius: 20px;
+  transition: .5s;
+  opacity: 0;
+}
+.sidebar.open .info a .table
+{
+  opacity: 1;
+  height: 150px;
+}
+.sidebar .info .table_text
+{
+  margin: 40px 10px 0;
+  text-align: center;
+  font-size: 0px;
+  line-height: 25px;
+  transition: .5s;
+}
+.sidebar.open .info .table_text
+{
+  font-size: 13px;
+  opacity: 1;
+}
+.table_text span
+{
+  font-size: 14px;
+  font-weight: bold;
+}
+.name
+{
+  font-weight: bolder;
+}
+.country
+{
+  font-size: 13px;
+}
+.sidebar .info .tooltip
+{
+  color: #575f66;
+  background: #fff;
+  font-size: 15px;
+  width: 150px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  z-index: 8;
+  transition: .5s;
+}
+.sidebar.open .info .tooltip
+{
+  display: none;
+}
+.sidebar .info:hover .tooltip
+{
+  opacity: 1;
+  left: 85px;
+}
+.logout
+{
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+.logout a:hover i,
+.logout a:hover .links_name
+{
+  color: #4d6fff;
+  transition: .5s;
+}
+.home
+{
+  position: relative;
+  min-height: 100vh;
+  top: 0;
+  left: calc(78px - 20px);
+  width: 100vw;
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+.sidebar.open ~ .home
+{
+  left: calc(250px - 20px);
+  transition: all 0.5s ease;
+}
+.home .text
+{
+  display: inline-block;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 30px;
+  margin-left: 40px;
+}
+</style>

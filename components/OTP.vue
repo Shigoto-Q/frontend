@@ -26,6 +26,7 @@
                 :input-classes="inputClasses"
                 :is-last-child="i === numInputs - 1"
                 :should-auto-focus="shouldAutoFocus"
+                pattern="[0-9]"
                 @on-change="handleOnChange"
                 @on-keydown="handleOnKeyDown"
                 @on-paste="handleOnPaste"
@@ -35,7 +36,7 @@
             </form>
           </div>
           <div class="flex justify-center mt-12 mb-12">
-            <Button text="Continue" color="emerald" />
+            <Button color="emerald">Continue</Button>
           </div>
           <div
             class="mt-12 mb-10 text-sm font-display font-semibold text-gray-700 text-center"

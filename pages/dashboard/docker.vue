@@ -20,8 +20,8 @@
           <div class="flex justify-between mt-10"></div>
         </div>
         <div class="flex justify-between mt-10">
-          <Button @click="showModal = false" text="Cancel" secondary />
-          <Button @click="handleSubmit" text="Submit" />
+          <Button @click="showModal = false" secondary>Cancel</Button>
+          <Button @click="handleSubmit">Submit</Button>
         </div>
       </Modal>
       <Modal v-model="showSecretKeyModal">

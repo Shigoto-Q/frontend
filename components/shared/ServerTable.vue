@@ -15,21 +15,23 @@
     <template slot="table-row" slot-scope="props">
       <span v-if="props.column.field === 'button'">
         <Button
-          :text="props.column.buttonText"
           @click="props.column.action(props.row.id)"
-        />
+        >
+          {{ props.column.buttonText }}
+        </Button>
       </span>
       <span v-else>
         {{ props.formattedRow[props.column.field] }}
       </span>
     </template>
-    <div slot="table-actions">
+    <div class="table__actions-buttons" slot="table-actions">
       <Button
         v-show="showCreateButton"
-        text="Create new"
         @click="handleCreateNew"
-      />
-      <Button text="Reset filters" @click="resetTable" secondary />
+      >
+        Create new
+      </Button>
+      <Button @click="resetTable" secondary>Reset filters</Button>
     </div>
   </VueGoodTable>
 </template>

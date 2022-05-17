@@ -18,11 +18,11 @@ export default {
       },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }, { rel:"stylesheet", type:"text/css", href:'https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["~/assets/css/main.scss", "~/assets/css/fonts.css"],
+  css: ["~/assets/css/main.scss",  "~/assets/css/variables/colors.scss", "~/assets/css/variables/border.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -32,6 +32,7 @@ export default {
     "~/plugins/vue-form-generators.js",
     "~/plugins/vue-final-modal.js",
     "~/plugins/vue-multiselect.js",
+    "~/plugins/flatpickr.js",
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,24 +47,21 @@ export default {
     "@nuxt-hero-icons/solid/nuxt",
     "@braid/vue-formulate/nuxt",
     '@nuxtjs/google-fonts',
+    "@nuxtjs/style-resources",
   ],
-  googleFonts: {
-    download: true,
-    base64: true,
-    inject: true,
-    families: {
-      Roboto: true,
-      'Josefin+Sans': true,
-      Lato: [100, 300],
-      Raleway: {
-        wght: [100, 400],
-        ital: [100]
-      },
-    }
+  styleResources: {
+    scss: './assets/css/variables/*.scss'
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/image", "@nuxtjs/axios", "@nuxtjs/auth-next", "@nuxtjs/sentry"],
+  modules: [
+    "@nuxt/image",
+    "@nuxtjs/axios",
+    "@nuxtjs/auth-next",
+    "@nuxtjs/sentry",
+    "nuxt-feature-toggle",
+    "nuxt-flatpickr",
+  ],
   sentry: {
     dsn: "https://008679fdfad241b3bdebb1eb9f8ef100@o408166.ingest.sentry.io/6320485",
     config:

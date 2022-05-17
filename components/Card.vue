@@ -52,7 +52,7 @@ export default {
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   }
   &__title {
-    color: #5576f9;
+    color: $primary-color;
     margin-left: 1rem;
   }
   &__divider-solid {

@@ -49,7 +49,7 @@
           <AppStoreIcon class="content__store-icon" />
         </a>
       </div>
-      <Button text="Continue" @click="handleFirstStep" />
+      <Button @click="handleFirstStep">Continue</Button>
     </div>
     <div class="empty"></div>
   </div>

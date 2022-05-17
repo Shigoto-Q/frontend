@@ -27,10 +27,8 @@
                   The simplest way to run your code on Kubernetes.
                 </h1>
               </div>
-              <div class="mt-12 sm:max-w-lg sm:w-full sm:flex">
-                <div class="min-w-0 flex-1">
-                  <UpdateMe />
-                </div>
+              <div class="">
+                <UpdateMe />
               </div>
             </div>
             <dl
@@ -122,12 +120,12 @@
             >
               <img
                 class="feature__image-main rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto"
-                src="../assets/images/dashboardSafari.png"
+                src="../assets/images/dashboardTasks.png"
                 alt="dashboardOne"
               />
               <img
                 class="feature__image-main rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto"
-                src="../assets/images/dashboardSafari.png"
+                src="../assets/images/dashboardKubernetes.png"
                 alt=""
               />
             </div>
@@ -261,7 +259,7 @@
             >
               <img
                 class="scale-125 w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-full lg:max-w-none"
-                src="../assets/images/img.png"
+                src="../assets/images/dashboardDocker.png"
                 alt=""
               />
             </div>
@@ -339,7 +337,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .wrapper {
   display: flex;
   align-items: center;
@@ -347,6 +345,7 @@ export default {
 }
 
 .typing {
+  background-image: linear-gradient(92.88deg, $primary-color 9.16%, $primary-color-light 43.89%, #673FD7 64.72%);
   width: 22ch;
   animation: typing 2s steps(22), blink 0.8s step-end infinite alternate;
   white-space: nowrap;

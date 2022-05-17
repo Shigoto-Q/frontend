@@ -1,12 +1,12 @@
 <template>
-  <section class="content w-full">
+  <div class="content">
     <h1
       class="content__title mb-4 text-base font-bold leading-none text-comet lg:text-base"
     >
       We are <span class="content__highlight">coming soon</span>, subscribe to
       be aware when we do so!
     </h1>
-    <div class="mt-2 space-y-6 lg:mt-0">
+    <div class="form-wrapper">
       <Form
         :schema="schema"
         :model="model"
@@ -20,7 +20,7 @@
         :message="alertMessage"
       />
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -46,6 +46,7 @@ export default {
         fields: [
           {
             type: "myInput",
+            styleClasses: 'flex-100',
             inputType: "text",
             fieldLabel: "E-mail",
             name: "email",
@@ -68,14 +69,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 900px;
+}
 .content {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   &__highlight {
-    color: #5576f9;
+    color: $primary-color;
   }
   &__title {
     align-self: center;
   }
+}
+
+.login__form >>> button {
+  width: 50%;
 }
 </style>

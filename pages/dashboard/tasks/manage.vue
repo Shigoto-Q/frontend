@@ -1,22 +1,17 @@
 <template>
   <div>
-    <div class="w-full flex justify-center items-center md:flex-col">
-      <Card
-        :success-count.sync="stats.successCount"
-        :started-count.sync="stats.startedCount"
-        :received-count.sync="stats.receivedCount"
-        :fail-count.sync="stats.failCount"
-        :ignored-count.sync="stats.ignoredCount"
-        :rejected-count.sync="stats.rejectedCount"
-      />
+    <Divider title="Execution statistics" class="mt-4 mb-4" />
+    <div class="w-full">
+      <Card :count-data.sync="stats"/>
     </div>
     <Divider title="Tasks" class="mt-4 mb-4" />
     <div>
       <Button
-        text="Create new"
         class="mb-4 px-2 py-2"
         @click="showModal = true"
-      />
+      >
+        Create new
+      </Button>
       <Table :columns="columns" :tasks="tasks" />
     </div>
     <Modal v-model="showModal">
@@ -29,25 +24,31 @@
           :model="formModel"
         />
         <div class="flex justify-between mt-10">
-          <Button @click="showModal = false" text="Cancel" secondary />
-          <Button v-show="isUpcoming" @click="goBack" text="Back" secondary />
-          <Button v-show="!isLast" @click="handleNext" text="Next" />
-          <Button v-show="isLast" @click="handleSubmit" text="Submit" />
+          <Button @click="showModal = false" secondary>
+            Cancel
+          </Button>
+          <Button v-show="isUpcoming" @click="goBack" text="Back" secondary>
+            Back
+          </Button>
+          <Button v-show="!isLast" @click="handleNext">
+            Next
+          </Button>
+          <Button v-show="isLast" @click="handleSubmit">
+            Submit
+          </Button>
         </div>
       </div>
     </Modal>
-    <Nuxt />
   </div>
 </template>
 
 <script>
-import { taskWsActions, taskTypes } from "~/constants/ws";
+import {taskTypes, taskWsActions} from "~/constants/ws";
 import Card from "~/components/shared/Card";
 import Table from "~/components/shared/Table";
 import Divider from "~/components/shared/Divider";
 import Modal from "@/components/shared/Modal";
 import Stepper from "@/components/shared/Stepper";
-import tasksApi from "~/api/tasks";
 import Button from "@/components/shared/Button";
 import Input from "@/components/shared/Input";
 import Select from "@/components/shared/Select";
@@ -82,14 +83,7 @@ export default {
         token: this.$auth.strategy.token.get().split(" ")[1],
         topic: taskTypes.taskCount,
       },
-      stats: {
-        successCount: 0,
-        failCount: 0,
-        receivedCount: 0,
-        startedCount: 0,
-        ignoredCount: 0,
-        rejectedCount: 0,
-      },
+      stats: null,
       columns: [
         {
           title: "Task ID",
@@ -131,6 +125,7 @@ export default {
             inputType: "text",
             fieldLabel: "Name",
             name: "name",
+            styleClasses: 'flex-100',
             placeholder: "My fabolous task",
             model: "name",
           },
@@ -139,6 +134,7 @@ export default {
             fieldLabel: "Type",
             name: "name",
             model: "type",
+            styleClasses: 'flex-100',
             options: [
               { name: "Simple HTTP Operator", id: 0 },
               { name: "Kubernetes", id: 1 },
@@ -148,6 +144,7 @@ export default {
           {
             type: "myCheckbox",
             inputType: "switch",
+            styleClasses: 'flex-100',
             fieldLabel: "Enabled",
             description: "If false, task will not be executed.",
             model: "enabled",
@@ -156,6 +153,7 @@ export default {
           {
             type: "myCheckbox",
             inputType: "switch",
+            styleClasses: 'flex-100',
             fieldLabel: "One off",
             description:
               "If checked, the schedule will only run the task a single time.",
@@ -177,13 +175,7 @@ export default {
       this.sendMessage(this.resultSubscribe);
     };
     this.connection.onmessage = (message) => {
-      const parsedData = JSON.parse(message.data);
-      this.stats.successCount = parsedData.success;
-      this.stats.failCount = parsedData.failure;
-      this.stats.receivedCount = parsedData.received;
-      this.stats.startedCount = parsedData.started;
-      this.stats.ignoredCount = parsedData.ignored;
-      this.stats.rejectedCount = parsedData.rejected;
+      this.stats = JSON.parse(message.data);
     };
   },
   beforeRouteLeave(to, from, next) {

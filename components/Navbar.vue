@@ -11,8 +11,7 @@
           class="text-lg font-semibold rounded-lg text-club focus:outline-none focus:shadow-outline"
         >
           <div class="inline-flex items-center">
-            <ShigotoLogo />
-            shigoto
+            <ShigotoLogo class="w-18 h-14" />
           </div>
         </NuxtLink>
         <button
@@ -61,7 +60,7 @@
 <script>
 import LinkButton from "./shared/LinkButton";
 import NavLink from "./shared/NavLink";
-import ShigotoLogo from "assets/logo.svg?inline";
+import ShigotoLogo from "assets/branding/logo/LogoWithText.svg?inline";
 import Button from "~/components/shared/Button";
 
 export default {
