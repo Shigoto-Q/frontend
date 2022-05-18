@@ -30,5 +30,4 @@ jobs:
 
       - name: Push Docker images
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/sgt-production-frontend:${{ steps.vars.outputs.sha_short }}
-#          export DOCKER_CONFIG=$(cat ~/.docker/config.json | base64 -w 0)
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/sgt-production-frontend
