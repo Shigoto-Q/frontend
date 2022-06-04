@@ -2,7 +2,6 @@
   <VueGoodTable
     class="w-full"
     mode="remote"
-    theme="polar-bear"
     :columns="columns"
     :rows="rows"
     :total-rows="totalRows"
@@ -12,8 +11,8 @@
     @on-column-filter="onColumnFilter"
     @on-per-page-change="onPerPageChange"
   >
-    <template slot="table-row" slot-scope="props">
-      <span v-if="props.column.field === 'button'">
+    <template slot="table-row" slot-scope="props" class="test-class">
+      <span v-if="props.column.field === 'button'" class="yeet">
         <Button
           @click="props.column.action(props.row.id)"
         >
@@ -148,5 +147,31 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+table {
+  min-width: 100% !important;
+  border-top-width: 0px !important;
+  border-bottom-width: 1px !important;
+}
+thead {
+  background-color: rgb(249 250 251) !important;
+}
+th {
+  width: fit-content !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  color: $subtitle-color !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  font-weight: 500 !important;
+}
+.vgt-responsive {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
 
-<style scoped></style>
+.vgt-global-search {
+  background-color: rgb(249 250 251) !important;
+}
+</style>

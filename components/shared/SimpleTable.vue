@@ -19,25 +19,25 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(plan, planIdx) in plans" :key="plan.id">
+        <tr v-for="(plan, planIdx) in items" :key="plan.id">
           <td :class="[planIdx === 0 ? '' : 'border-t border-transparent', 'relative py-4 pl-4 sm:pl-6 pr-3 text-sm']">
             <div class="font-medium text-gray-900">
               {{ plan.name }}
               <span v-if="plan.isCurrent" class="text-indigo-600">(Current Plan)</span>
             </div>
             <div class="mt-1 flex flex-col text-gray-500 sm:block lg:hidden">
-              <span>{{ plan.memory }} / {{ plan.cpu }}</span>
+              <span>{{ plan.age }} / {{ plan.cpu }}</span>
               <span class="hidden sm:inline"> · </span>
               <span>{{ plan.storage }}</span>
             </div>
             <div v-if="planIdx !== 0" class="absolute right-0 left-6 -top-px h-px bg-gray-200" />
           </td>
-          <td :class="[planIdx === 0 ? '' : 'border-t border-gray-200', 'hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell']">{{ plan.memory }}</td>
+          <td :class="[planIdx === 0 ? '' : 'border-t border-gray-200', 'hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell']">{{ plan.age }}</td>
           <td :class="[planIdx === 0 ? '' : 'border-t border-gray-200', 'hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell']">{{ plan.cpu }}</td>
           <td :class="[planIdx === 0 ? '' : 'border-t border-gray-200', 'hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell']">{{ plan.storage }}</td>
           <td :class="[planIdx === 0 ? '' : 'border-t border-gray-200', 'px-3 py-3.5 text-sm text-gray-500']">
-            <div class="sm:hidden">{{ plan.price }}/mo</div>
-            <div class="hidden sm:block">{{ plan.price }}</div>
+            <div class="sm:hidden">{{ plan.ready }}/mo</div>
+            <div class="hidden sm:block">{{ plan.ready }}</div>
           </td>
           <td :class="[planIdx === 0 ? '' : 'border-t border-transparent', 'relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium']">
             <Button secondary>
@@ -61,22 +61,15 @@ export default {
   props: {
     columns: {
       type: Array,
-      require: true,
+      required: true,
+    },
+    items: {
+      type: Array,
+      required: true,
     }
   },
   data() {
     return {
-      plans: [
-        {
-          id: 1,
-          name: 'sgt-frontend-789f8dd7fc-sr7b8',
-          memory: '23h',
-          cpu: 'Running',
-          storage: '0',
-          price: '1/1',
-          isCurrent: false,
-        },
-      ],
     }
   },
 }

@@ -119,4 +119,7 @@ export default {
       },
     },
   },
+  env: {
+    stripeSecretKey: "pk_test_518h2jFItAhzYJ7dgwgnoYIDrufudKMsxdhAaa2YZt0YcbM5z1EfBvxYprkufs4KJO76zTkfaXSS3OSBtn6GMDmMm00C1wwlqJb",
+  }
 };

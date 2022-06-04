@@ -36,13 +36,16 @@
 import ShigotoIcon from "../../assets/logo.svg?inline";
 import KubernetesIcon from "../../assets/icons/kubernetes.svg?inline";
 import AvatarIcon from "../../assets/icons/Avatar.svg?inline";
-import DockerIcon from "../../assets/icons/DockerIcon.svg?inline";
 import ChevronLeftIcon from "../../assets/icons/ChevronLeft.svg?inline";
 import ChevronDownIcon from "../../assets/icons/ChevronDown.svg?inline";
 import ScheduleIcon from "../../assets/icons/Schedule.svg?inline";
 import LogsIcon from "../../assets/icons/Logs.svg?inline";
 import TaskIcon from "../../assets/icons/TaskIcon.svg?inline";
 import CreateTaskIcon from "../../assets/icons/CreateTask.svg?inline";
+import SettingsIcon from "../../assets/icons/SettingsIcon.svg?inline";
+import AlertIcon from "../../assets/icons/AlertIcon.svg?inline"
+import NotificationIcon from "../../assets/icons/NotificationIcon.svg?inline"
+import DockerIcon from "@/assets/icons/DockerColorIcon.svg?inline";
 import SidebarElement from "~/components/dashboard/SidebarElement";
 import Button from "~/components/shared/Button";
 import Input from "~/components/shared/Input";
@@ -59,6 +62,8 @@ export default {
     Button,
     SidebarElement,
     ThemeToggle,
+    AlertIcon,
+    NotificationIcon,
     KubernetesIcon,
     AvatarIcon,
     DockerIcon,
@@ -105,6 +110,31 @@ export default {
               route: "Logs",
               url: "/dashboard/tasks/logs",
               icon: LogsIcon,
+            },
+          ],
+        },
+        {
+          title: "Integrations",
+          children: [
+            {
+              route: "Alerts",
+              url: "/dashboard/integrations/alerts",
+              icon: AlertIcon,
+            },
+            {
+              route: "Notifications",
+              url: "/dashboard/integrations/notifications",
+              icon: NotificationIcon,
+            },
+          ],
+        },
+        {
+          title: "Settings",
+          children: [
+            {
+              route: "Settings",
+              url: "/dashboard/settings",
+              icon: SettingsIcon,
             },
           ],
         },
