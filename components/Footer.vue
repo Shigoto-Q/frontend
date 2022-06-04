@@ -132,6 +132,7 @@ import GithubIcon from "assets/icons/GithubIcon.svg?inline";
 import LinkedinIcon from "assets/icons/LinkedinIcon.svg?inline";
 import DiscordIcon from "assets/icons/DiscordIcon.svg?inline";
 import TwitterIcon from "assets/icons/TwitterIcon.svg?inline";
+import ClimateIcon from "assets/icons/StripeClimateIcon.svg?inline";
 
 import VueCompositionAPI, {
   defineComponent,
@@ -151,6 +152,7 @@ export default {
     DiscordIcon,
     LinkedinIcon,
     TwitterIcon,
+    ClimateIcon,
   },
   data() {
     return {
@@ -196,6 +198,11 @@ export default {
             name: "Twitter",
             href: "https://twitter.com/ShigotoLLC",
             icon: TwitterIcon,
+          },
+          {
+            name: "Climate",
+            href: "https://climate.stripe.com/GcbOW2",
+            icon: ClimateIcon,
           },
         ],
       },

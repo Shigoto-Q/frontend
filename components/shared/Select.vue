@@ -9,15 +9,16 @@
     <multiselect
       class="block w-full py-1 bg-white border-0 text-vulcan placeholder-cat focus:ring-0 sm:text-sm rounded"
       v-model="inputModel"
-      deselect-label="Can't remove this value"
       track-by="name"
       open-direction="bottom"
       :label="name"
       :placeholder="placeholder"
       :options="options"
       :searchable="false"
-      :allow-empty="false"
+      :allow-empty="true"
+      :multiple="multiple"
       @select="onChange"
+      :preselect-first="true"
     >
       <template slot="singleLabel" slot-scope="props">
         <span class="option__desc">
@@ -61,6 +62,10 @@ export default {
     options: {
       type: Array,
       default: () => [],
+    },
+    multiple: {
+      type: Boolean,
+      default: () => false,
     },
   },
   data() {
