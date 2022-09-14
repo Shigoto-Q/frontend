@@ -1,4 +1,8 @@
 export default {
+  publicRuntimeConfig: {
+    baseUrl: process.env.BASE_URL,
+    wsUrl: process.env.WS_BASE_URL,
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -12,7 +16,7 @@ export default {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        hid: "The simplest way to run your code on Kubernetes.",
+        hid: 'The simplest way to run your code on Kubernetes.',
         name: "The simplest way to run your code on Kubernetes.",
         content: "Shigoto is a managed Kubernetes service that lets you deploy, monitor and manage your containers via an intuitive web interface. With Shigoto, you don't need to worry about operating servers or clusters."
       },

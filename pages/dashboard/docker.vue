@@ -168,7 +168,7 @@ export default {
       this.$refs.dockerImagesTable.loadItems();
     },
     handleSubmit() {
-      this.connection = new WebSocket("ws://localhost:8080/ws");
+      this.connection = new WebSocket(this.$config.wsUrl);
       let createImageData = {
         action: taskWsActions.createImage,
         token: `Bearer ${this.$auth.strategy.token.get().split(" ")[1]}`,
