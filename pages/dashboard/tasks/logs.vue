@@ -48,7 +48,7 @@ export default {
     };
   },
   created() {
-    this.connection = new WebSocket("ws://localhost:8080/ws");
+    this.connection = new WebSocket(this.$config.wsUrl);
     this.connection.onopen = () => {
       this.sendMessage(this.resultSubscribe);
     };
