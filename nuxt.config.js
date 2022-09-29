@@ -66,22 +66,6 @@ export default {
     "nuxt-feature-toggle",
     "nuxt-flatpickr",
   ],
-  sentry: {
-    dsn: "https://008679fdfad241b3bdebb1eb9f8ef100@o408166.ingest.sentry.io/6320485",
-    config:
-      {
-        tracesSampleRate: 1.0,
-        vueOptions: {
-          tracing: true,
-          tracingOptions: {
-            hooks: [ 'mount', 'update' ],
-            timeout: 2000,
-            trackComponents: true
-          }
-        },
-        browserOptions: {}
-      }
-  },
   router: {
     middleware: [],
   },

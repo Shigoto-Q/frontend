@@ -11,8 +11,8 @@ export default function ({ $axios, app }, inject) {
       const token = app.$auth.strategy.token.get().split(' ')[1];
       api.setToken(token, 'Bearer');
     }
-  });
+  })
 
-  api.setBaseURL(this.$config.baseURL);
+  api.setBaseURL(app.$config.baseURL);
   inject('api', api);
 }
