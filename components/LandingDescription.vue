@@ -27,7 +27,7 @@
             class="object-cover object-center w-full rounded-xl"
             alt="hero"
             src="../assets/images/dashboardCentered.png"
-          >
+          />
         </div>
       </div>
     </div>
@@ -36,8 +36,8 @@
 
 <script>
 export default {
-  name: 'LandingDescription'
-}
+  name: "LandingDescription",
+};
 </script>
 
 <style scoped></style>

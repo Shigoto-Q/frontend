@@ -48,7 +48,7 @@
             class="object-contain"
             src="../../assets/images/dashboardSafari.png"
             alt="App screenshot"
-          >
+          />
         </div>
       </div>
     </div>
@@ -57,22 +57,22 @@
 
 <script>
 export default {
-  name: 'FeatureCard',
+  name: "FeatureCard",
   props: {
     title: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     to: {
       type: String,
-      default: () => '/'
+      default: () => "/",
     },
     text: {
       type: String,
-      default: () => ''
-    }
-  }
-}
+      default: () => "",
+    },
+  },
+};
 </script>
 
 <style scoped></style>

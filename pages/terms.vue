@@ -109,10 +109,12 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Terms and Conditions</span>
+              >Terms and Conditions</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            >Welcome to shigoto!</span>
+              >Welcome to shigoto!</span
+            >
           </h1>
           <p class="mt-8 text-xl text-gray-500 leading-8">
             These terms and conditions outline the rules and regulations for the
@@ -152,7 +154,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >License:</span>
+              >License:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -167,7 +170,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >You must not:</span>
+              >You must not:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -199,7 +203,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >You warrant and represent that:</span>
+              >You warrant and represent that:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -232,7 +237,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Hyperlinking to our Content:</span>
+              >Hyperlinking to our Content:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -266,8 +272,9 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >We may consider and approve other link requests from the
-              following types of organizations:</span>
+              >We may consider and approve other link requests from the
+              following types of organizations:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -310,8 +317,9 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Approved organizations may hyperlink to our Website as
-              follows:</span>
+              >Approved organizations may hyperlink to our Website as
+              follows:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -332,7 +340,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Content Liability:</span>
+              >Content Liability:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -348,7 +357,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Reservation of Rights:</span>
+              >Reservation of Rights:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -364,7 +374,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Removal of links from our website:</span>
+              >Removal of links from our website:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -384,7 +395,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Disclaimer:</span>
+              >Disclaimer:</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -432,8 +444,8 @@
 
 <script>
 export default {
-  name: 'Terms'
-}
+  name: "Terms",
+};
 </script>
 
 <style scoped></style>

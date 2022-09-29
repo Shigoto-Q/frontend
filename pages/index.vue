@@ -122,12 +122,12 @@
                 class="feature__image-main rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto"
                 src="../assets/images/dashboardTasks.png"
                 alt="dashboardOne"
-              >
+              />
               <img
                 class="feature__image-main rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto"
                 src="../assets/images/dashboardKubernetes.png"
                 alt=""
-              >
+              />
             </div>
           </div>
         </div>
@@ -188,7 +188,7 @@
                   class="absolute inset-0 h-full w-full object-contain"
                   src="../assets/images/dashboardFeature1.png"
                   alt=""
-                >
+                />
               </div>
             </div>
           </div>
@@ -261,7 +261,7 @@
                 class="scale-125 w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-full lg:max-w-none"
                 src="../assets/images/dashboardDocker.png"
                 alt=""
-              >
+              />
             </div>
           </div>
         </div>
@@ -271,70 +271,70 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueCompositionAPI, { defineComponent, h } from '@vue/composition-api'
-import DockerIcon from '../assets/icons/DockerIcon.svg?inline'
-import ShigotoLogo from '../assets/logo.svg?inline'
-import UpdateMe from '../components/UpdateMe.vue'
-import { taskTypes, taskWsActions } from '@/constants/ws'
+import Vue from "vue";
+import VueCompositionAPI, { defineComponent, h } from "@vue/composition-api";
+import DockerIcon from "../assets/icons/DockerIcon.svg?inline";
+import ShigotoLogo from "../assets/logo.svg?inline";
+import UpdateMe from "../components/UpdateMe.vue";
+import { taskTypes, taskWsActions } from "@/constants/ws";
 
-Vue.use(VueCompositionAPI)
+Vue.use(VueCompositionAPI);
 export default {
   components: {
     DockerIcon,
     ShigotoLogo,
-    UpdateMe
+    UpdateMe,
   },
-  beforeRouteLeave (to, from, next) {
-    this.connection.close()
-    next()
+  beforeRouteLeave(to, from, next) {
+    this.connection.close();
+    next();
   },
-  data () {
+  data() {
     return {
       connection: null,
       totalTaskResults: 0,
       totalDockerImages: 0,
       totalDeployments: 0,
-      title: 'Shigoto - Deploy and run code on Kubernetes',
-      pageTitle: 'Shigoto',
+      title: "Shigoto - Deploy and run code on Kubernetes",
+      pageTitle: "Shigoto",
       resultSubscribe: {
         action: taskWsActions.SUBSCRIBE,
-        token: '',
-        topic: taskTypes.shigotoStats
-      }
-    }
+        token: "",
+        topic: taskTypes.shigotoStats,
+      },
+    };
   },
-  head () {
+  head() {
     return {
       title: this.title,
       meta: [
         {
-          hid: 'The simplest way to run your code on Kubernetes.',
-          name: 'The simplest way to run your code on Kubernetes.',
+          hid: "The simplest way to run your code on Kubernetes.",
+          name: "The simplest way to run your code on Kubernetes.",
           content:
-            'Deploying and managing your cluster is as easy as clicking a button.'
-        }
-      ]
-    }
+            "Deploying and managing your cluster is as easy as clicking a button.",
+        },
+      ],
+    };
   },
-  created () {
-    this.connection = new WebSocket(this.$config.wsUrl)
+  created() {
+    this.connection = new WebSocket(this.$config.wsUrl);
     this.connection.onopen = () => {
-      this.sendMessage(this.resultSubscribe)
-    }
+      this.sendMessage(this.resultSubscribe);
+    };
     this.connection.onmessage = (message) => {
-      const parsedData = JSON.parse(message.data)
-      this.totalDeployments = parsedData.totalKubernetesDeployments
-      this.totalDockerImages = parsedData.totalDockerImages
-      this.totalTaskResults = parsedData.totalTaskResults
-    }
+      const parsedData = JSON.parse(message.data);
+      this.totalDeployments = parsedData.totalKubernetesDeployments;
+      this.totalDockerImages = parsedData.totalDockerImages;
+      this.totalTaskResults = parsedData.totalTaskResults;
+    };
   },
   methods: {
-    sendMessage (message) {
-      this.connection.send(JSON.stringify(message))
-    }
-  }
-}
+    sendMessage(message) {
+      this.connection.send(JSON.stringify(message));
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
 .wrapper {

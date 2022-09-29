@@ -12,9 +12,7 @@
       <Table :columns="columns" :tasks="tasks" />
     </div>
     <Modal v-model="showModal">
-      <template #title>
-        Create new task
-      </template>
+      <template #title> Create new task </template>
       <Stepper :steps="steps" class="mb-4 mt-4" />
       <div class="flex flex-col">
         <Form
@@ -23,18 +21,12 @@
           :model="formModel"
         />
         <div class="flex justify-between mt-10">
-          <Button secondary @click="showModal = false">
-            Cancel
-          </Button>
+          <Button secondary @click="showModal = false"> Cancel </Button>
           <Button v-show="isUpcoming" text="Back" secondary @click="goBack">
             Back
           </Button>
-          <Button v-show="!isLast" @click="handleNext">
-            Next
-          </Button>
-          <Button v-show="isLast" @click="handleSubmit">
-            Submit
-          </Button>
+          <Button v-show="!isLast" @click="handleNext"> Next </Button>
+          <Button v-show="isLast" @click="handleSubmit"> Submit </Button>
         </div>
       </div>
     </Modal>
@@ -42,19 +34,19 @@
 </template>
 
 <script>
-import { taskTypes, taskWsActions } from '~/constants/ws'
-import Card from '~/components/shared/Card'
-import Table from '~/components/shared/Table'
-import Divider from '~/components/shared/Divider'
-import Modal from '@/components/shared/Modal'
-import Stepper from '@/components/shared/Stepper'
-import Button from '@/components/shared/Button'
-import Input from '@/components/shared/Input'
-import Select from '@/components/shared/Select'
-import Form from '@/components/form/Form'
+import { taskTypes, taskWsActions } from "~/constants/ws";
+import Card from "~/components/shared/Card";
+import Table from "~/components/shared/Table";
+import Divider from "~/components/shared/Divider";
+import Modal from "@/components/shared/Modal";
+import Stepper from "@/components/shared/Stepper";
+import Button from "@/components/shared/Button";
+import Input from "@/components/shared/Input";
+import Select from "@/components/shared/Select";
+import Form from "@/components/form/Form";
 
 export default {
-  name: 'Tasks',
+  name: "Tasks",
   components: {
     Input,
     Button,
@@ -64,17 +56,17 @@ export default {
     Modal,
     Stepper,
     Form,
-    Select
+    Select,
   },
-  beforeRouteLeave (to, from, next) {
-    this.connection.close()
-    next()
+  beforeRouteLeave(to, from, next) {
+    this.connection.close();
+    next();
   },
-  layout (context) {
-    return 'dashboard'
+  layout(context) {
+    return "dashboard";
   },
-  middleware: 'auth',
-  data () {
+  middleware: "auth",
+  data() {
     return {
       formModel: {},
       isUpcoming: false,
@@ -83,148 +75,148 @@ export default {
       connection: null,
       resultSubscribe: {
         action: taskWsActions.SUBSCRIBE,
-        token: this.$auth.strategy.token.get().split(' ')[1],
-        topic: taskTypes.taskCount
+        token: this.$auth.strategy.token.get().split(" ")[1],
+        topic: taskTypes.taskCount,
       },
       stats: null,
       columns: [
         {
-          title: 'Task ID'
+          title: "Task ID",
         },
         {
-          title: 'Total runs'
+          title: "Total runs",
         },
         {
-          title: 'Last run at'
+          title: "Last run at",
         },
         {
-          title: 'Type'
+          title: "Type",
         },
         {
-          title: 'Schedule'
+          title: "Schedule",
         },
         {
-          title: 'One-off'
+          title: "One-off",
         },
         {
-          title: 'Enabled'
-        }
+          title: "Enabled",
+        },
       ],
       tasks: [],
       values: {},
       steps: [
-        { id: 'Step 1', name: 'Task details', href: '#', status: 'current' },
-        { id: 'Step 2', name: 'Task schedule', href: '#', status: 'upcoming' },
-        { id: 'Step 3', name: 'Preview', href: '#', status: 'upcoming' }
-      ]
-    }
+        { id: "Step 1", name: "Task details", href: "#", status: "current" },
+        { id: "Step 2", name: "Task schedule", href: "#", status: "upcoming" },
+        { id: "Step 3", name: "Preview", href: "#", status: "upcoming" },
+      ],
+    };
   },
   computed: {
-    schema () {
+    schema() {
       return {
         fields: [
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Name',
-            name: 'name',
-            styleClasses: 'flex-100',
-            placeholder: 'My fabolous task',
-            model: 'name'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Name",
+            name: "name",
+            styleClasses: "flex-100",
+            placeholder: "My fabolous task",
+            model: "name",
           },
           {
-            type: 'mySelect',
-            fieldLabel: 'Type',
-            name: 'name',
-            model: 'type',
-            styleClasses: 'flex-100',
+            type: "mySelect",
+            fieldLabel: "Type",
+            name: "name",
+            model: "type",
+            styleClasses: "flex-100",
             options: [
-              { name: 'Simple HTTP Operator', id: 0 },
-              { name: 'Kubernetes', id: 1 },
-              { name: 'Docker', id: 2 }
-            ]
+              { name: "Simple HTTP Operator", id: 0 },
+              { name: "Kubernetes", id: 1 },
+              { name: "Docker", id: 2 },
+            ],
           },
           {
-            type: 'myCheckbox',
-            inputType: 'switch',
-            styleClasses: 'flex-100',
-            fieldLabel: 'Enabled',
-            description: 'If false, task will not be executed.',
-            model: 'enabled',
-            default: true
+            type: "myCheckbox",
+            inputType: "switch",
+            styleClasses: "flex-100",
+            fieldLabel: "Enabled",
+            description: "If false, task will not be executed.",
+            model: "enabled",
+            default: true,
           },
           {
-            type: 'myCheckbox',
-            inputType: 'switch',
-            styleClasses: 'flex-100',
-            fieldLabel: 'One off',
+            type: "myCheckbox",
+            inputType: "switch",
+            styleClasses: "flex-100",
+            fieldLabel: "One off",
             description:
-              'If checked, the schedule will only run the task a single time.',
-            model: 'oneOff',
-            default: false
-          }
-        ]
-      }
-    }
+              "If checked, the schedule will only run the task a single time.",
+            model: "oneOff",
+            default: false,
+          },
+        ],
+      };
+    },
   },
-  mounted () {
+  mounted() {
     this.getTasks().then((response) => {
-      this.tasks = response.data
-    })
+      this.tasks = response.data;
+    });
   },
-  created () {
-    this.connection = new WebSocket(this.$config.wsUrl)
+  created() {
+    this.connection = new WebSocket(this.$config.wsUrl);
     this.connection.onopen = () => {
-      this.sendMessage(this.resultSubscribe)
-    }
+      this.sendMessage(this.resultSubscribe);
+    };
     this.connection.onmessage = (message) => {
-      this.stats = JSON.parse(message.data)
-    }
+      this.stats = JSON.parse(message.data);
+    };
   },
   methods: {
-    sendMessage (message) {
-      this.connection.send(JSON.stringify(message))
+    sendMessage(message) {
+      this.connection.send(JSON.stringify(message));
     },
-    async getTasks () {
+    async getTasks() {
       return await this.$axios
-        .get('/api/v1/tasks/list/', {
+        .get("/api/v1/tasks/list/", {
           headers: {
             Authorization: `Bearer ${
-              this.$auth.strategy.token.get().split(' ')[1]
-            }`
-          }
+              this.$auth.strategy.token.get().split(" ")[1]
+            }`,
+          },
         })
-        .then(response => response.data)
+        .then((response) => response.data);
     },
-    handleNext () {
-      if (this.steps[0].status === 'current') {
-        this.steps[0].status = 'complete'
-        this.steps[1].status = 'current'
-        this.isUpcoming = true
-        this.isLast = false
-      } else if (this.steps[1].status === 'current') {
-        this.steps[1].status = 'complete'
-        this.steps[2].status = 'current'
-        this.isUpcoming = true
-        this.isLast = true
+    handleNext() {
+      if (this.steps[0].status === "current") {
+        this.steps[0].status = "complete";
+        this.steps[1].status = "current";
+        this.isUpcoming = true;
+        this.isLast = false;
+      } else if (this.steps[1].status === "current") {
+        this.steps[1].status = "complete";
+        this.steps[2].status = "current";
+        this.isUpcoming = true;
+        this.isLast = true;
       }
     },
-    goBack () {
-      if (this.steps[1].status === 'current') {
-        this.steps[0].status = 'current'
-        this.steps[1].status = 'upcoming'
-        this.isUpcoming = false
-        this.isLast = false
-      } else if (this.steps[2].status === 'current') {
-        this.steps[1].status = 'current'
-        this.steps[2].status = 'upcoming'
-        this.isUpcoming = true
-        this.isLast = false
+    goBack() {
+      if (this.steps[1].status === "current") {
+        this.steps[0].status = "current";
+        this.steps[1].status = "upcoming";
+        this.isUpcoming = false;
+        this.isLast = false;
+      } else if (this.steps[2].status === "current") {
+        this.steps[1].status = "current";
+        this.steps[2].status = "upcoming";
+        this.isUpcoming = true;
+        this.isLast = false;
       }
     },
-    handleSubmit () {}
-  }
-}
+    handleSubmit() {},
+  },
+};
 </script>
 
 <style scoped></style>

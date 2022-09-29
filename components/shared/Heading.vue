@@ -9,20 +9,20 @@
 </template>
 
 <script>
-import ChevronDownIcon from '@/assets/icons/ChevronDown.svg?inline'
-import SearchIcon from '@/assets/icons/SearchIcon.svg?inline'
+import ChevronDownIcon from "@/assets/icons/ChevronDown.svg?inline";
+import SearchIcon from "@/assets/icons/SearchIcon.svg?inline";
 
 export default {
-  name: 'Heading',
+  name: "Heading",
   components: {
     ChevronDownIcon,
-    SearchIcon
+    SearchIcon,
   },
   props: {
     title: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>

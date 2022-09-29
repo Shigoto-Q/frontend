@@ -48,72 +48,72 @@
 </template>
 
 <script>
-import Form from '~/components/form/Form'
-import Alert from '~/components/Alert'
-import { statusCodes } from '~/constants/onboarding'
-import Button from '~/components/shared/Button'
-import Link from '@/components/shared/Link'
-import Input from '@/components/shared/Input'
+import Form from "~/components/form/Form";
+import Alert from "~/components/Alert";
+import { statusCodes } from "~/constants/onboarding";
+import Button from "~/components/shared/Button";
+import Link from "@/components/shared/Link";
+import Input from "@/components/shared/Input";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
     Input,
     Button,
     Form,
     Alert,
-    Link
+    Link,
   },
-  data () {
+  data() {
     return {
       model: {},
-      alertType: 'error',
-      alertMessage: '',
-      alertTitle: '',
-      showAlert: false
-    }
+      alertType: "error",
+      alertMessage: "",
+      alertTitle: "",
+      showAlert: false,
+    };
   },
   computed: {
-    schema () {
+    schema() {
       return {
         fields: [
           {
-            type: 'myInput',
-            inputType: 'email',
-            fieldLabel: 'E-mail',
-            styleClasses: 'flex-100',
-            model: 'email',
-            placeholder: 'user@shigo.to'
+            type: "myInput",
+            inputType: "email",
+            fieldLabel: "E-mail",
+            styleClasses: "flex-100",
+            model: "email",
+            placeholder: "user@shigo.to",
           },
           {
-            type: 'myInput',
-            inputType: 'password',
-            fieldLabel: 'Password',
-            styleClasses: 'flex-100',
-            model: 'password',
-            placeholder: 'password'
-          }
-        ]
-      }
-    }
+            type: "myInput",
+            inputType: "password",
+            fieldLabel: "Password",
+            styleClasses: "flex-100",
+            model: "password",
+            placeholder: "password",
+          },
+        ],
+      };
+    },
   },
-  mounted () {},
+  mounted() {},
   methods: {
-    async onClick () {
+    async onClick() {
       try {
-        await this.$auth.loginWith('local', {
-          data: this.model
-        })
+        await this.$auth.loginWith("local", {
+          data: this.model,
+        });
       } catch (error) {
-        this.alertType = 'error'
-        this.alertMessage = error.response.data.detail + '\n Please try again.'
+        this.alertType = "error";
+        this.alertMessage = error.response.data.detail + "\n Please try again.";
         this.alertTitle =
-          error.response.status + ' ' + statusCodes[error.response.status]
-        this.showAlert = true
+          error.response.status + " " + statusCodes[error.response.status];
+        this.showAlert = true;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

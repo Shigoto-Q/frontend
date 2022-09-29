@@ -30,9 +30,7 @@
       :secondary-action="handleDeleteImage"
     />
     <Modal v-model="showModal">
-      <template #title>
-        Deploy
-      </template>
+      <template #title> Deploy </template>
       <div class="flex flex-col">
         <Form
           :schema="schema"
@@ -41,12 +39,8 @@
         />
       </div>
       <div class="flex justify-between mt-10">
-        <Button secondary @click="showModal = false">
-          Cancel
-        </Button>
-        <Button @click="handleSubmit">
-          Submit
-        </Button>
+        <Button secondary @click="showModal = false"> Cancel </Button>
+        <Button @click="handleSubmit"> Submit </Button>
       </div>
     </Modal>
     <Divider title="Deployments" class="mb-4 mt-4" />
@@ -55,53 +49,45 @@
     <SimpleTable :columns="columnsDeploys" :items="items" />
     <Divider title="Services" class="mb-4 mt-4" />
     <div class="content__services-actions">
-      <Button @click="openServiceModal">
-        Create new service
-      </Button>
+      <Button @click="openServiceModal"> Create new service </Button>
     </div>
     <List />
     <Divider title="Ingress" class="mb-4 mt-4" />
     <StackedList />
     <Modal v-model="showServiceModal">
-      <template #title>
-        Deploy
-      </template>
+      <template #title> Deploy </template>
       <Form
         :schema="serviceSchema"
         :model="serviceModel"
         :handle-on-click="handleDeleteImage"
       />
       <div class="flex justify-between mt-10">
-        <Button secondary @click="showServiceModal = false">
-          Cancel
-        </Button>
-        <Button @click="handleCreateNewService">
-          Submit
-        </Button>
+        <Button secondary @click="showServiceModal = false"> Cancel </Button>
+        <Button @click="handleCreateNewService"> Submit </Button>
       </div>
     </Modal>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { A_LIST_IMAGES } from '@/store/kubernetes/action-types'
-import { G_KUBERNETES_DOCKER_IMAGES } from '@/store/kubernetes/getter-types'
-import CardWithActions from '@/components/shared/CardWithActions'
-import Modal from '@/components/shared/Modal'
-import Button from '@/components/shared/Button'
-import Form from '@/components/form/Form'
-import StackedList from '@/components/shared/StackedList'
-import Divider from '@/components/shared/Divider'
-import SimpleTable from '@/components/shared/SimpleTable'
-import List from '@/components/shared/List'
-import Heading from '@/components/shared/Heading'
-import { notificationTypes } from '@/constants/notifications'
-import Select from '@/components/shared/Select'
-import Input from '@/components/shared/Input'
+import { mapGetters } from "vuex";
+import { A_LIST_IMAGES } from "@/store/kubernetes/action-types";
+import { G_KUBERNETES_DOCKER_IMAGES } from "@/store/kubernetes/getter-types";
+import CardWithActions from "@/components/shared/CardWithActions";
+import Modal from "@/components/shared/Modal";
+import Button from "@/components/shared/Button";
+import Form from "@/components/form/Form";
+import StackedList from "@/components/shared/StackedList";
+import Divider from "@/components/shared/Divider";
+import SimpleTable from "@/components/shared/SimpleTable";
+import List from "@/components/shared/List";
+import Heading from "@/components/shared/Heading";
+import { notificationTypes } from "@/constants/notifications";
+import Select from "@/components/shared/Select";
+import Input from "@/components/shared/Input";
 
 export default {
-  name: 'Deploy',
+  name: "Deploy",
   components: {
     Input,
     Select,
@@ -113,230 +99,230 @@ export default {
     Form,
     Modal,
     CardWithActions,
-    Button
+    Button,
   },
-  layout (context) {
-    return 'dashboard'
+  layout(context) {
+    return "dashboard";
   },
-  middleware: 'auth',
-  data () {
+  middleware: "auth",
+  data() {
     return {
       showServiceModal: false,
       serviceModel: {},
       value: [],
       namespaceModel: {},
-      columns: ['Name', 'Age', 'Status', 'Restarts', 'Ready'],
-      columnsDeploys: ['Name', 'Ready', 'Up to date', 'Available', 'Age'],
+      columns: ["Name", "Age", "Status", "Restarts", "Ready"],
+      columnsDeploys: ["Name", "Ready", "Up to date", "Available", "Age"],
       showModal: false,
       formModel: {
-        image: ''
+        image: "",
       },
       options: [],
       items: [
         {
           id: 1,
-          name: 'sgt-frontend-789f8dd7fc-sr7b8',
-          age: '23h',
-          cpu: 'Running',
-          storage: '0',
-          ready: '1/1',
-          isCurrent: false
-        }
-      ]
-    }
+          name: "sgt-frontend-789f8dd7fc-sr7b8",
+          age: "23h",
+          cpu: "Running",
+          storage: "0",
+          ready: "1/1",
+          isCurrent: false,
+        },
+      ],
+    };
   },
   computed: {
-    serviceSchema () {
+    serviceSchema() {
       return {
         fields: [
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Name',
-            name: 'name',
-            model: 'name'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Name",
+            name: "name",
+            model: "name",
           },
           {
-            type: 'myInput',
-            inputType: 'number',
-            fieldLabel: 'port',
-            name: 'port',
-            model: 'port'
+            type: "myInput",
+            inputType: "number",
+            fieldLabel: "port",
+            name: "port",
+            model: "port",
           },
           {
-            type: 'myInput',
-            inputType: 'number',
-            fieldLabel: 'targetPort',
-            name: 'targetPort',
-            model: 'targetPort'
-          }
-        ]
-      }
+            type: "myInput",
+            inputType: "number",
+            fieldLabel: "targetPort",
+            name: "targetPort",
+            model: "targetPort",
+          },
+        ],
+      };
     },
-    namespaceSchema () {
+    namespaceSchema() {
       return {
         fields: [
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Namespace',
-            name: 'name',
-            model: 'name'
-          }
-        ]
-      }
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Namespace",
+            name: "name",
+            model: "name",
+          },
+        ],
+      };
     },
-    schema () {
+    schema() {
       return {
         fields: [
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Host',
-            name: 'name',
-            model: 'host'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Host",
+            name: "name",
+            model: "host",
           },
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Image',
-            name: 'name',
-            model: 'imageName'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Image",
+            name: "name",
+            model: "imageName",
           },
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Service name',
-            name: 'name',
-            model: 'serviceName'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Service name",
+            name: "name",
+            model: "serviceName",
           },
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Deployment name',
-            name: 'name',
-            model: 'name'
-          }
-        ]
-      }
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Deployment name",
+            name: "name",
+            model: "name",
+          },
+        ],
+      };
     },
     ...mapGetters({
-      images: G_KUBERNETES_DOCKER_IMAGES
-    })
+      images: G_KUBERNETES_DOCKER_IMAGES,
+    }),
   },
-  mounted () {
-    this.$store.dispatch(A_LIST_IMAGES)
-    this.getNamespaces()
+  mounted() {
+    this.$store.dispatch(A_LIST_IMAGES);
+    this.getNamespaces();
   },
   methods: {
-    openServiceModal () {
-      this.showServiceModal = true
+    openServiceModal() {
+      this.showServiceModal = true;
     },
-    handleCreateNewService () {
-      console.log('handleCreateNewService')
+    handleCreateNewService() {
+      console.log("handleCreateNewService");
     },
-    handleDeleteNamespace () {
+    handleDeleteNamespace() {
       return this.$axios
         .post(
-          '/api/v1/kubernetes/namespace/delete/',
+          "/api/v1/kubernetes/namespace/delete/",
           {
-            name: this.value.name
+            name: this.value.name,
           },
           {
             headers: {
               Authorization: `Bearer ${
-                this.$auth.strategy.token.get().split(' ')[1]
-              }`
-            }
+                this.$auth.strategy.token.get().split(" ")[1]
+              }`,
+            },
           }
         )
         .then((response) => {
           this.$notify({
-            title: 'Successfully created!!',
+            title: "Successfully created!!",
             duration: 3000,
-            body: 'Namespace has been successfully created.',
-            type: notificationTypes.SUCCESS
-          })
+            body: "Namespace has been successfully created.",
+            type: notificationTypes.SUCCESS,
+          });
         })
-        .catch((err) => {})
+        .catch((err) => {});
     },
-    handleCreateNewNamespace () {
+    handleCreateNewNamespace() {
       return this.$axios
-        .post('/api/v1/kubernetes/namespace/create/', this.namespaceModel, {
+        .post("/api/v1/kubernetes/namespace/create/", this.namespaceModel, {
           headers: {
             Authorization: `Bearer ${
-              this.$auth.strategy.token.get().split(' ')[1]
-            }`
-          }
+              this.$auth.strategy.token.get().split(" ")[1]
+            }`,
+          },
         })
         .then((response) => {
           this.$notify({
-            title: 'Successfully created!!',
+            title: "Successfully created!!",
             duration: 3000,
-            body: 'Namespace has been successfully created.',
-            type: notificationTypes.SUCCESS
-          })
+            body: "Namespace has been successfully created.",
+            type: notificationTypes.SUCCESS,
+          });
         })
-        .catch((err) => {})
+        .catch((err) => {});
     },
-    handleDeployment (image) {
-      this.formModel = { ...image }
-      this.showModal = true
+    handleDeployment(image) {
+      this.formModel = { ...image };
+      this.showModal = true;
     },
-    handleSubmit () {
+    handleSubmit() {
       if (this.value === null) {
-        return
+        return;
       }
       const postData = {
         image: this.formModel.imageName,
         name: this.formModel.name,
-        namespace: this.value.name
-      }
+        namespace: this.value.name,
+      };
       this.$axios
-        .post('/api/v1/kubernetes/deploy/', postData)
+        .post("/api/v1/kubernetes/deploy/", postData)
         .then(() => {
           this.$notify({
-            title: 'Successfully deployed!',
+            title: "Successfully deployed!",
             duration: 3000,
             body: `Docker image ${postData.image} has been deployed.`,
-            type: notificationTypes.SUCCESS
-          })
+            type: notificationTypes.SUCCESS,
+          });
         })
         .catch((err) => {
-          this.showModal = false
+          this.showModal = false;
           this.$notify({
             title: `Error status: ${err.response.status}`,
             duration: 3000,
             body: `${err.response.data.message}`,
-            type: notificationTypes.ERROR
-          })
-        })
+            type: notificationTypes.ERROR,
+          });
+        });
     },
-    handleDeleteImage (image) {
-      console.log('handleDeleteImage', image)
+    handleDeleteImage(image) {
+      console.log("handleDeleteImage", image);
     },
-    async getNamespaces () {
+    async getNamespaces() {
       return await this.$axios
-        .get('/api/v1/kubernetes/namespace/list/', {
+        .get("/api/v1/kubernetes/namespace/list/", {
           headers: {
             Authorization: `Bearer ${
-              this.$auth.strategy.token.get().split(' ')[1]
-            }`
-          }
+              this.$auth.strategy.token.get().split(" ")[1]
+            }`,
+          },
         })
         .then((response) => {
-          this.options = response.data.data
-        })
+          this.options = response.data.data;
+        });
     },
-    onInput (value) {
-      this.value = value
+    onInput(value) {
+      this.value = value;
     },
-    onChange (value) {
-      this.value = value
-      console.log(this.value)
-    }
-  }
-}
+    onChange(value) {
+      this.value = value;
+      console.log(this.value);
+    },
+  },
+};
 </script>
 
 <style lang="scss">

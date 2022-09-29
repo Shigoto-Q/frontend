@@ -13,40 +13,36 @@
       @confirm="confirm"
       @cancel="cancel"
     >
-      <template #title>
-        Create task
-      </template>
+      <template #title> Create task </template>
       <Input />
     </Modal>
-    <Button @click="show = true">
-      Open modal
-    </Button>
+    <Button @click="show = true"> Open modal </Button>
   </div>
 </template>
 
 <script>
-import Modal from '~/components/shared/Modal'
-import Button from '~/components/shared/Button'
-import Input from '~/components/shared/Input'
+import Modal from "~/components/shared/Modal";
+import Button from "~/components/shared/Button";
+import Input from "~/components/shared/Input";
 export default {
-  name: 'ModalExample',
+  name: "ModalExample",
   components: {
     Input,
     Button,
-    Modal
+    Modal,
   },
   data: () => ({
-    show: false
+    show: false,
   }),
   methods: {
-    confirm () {
+    confirm() {
       // some code...
-      this.show = false
+      this.show = false;
     },
-    cancel (close) {
+    cancel(close) {
       // some code...
-      close()
-    }
-  }
-}
+      close();
+    },
+  },
+};
 </script>

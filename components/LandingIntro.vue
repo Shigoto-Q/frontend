@@ -41,11 +41,11 @@
 </template>
 
 <script>
-import LinkButton from './shared/LinkButton'
+import LinkButton from "./shared/LinkButton";
 export default {
-  name: 'LandingIntro',
-  components: { LinkButton }
-}
+  name: "LandingIntro",
+  components: { LinkButton },
+};
 </script>
 <style scoped lang="scss">
 .wrapper {

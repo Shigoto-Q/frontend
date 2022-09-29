@@ -13,22 +13,22 @@
 </template>
 
 <script>
-import { abstractField } from 'vue-form-generator'
-import Select from '~/components/shared/Select'
+import { abstractField } from "vue-form-generator";
+import Select from "~/components/shared/Select";
 
 export default {
-  name: 'FieldSelect',
+  name: "FieldSelect",
   components: { Select },
   mixins: [abstractField],
   methods: {
-    onInput (value) {
-      this.value = value
+    onInput(value) {
+      this.value = value;
     },
-    onChange (value) {
-      this.value = value
-    }
-  }
-}
+    onChange(value) {
+      this.value = value;
+    },
+  },
+};
 </script>
 
 <style scoped></style>

@@ -109,7 +109,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Privacy policy</span>
+              >Privacy policy</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -130,7 +131,8 @@
         <h1>
           <span
             class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-          >Information we collect</span>
+            >Information we collect</span
+          >
           <span
             class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
           />
@@ -145,7 +147,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Log Data</span>
+              >Log Data</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -167,7 +170,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Personal Information</span>
+              >Personal Information</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -184,7 +188,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Collection and Use of Information</span>
+              >Collection and Use of Information</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -221,7 +226,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Security of Your Personal Information</span>
+              >Security of Your Personal Information</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -247,7 +253,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >How long we keep your personal Information</span>
+              >How long we keep your personal Information</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -268,7 +275,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Children's Privacy</span>
+              >Children's Privacy</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -281,7 +289,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Disclosure of Personal Information to Third Parties</span>
+              >Disclosure of Personal Information to Third Parties</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -316,7 +325,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >International Transfers of Personal Information</span>
+              >International Transfers of Personal Information</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -336,7 +346,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Your Rights and Controlling Your Personal Information</span>
+              >Your Rights and Controlling Your Personal Information</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -386,7 +397,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Use of Cookies</span>
+              >Use of Cookies</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -401,7 +413,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Limits of Our Policy</span>
+              >Limits of Our Policy</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -415,7 +428,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Changes to This policy</span>
+              >Changes to This policy</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -435,7 +449,8 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Contact us</span>
+              >Contact us</span
+            >
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
             />
@@ -445,7 +460,7 @@
             contact us using the following details:
           </p>
           <p>
-            simeon.aleksov@shigo.to<br>
+            simeon.aleksov@shigo.to<br />
             info@shigo.to
           </p>
         </div>
@@ -456,8 +471,8 @@
 
 <script>
 export default {
-  name: 'Privacy'
-}
+  name: "Privacy",
+};
 </script>
 
 <style scoped></style>

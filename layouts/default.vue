@@ -17,7 +17,7 @@ import Footer from "../components/Footer";
 import Banner from "~/components/shared/Banner";
 
 export default {
-  name: "default",
+  name: "Default",
   components: {
     Banner,
     Footer,

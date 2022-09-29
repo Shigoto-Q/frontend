@@ -36,9 +36,7 @@
             </form>
           </div>
           <div class="flex justify-center mt-12 mb-12">
-            <Button color="emerald">
-              Continue
-            </Button>
+            <Button color="emerald"> Continue </Button>
           </div>
           <div
             class="mt-12 mb-10 text-sm font-display font-semibold text-gray-700 text-center"
@@ -50,7 +48,8 @@
               <p>
                 <span
                   class="font-sans font-semibold text-link hover:text-indigo-800 cursor-pointer"
-                >Cancel 2FA and go back</span>
+                  >Cancel 2FA and go back</span
+                >
               </p>
             </div>
           </div>
@@ -61,130 +60,130 @@
 </template>
 
 <script>
-import SingleInput from '@/components/SingleInput'
-import Button from '@/components/shared/Button'
+import SingleInput from "@/components/SingleInput";
+import Button from "@/components/shared/Button";
 
-const BACKSPACE = 8
-const LEFT_ARROW = 37
-const RIGHT_ARROW = 39
-const DELETE = 46
+const BACKSPACE = 8;
+const LEFT_ARROW = 37;
+const RIGHT_ARROW = 39;
+const DELETE = 46;
 
 export default {
-  name: 'OTPInput',
+  name: "OTPInput",
   components: {
     SingleInput,
-    Button
+    Button,
   },
   props: {
     numInputs: {
-      default: 6
+      default: 6,
     },
     separator: {
       type: String,
-      default: ''
+      default: "",
     },
     inputClasses: {
-      type: String
+      type: String,
     },
     inputType: {
       type: String,
-      default: 'password'
+      default: "password",
     },
     shouldAutoFocus: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
       activeInput: 0,
       otp: [],
-      oldOtp: []
-    }
+      oldOtp: [],
+    };
   },
   methods: {
-    async verifyOtp () {
-      const otp = Number(this.otp.join(''))
+    async verifyOtp() {
+      const otp = Number(this.otp.join(""));
     },
-    async cancel2faAndGoBack () {},
-    handleOnFocus (index) {
-      this.activeInput = index
+    async cancel2faAndGoBack() {},
+    handleOnFocus(index) {
+      this.activeInput = index;
     },
-    handleOnBlur () {
-      this.activeInput = -1
+    handleOnBlur() {
+      this.activeInput = -1;
     },
-    checkFilledAllInputs () {
-      if (this.otp.join('').length === this.numInputs) {
-        return this.$emit('on-complete', this.otp.join(''))
+    checkFilledAllInputs() {
+      if (this.otp.join("").length === this.numInputs) {
+        return this.$emit("on-complete", this.otp.join(""));
       }
-      return 'Wait until the user enters the required number of characters'
+      return "Wait until the user enters the required number of characters";
     },
-    focusInput (input) {
-      this.activeInput = Math.max(Math.min(this.numInputs - 1, input), 0)
+    focusInput(input) {
+      this.activeInput = Math.max(Math.min(this.numInputs - 1, input), 0);
     },
-    focusNextInput () {
-      this.focusInput(this.activeInput + 1)
+    focusNextInput() {
+      this.focusInput(this.activeInput + 1);
     },
-    focusPrevInput () {
-      this.focusInput(this.activeInput - 1)
+    focusPrevInput() {
+      this.focusInput(this.activeInput - 1);
     },
-    changeCodeAtFocus (value) {
-      this.oldOtp = Object.assign([], this.otp)
-      this.$set(this.otp, this.activeInput, value)
-      if (this.oldOtp.join('') !== this.otp.join('')) {
-        this.$emit('on-change', this.otp.join(''))
-        this.checkFilledAllInputs()
+    changeCodeAtFocus(value) {
+      this.oldOtp = Object.assign([], this.otp);
+      this.$set(this.otp, this.activeInput, value);
+      if (this.oldOtp.join("") !== this.otp.join("")) {
+        this.$emit("on-change", this.otp.join(""));
+        this.checkFilledAllInputs();
       }
     },
-    handleOnPaste (event) {
-      event.preventDefault()
+    handleOnPaste(event) {
+      event.preventDefault();
       const pastedData = event.clipboardData
-        .getData('text/plain')
+        .getData("text/plain")
         .slice(0, this.numInputs - this.activeInput)
-        .split('')
-      if (this.inputType === 'number' && !pastedData.join('').match(/^\d+$/)) {
-        return 'Invalid pasted data'
+        .split("");
+      if (this.inputType === "number" && !pastedData.join("").match(/^\d+$/)) {
+        return "Invalid pasted data";
       }
-      const currentCharsInOtp = this.otp.slice(0, this.activeInput)
-      const combinedWithPastedData = currentCharsInOtp.concat(pastedData)
-      this.$set(this, 'otp', combinedWithPastedData.slice(0, this.numInputs))
-      this.focusInput(combinedWithPastedData.slice(0, this.numInputs).length)
-      return this.checkFilledAllInputs()
+      const currentCharsInOtp = this.otp.slice(0, this.activeInput);
+      const combinedWithPastedData = currentCharsInOtp.concat(pastedData);
+      this.$set(this, "otp", combinedWithPastedData.slice(0, this.numInputs));
+      this.focusInput(combinedWithPastedData.slice(0, this.numInputs).length);
+      return this.checkFilledAllInputs();
     },
-    handleOnChange (value) {
-      this.changeCodeAtFocus(value)
-      this.focusNextInput()
+    handleOnChange(value) {
+      this.changeCodeAtFocus(value);
+      this.focusNextInput();
     },
-    clearInput () {
+    clearInput() {
       if (this.otp.length > 0) {
-        this.$emit('on-change', '')
+        this.$emit("on-change", "");
       }
-      this.otp = []
-      this.activeInput = 0
+      this.otp = [];
+      this.activeInput = 0;
     },
-    handleOnKeyDown (event) {
+    handleOnKeyDown(event) {
       switch (event.keyCode) {
         case BACKSPACE:
-          event.preventDefault()
-          this.changeCodeAtFocus('')
-          this.focusPrevInput()
-          break
+          event.preventDefault();
+          this.changeCodeAtFocus("");
+          this.focusPrevInput();
+          break;
         case DELETE:
-          event.preventDefault()
-          this.changeCodeAtFocus('')
-          break
+          event.preventDefault();
+          this.changeCodeAtFocus("");
+          break;
         case LEFT_ARROW:
-          event.preventDefault()
-          this.focusPrevInput()
-          break
+          event.preventDefault();
+          this.focusPrevInput();
+          break;
         case RIGHT_ARROW:
-          event.preventDefault()
-          this.focusNextInput()
-          break
+          event.preventDefault();
+          this.focusNextInput();
+          break;
         default:
-          break
+          break;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

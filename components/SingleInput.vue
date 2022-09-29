@@ -16,7 +16,7 @@
       @paste="handleOnPaste"
       @focus="handleOnFocus"
       @blur="handleOnBlur"
-    >
+    />
     <label class="input__label">
       {{ label }}
     </label>
@@ -25,107 +25,107 @@
 
 <script>
 export default {
-  name: 'SingleInput',
+  name: "SingleInput",
   props: {
     value: {
-      type: String
+      type: String,
     },
     separator: {
-      type: String
+      type: String,
     },
     pattern: {
       type: String,
-      required: true
+      required: true,
     },
     focus: {
-      type: Boolean
+      type: Boolean,
     },
     inputClasses: {
-      type: String
+      type: String,
     },
     shouldAutoFocus: {
-      type: Boolean
+      type: Boolean,
     },
     inputType: {
       type: String,
-      default () {
-        return 'tel'
-      }
+      default() {
+        return "tel";
+      },
     },
     label: {
-      type: String
+      type: String,
     },
     isLastChild: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
-  data () {
+  data() {
     return {
-      model: this.value || ''
-    }
+      model: this.value || "",
+    };
   },
   watch: {
-    value (newValue, oldValue) {
+    value(newValue, oldValue) {
       if (newValue !== oldValue) {
-        this.model = newValue
+        this.model = newValue;
       }
     },
     // whenever question changes, this function will run
-    focus (newFocusValue, oldFocusValue) {
+    focus(newFocusValue, oldFocusValue) {
       // Check if focusedInput changed
       // Prevent calling function if input already in focus
       if (oldFocusValue !== newFocusValue && this.$refs.input && this.focus) {
-        this.$refs.input.focus()
-        this.$refs.input.select()
+        this.$refs.input.focus();
+        this.$refs.input.select();
       }
-    }
+    },
   },
-  mounted () {
+  mounted() {
     if (this.$refs.input && this.focus && this.shouldAutoFocus) {
-      this.$refs.input.focus()
+      this.$refs.input.focus();
     }
   },
   methods: {
-    handleOnChange () {
+    handleOnChange() {
       if (this.model.length > 1) {
-        this.model = this.model.slice(0, 1)
+        this.model = this.model.slice(0, 1);
       }
-      return this.$emit('on-change', this.model)
+      return this.$emit("on-change", this.model);
     },
-    handleOnKeyDown (event) {
+    handleOnKeyDown(event) {
       // Only allow characters 0-9, DEL, Backspace and Pasting
-      const keyEvent = event || window.event
-      const charCode = keyEvent.which ? keyEvent.which : keyEvent.keyCode
+      const keyEvent = event || window.event;
+      const charCode = keyEvent.which ? keyEvent.which : keyEvent.keyCode;
       if (
         this.isCodeNumeric(charCode) ||
         charCode === 8 ||
         charCode === 86 ||
         charCode === 46
       ) {
-        this.$emit('on-keydown', event)
+        this.$emit("on-keydown", event);
       } else {
-        keyEvent.preventDefault()
+        keyEvent.preventDefault();
       }
     },
-    isCodeNumeric (charCode) {
+    isCodeNumeric(charCode) {
       // numeric keys and numpad keys
       return (
         (charCode >= 48 && charCode <= 57) ||
         (charCode >= 96 && charCode <= 105)
-      )
+      );
     },
-    handleOnPaste (event) {
-      return this.$emit('on-paste', event)
+    handleOnPaste(event) {
+      return this.$emit("on-paste", event);
     },
-    handleOnFocus () {
-      this.$refs.input.select()
-      return this.$emit('on-focus')
+    handleOnFocus() {
+      this.$refs.input.select();
+      return this.$emit("on-focus");
     },
-    handleOnBlur () {
-      return this.$emit('on-blur')
-    }
-  }
-}
+    handleOnBlur() {
+      return this.$emit("on-blur");
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
 .input__label {

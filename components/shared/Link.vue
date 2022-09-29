@@ -9,18 +9,18 @@
 
 <script>
 export default {
-  name: 'Link',
+  name: "Link",
   props: {
     to: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     text: {
       type: String,
-      default: () => 'Link'
-    }
-  }
-}
+      default: () => "Link",
+    },
+  },
+};
 </script>
 
 <style scoped></style>

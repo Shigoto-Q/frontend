@@ -14,7 +14,7 @@
 import Sidebar from "~/components/dashboard/Sidebar";
 import Notification from "@/components/shared/notification/Notify";
 export default {
-  name: "dashboard",
+  name: "Dashboard",
   components: { Sidebar, Notification },
 };
 </script>

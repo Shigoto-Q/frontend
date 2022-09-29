@@ -18,55 +18,55 @@
         class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
         @input="onInput"
         @change="onChange"
-      >
+      />
     </div>
   </div>
 </template>
 
 <script>
-import CopyIcon from '@/assets/icons/CopyIcon.svg?inline'
+import CopyIcon from "@/assets/icons/CopyIcon.svg?inline";
 
 export default {
-  name: 'InputWithIcon',
+  name: "InputWithIcon",
   components: {
-    CopyIcon
+    CopyIcon,
   },
   props: {
     model: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     label: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     placeholder: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     name: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     type: {
       type: String,
-      default: () => ''
-    }
+      default: () => "",
+    },
   },
   computed: {
-    inputModel () {
-      return this.model
-    }
+    inputModel() {
+      return this.model;
+    },
   },
   methods: {
-    onInput (e) {
-      this.$emit('input', e.target.value)
+    onInput(e) {
+      this.$emit("input", e.target.value);
     },
-    onChange (e) {
-      this.$emit('change', e.target.value)
-    }
-  }
-}
+    onChange(e) {
+      this.$emit("change", e.target.value);
+    },
+  },
+};
 </script>
 
 <style></style>

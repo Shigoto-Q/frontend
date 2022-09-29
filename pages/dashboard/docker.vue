@@ -14,20 +14,14 @@
         :create-new="onCreateNew"
       />
       <Modal v-model="showModal">
-        <template #title>
-          Create new docker image
-        </template>
+        <template #title> Create new docker image </template>
         <div class="flex flex-col">
           <Form :schema="schema" :model="formModel" />
           <div class="flex justify-between mt-10" />
         </div>
         <div class="flex justify-between mt-10">
-          <Button secondary @click="showModal = false">
-            Cancel
-          </Button>
-          <Button @click="handleSubmit">
-            Submit
-          </Button>
+          <Button secondary @click="showModal = false"> Cancel </Button>
+          <Button @click="handleSubmit"> Submit </Button>
         </div>
       </Modal>
       <Modal v-model="showSecretKeyModal">
@@ -46,7 +40,7 @@
               identify your image, so we can update your docker image. It is
               unique to you and your repository, if you lose it, you can request
               new.
-              <br>
+              <br />
               After closing this window, you will unable to see the key again.
             </div>
           </div>
@@ -60,35 +54,35 @@
 </template>
 
 <script>
-import ServerTable from '~/components/shared/ServerTable'
-import Modal from '@/components/shared/Modal'
-import InfoWarningIcon from '@/assets/icons/InfoWarningIcon.svg?inline'
-import Button from '@/components/shared/Button'
-import Input from '@/components/shared/Input'
-import Terminal from '@/components/shared/Terminal'
-import { notificationTypes } from '@/constants/notifications'
+import ServerTable from "~/components/shared/ServerTable";
+import Modal from "@/components/shared/Modal";
+import InfoWarningIcon from "@/assets/icons/InfoWarningIcon.svg?inline";
+import Button from "@/components/shared/Button";
+import Input from "@/components/shared/Input";
+import Terminal from "@/components/shared/Terminal";
+import { notificationTypes } from "@/constants/notifications";
 import {
   M_TERMINAL_OUTPUT,
-  M_TERMINAL_OUTPUT_END
-} from '@/store/terminal/mutation-types'
-import { A_DELETE_IMAGE } from '@/store/docker/action-types'
-import { taskWsActions, taskTypes } from '~/constants/ws'
+  M_TERMINAL_OUTPUT_END,
+} from "@/store/terminal/mutation-types";
+import { A_DELETE_IMAGE } from "@/store/docker/action-types";
+import { taskWsActions, taskTypes } from "~/constants/ws";
 
 export default {
-  name: 'Docker',
+  name: "Docker",
   components: {
     ServerTable,
     Modal,
     Button,
     Terminal,
     Input,
-    InfoWarningIcon
+    InfoWarningIcon,
   },
-  layout (context) {
-    return 'dashboard'
+  layout(context) {
+    return "dashboard";
   },
-  middleware: 'auth',
-  data () {
+  middleware: "auth",
+  data() {
     return {
       secretKey: null,
       showSecretKeyModal: false,
@@ -97,120 +91,120 @@ export default {
       showModal: false,
       columns: [
         {
-          label: 'Task ID',
-          field: 'id'
+          label: "Task ID",
+          field: "id",
         },
         {
-          label: 'Repository url',
-          field: 'repository'
+          label: "Repository url",
+          field: "repository",
         },
         {
-          label: 'Repository name',
-          field: 'name'
+          label: "Repository name",
+          field: "name",
         },
         {
-          label: 'Image name',
-          field: 'imageName',
+          label: "Image name",
+          field: "imageName",
           filterOptions: {
-            customFilter: true
-          }
+            customFilter: true,
+          },
         },
         {
-          label: 'Command',
-          field: 'command'
+          label: "Command",
+          field: "command",
         },
         {
-          label: 'Delete',
-          field: 'button',
-          buttonText: 'Delete',
-          action: this.deleteTask
-        }
-      ]
-    }
+          label: "Delete",
+          field: "button",
+          buttonText: "Delete",
+          action: this.deleteTask,
+        },
+      ],
+    };
   },
   computed: {
-    schema () {
+    schema() {
       return {
         fields: [
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Repository',
-            name: 'name',
-            placeholder: 'https://github.com/Shigoto-Q/shigoto',
-            model: 'Repository'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Repository",
+            name: "name",
+            placeholder: "https://github.com/Shigoto-Q/shigoto",
+            model: "Repository",
           },
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Name',
-            name: 'name',
-            placeholder: 'My repository name',
-            model: 'Name'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Name",
+            name: "name",
+            placeholder: "My repository name",
+            model: "Name",
           },
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Image name',
-            name: 'name',
-            placeholder: 'My image name',
-            model: 'ImageName'
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Image name",
+            name: "name",
+            placeholder: "My image name",
+            model: "ImageName",
           },
           {
-            type: 'myInput',
-            inputType: 'text',
-            fieldLabel: 'Command',
-            name: 'name',
-            placeholder: 'python main.py',
-            model: 'Command'
-          }
-        ]
-      }
-    }
+            type: "myInput",
+            inputType: "text",
+            fieldLabel: "Command",
+            name: "name",
+            placeholder: "python main.py",
+            model: "Command",
+          },
+        ],
+      };
+    },
   },
   methods: {
-    deleteTask (taskId) {
-      this.$store.dispatch(A_DELETE_IMAGE, { imageId: taskId })
-      this.$refs.dockerImagesTable.loadItems()
+    deleteTask(taskId) {
+      this.$store.dispatch(A_DELETE_IMAGE, { imageId: taskId });
+      this.$refs.dockerImagesTable.loadItems();
     },
-    handleSubmit () {
-      this.connection = new WebSocket(this.$config.wsUrl)
+    handleSubmit() {
+      this.connection = new WebSocket(this.$config.wsUrl);
       const createImageData = {
         action: taskWsActions.createImage,
-        token: `Bearer ${this.$auth.strategy.token.get().split(' ')[1]}`,
+        token: `Bearer ${this.$auth.strategy.token.get().split(" ")[1]}`,
         topic: taskWsActions.createImage,
         data: {
-          ...this.formModel
-        }
-      }
+          ...this.formModel,
+        },
+      };
       this.connection.onopen = () => {
-        this.sendMessage(createImageData)
-      }
-      this.showModal = false
+        this.sendMessage(createImageData);
+      };
+      this.showModal = false;
       this.connection.onmessage = (message) => {
-        const data = JSON.parse(message.data)
+        const data = JSON.parse(message.data);
         if (data.secretKey) {
-          this.secretKey = data.secretKey
-          this.showSecretKeyModal = true
-          this.$refs.dockerImagesTable.loadItems()
+          this.secretKey = data.secretKey;
+          this.showSecretKeyModal = true;
+          this.$refs.dockerImagesTable.loadItems();
         }
-        if (data.status === 'This is the end') {
-          this.connection.close()
-          this.$store.commit(M_TERMINAL_OUTPUT_END, true)
+        if (data.status === "This is the end") {
+          this.connection.close();
+          this.$store.commit(M_TERMINAL_OUTPUT_END, true);
         } else {
-          this.$store.commit(M_TERMINAL_OUTPUT, data)
+          this.$store.commit(M_TERMINAL_OUTPUT, data);
         }
-      }
+      };
     },
-    sendMessage (message) {
-      this.connection.send(JSON.stringify(message))
+    sendMessage(message) {
+      this.connection.send(JSON.stringify(message));
     },
-    onCreateNew () {
-      this.showModal = true
+    onCreateNew() {
+      this.showModal = true;
     },
-    onPush () {}
-  }
-}
+    onPush() {},
+  },
+};
 </script>
 
 <style scoped></style>

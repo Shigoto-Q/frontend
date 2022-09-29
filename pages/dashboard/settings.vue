@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1 class="font-semibold font-serif">
-      Settings
-    </h1>
+    <h1 class="font-semibold font-serif">Settings</h1>
     <Tabs :tabs="tabs" />
     <div>
       <UserProfileSettings />
@@ -11,29 +9,29 @@
 </template>
 
 <script>
-import BellIcon from '@/assets/icons/NotificationIcon.svg?inline'
-import XIcon from '@/assets/icons/X.svg?inline'
-import Tabs from '@/components/shared/Tabs'
+import BellIcon from "@/assets/icons/NotificationIcon.svg?inline";
+import XIcon from "@/assets/icons/X.svg?inline";
+import Tabs from "@/components/shared/Tabs";
 
 export default {
   components: {
-    Tabs
+    Tabs,
   },
-  layout (context) {
-    return 'dashboard'
+  layout(context) {
+    return "dashboard";
   },
-  middleware: 'auth',
-  data () {
+  middleware: "auth",
+  data() {
     return {
       tabs: [
-        { name: 'General', href: '#', current: true },
-        { name: 'Password', href: '#', current: false },
-        { name: 'Notifications', href: '#', current: false },
-        { name: 'Plan', href: '#', current: false },
-        { name: 'Billing', href: '#', current: false },
-        { name: 'Team Members', href: '#', current: false }
-      ]
-    }
-  }
-}
+        { name: "General", href: "#", current: true },
+        { name: "Password", href: "#", current: false },
+        { name: "Notifications", href: "#", current: false },
+        { name: "Plan", href: "#", current: false },
+        { name: "Billing", href: "#", current: false },
+        { name: "Team Members", href: "#", current: false },
+      ],
+    };
+  },
+};
 </script>

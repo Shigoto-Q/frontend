@@ -58,54 +58,54 @@
 </template>
 
 <script>
-import ShigotoLogo from 'assets/branding/logo/LogoWithText.svg?inline'
-import LinkButton from './shared/LinkButton'
-import NavLink from './shared/NavLink'
-import Button from '~/components/shared/Button'
+import ShigotoLogo from "assets/branding/logo/LogoWithText.svg?inline";
+import LinkButton from "./shared/LinkButton";
+import NavLink from "./shared/NavLink";
+import Button from "~/components/shared/Button";
 
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   components: { Button, NavLink, LinkButton, ShigotoLogo },
-  beforeRouteLeave () {
-    this.open = !this.open
+  beforeRouteLeave() {
+    this.open = !this.open;
   },
-  data () {
+  data() {
     return {
-      open: false
-    }
+      open: false,
+    };
   },
   computed: {
-    classObject () {
+    classObject() {
       return {
         flex: this.open,
-        'flex-col': true,
-        'items-center': true,
-        'flex-grow': true,
+        "flex-col": true,
+        "items-center": true,
+        "flex-grow": true,
         hidden: !this.open,
-        'px-5': true,
-        'md:pb-0': true,
-        'md:flex': true,
-        'md:justify-end': true,
-        'md:flex-row': true,
-        'mb-6': this.open
-      }
+        "px-5": true,
+        "md:pb-0": true,
+        "md:flex": true,
+        "md:justify-end": true,
+        "md:flex-row": true,
+        "mb-6": this.open,
+      };
     },
-    burgerClassObject () {
+    burgerClassObject() {
       return {
         unToggled: !this.open,
-        toggled: this.open
-      }
-    }
+        toggled: this.open,
+      };
+    },
   },
   methods: {
-    onClick () {
-      this.open = !this.open
+    onClick() {
+      this.open = !this.open;
     },
-    async logOut () {
-      await this.$auth.logout()
-    }
-  }
-}
+    async logOut() {
+      await this.$auth.logout();
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

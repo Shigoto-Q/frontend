@@ -26,46 +26,46 @@
 </template>
 
 <script>
-import ErrorIcon from '~/assets/icons/Error.svg?inline'
-import SuccessIcon from '~/assets/icons/SuccessIcon.svg?inline'
+import ErrorIcon from "~/assets/icons/Error.svg?inline";
+import SuccessIcon from "~/assets/icons/SuccessIcon.svg?inline";
 
 export default {
-  name: 'Alert',
+  name: "Alert",
   components: {
     ErrorIcon,
-    SuccessIcon
+    SuccessIcon,
   },
   props: {
     type: {
       type: String,
-      default: 'info'
+      default: "info",
     },
     title: {
       type: String,
-      required: true
+      required: true,
     },
     message: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
       titleClassObject: {
-        'text-red-800': this.type === 'error',
-        'text-green-800': this.type === 'success'
+        "text-red-800": this.type === "error",
+        "text-green-800": this.type === "success",
       },
       messageClassObject: {
-        'text-red-700': this.type === 'error',
-        'text-green-700': this.type === 'success'
+        "text-red-700": this.type === "error",
+        "text-green-700": this.type === "success",
       },
       bgClassObject: {
-        'bg-red-50': this.type === 'error',
-        'bg-green-50': this.type === 'success'
-      }
-    }
-  }
-}
+        "bg-red-50": this.type === "error",
+        "bg-green-50": this.type === "success",
+      },
+    };
+  },
+};
 </script>
 
 <style scoped></style>

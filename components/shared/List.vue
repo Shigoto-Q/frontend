@@ -63,41 +63,41 @@
 </template>
 
 <script>
-import LoadBalancerIcon from '@/assets/icons/LoadBalancerIcon.svg?inline'
-import RouterIcon from '@/assets/icons/RouterIcon.svg?inline'
-import TrashBinIcon from '@/assets/icons/TrashBinIcon.svg?inline'
+import LoadBalancerIcon from "@/assets/icons/LoadBalancerIcon.svg?inline";
+import RouterIcon from "@/assets/icons/RouterIcon.svg?inline";
+import TrashBinIcon from "@/assets/icons/TrashBinIcon.svg?inline";
 
 export default {
   components: {
     LoadBalancerIcon,
     RouterIcon,
-    TrashBinIcon
+    TrashBinIcon,
   },
-  data () {
+  data() {
     return {
       applications: [
         {
-          name: 'sgt-frontend',
-          type: 'ClusterIP',
+          name: "sgt-frontend",
+          type: "ClusterIP",
           icon: RouterIcon,
-          date: '10.112.0.1',
-          ip: '10.112.0.1',
-          stage: 'CLUSTER-IP',
-          stageTwo: 'EXTERNAL-IP',
-          descriptionSecond: '34.116.232.253'
+          date: "10.112.0.1",
+          ip: "10.112.0.1",
+          stage: "CLUSTER-IP",
+          stageTwo: "EXTERNAL-IP",
+          descriptionSecond: "34.116.232.253",
         },
         {
-          name: 'sgt-frontend-svc',
-          type: 'LoadBalancer',
+          name: "sgt-frontend-svc",
+          type: "LoadBalancer",
           icon: LoadBalancerIcon,
-          date: '10.112.13.125',
-          ip: '10.112.13.125',
-          stage: 'CLUSTER-IP',
-          stageTwo: 'EXTERNAL-IP',
-          descriptionSecond: '<none>'
-        }
-      ]
-    }
-  }
-}
+          date: "10.112.13.125",
+          ip: "10.112.13.125",
+          stage: "CLUSTER-IP",
+          stageTwo: "EXTERNAL-IP",
+          descriptionSecond: "<none>",
+        },
+      ],
+    };
+  },
+};
 </script>

@@ -7,10 +7,8 @@
           src="../../assets/branding/logo/LogoWithoutText.png"
           alt="logo"
           @click="onImageClick"
-        >
-        <div class="logo_text">
-          SHIGOTO
-        </div>
+        />
+        <div class="logo_text">SHIGOTO</div>
         <i id="btn" class="bx bx-menu-alt-right" @click="onImageClick" />
       </div>
       <div class="nav_list">
@@ -39,28 +37,28 @@
 </template>
 
 <script>
-import ShigotoIcon from '../../assets/logo.svg?inline'
-import KubernetesIcon from '../../assets/icons/kubernetes.svg?inline'
-import AvatarIcon from '../../assets/icons/Avatar.svg?inline'
-import ChevronLeftIcon from '../../assets/icons/ChevronLeft.svg?inline'
-import ChevronDownIcon from '../../assets/icons/ChevronDown.svg?inline'
-import ScheduleIcon from '../../assets/icons/Schedule.svg?inline'
-import LogsIcon from '../../assets/icons/Logs.svg?inline'
-import TaskIcon from '../../assets/icons/TaskIcon.svg?inline'
-import CreateTaskIcon from '../../assets/icons/CreateTask.svg?inline'
-import SettingsIcon from '../../assets/icons/SettingsIcon.svg?inline'
-import AlertIcon from '../../assets/icons/AlertIcon.svg?inline'
-import NotificationIcon from '../../assets/icons/NotificationIcon.svg?inline'
-import DockerIcon from '@/assets/icons/DockerColorIcon.svg?inline'
-import SidebarElement from '~/components/dashboard/SidebarElement'
-import Button from '~/components/shared/Button'
-import Input from '~/components/shared/Input'
-import ThemeToggle from '~/components/ThemeToggle'
-import ToggleInput from '~/components/shared/ToggleInput'
-import UserDropdown from '~/components/dashboard/UserDropdown'
+import ShigotoIcon from "../../assets/logo.svg?inline";
+import KubernetesIcon from "../../assets/icons/kubernetes.svg?inline";
+import AvatarIcon from "../../assets/icons/Avatar.svg?inline";
+import ChevronLeftIcon from "../../assets/icons/ChevronLeft.svg?inline";
+import ChevronDownIcon from "../../assets/icons/ChevronDown.svg?inline";
+import ScheduleIcon from "../../assets/icons/Schedule.svg?inline";
+import LogsIcon from "../../assets/icons/Logs.svg?inline";
+import TaskIcon from "../../assets/icons/TaskIcon.svg?inline";
+import CreateTaskIcon from "../../assets/icons/CreateTask.svg?inline";
+import SettingsIcon from "../../assets/icons/SettingsIcon.svg?inline";
+import AlertIcon from "../../assets/icons/AlertIcon.svg?inline";
+import NotificationIcon from "../../assets/icons/NotificationIcon.svg?inline";
+import DockerIcon from "@/assets/icons/DockerColorIcon.svg?inline";
+import SidebarElement from "~/components/dashboard/SidebarElement";
+import Button from "~/components/shared/Button";
+import Input from "~/components/shared/Input";
+import ThemeToggle from "~/components/ThemeToggle";
+import ToggleInput from "~/components/shared/ToggleInput";
+import UserDropdown from "~/components/dashboard/UserDropdown";
 
 export default {
-  name: 'Sidebar',
+  name: "Sidebar",
   components: {
     UserDropdown,
     ToggleInput,
@@ -78,89 +76,89 @@ export default {
     ChevronLeftIcon,
     ChevronDownIcon,
     LogsIcon,
-    CreateTaskIcon
+    CreateTaskIcon,
   },
-  data () {
+  data() {
     return {
       collapse: true,
       routes: [
         {
-          title: 'Deployment',
+          title: "Deployment",
           children: [
             {
-              route: 'Kubernetes',
-              url: '/dashboard/deploy',
-              icon: KubernetesIcon
+              route: "Kubernetes",
+              url: "/dashboard/deploy",
+              icon: KubernetesIcon,
             },
             {
-              route: 'Docker',
-              url: '/dashboard/docker',
-              icon: DockerIcon
-            }
-          ]
+              route: "Docker",
+              url: "/dashboard/docker",
+              icon: DockerIcon,
+            },
+          ],
         },
         {
-          title: 'Cron',
+          title: "Cron",
           children: [
             {
-              route: 'Task management',
-              url: '/dashboard/tasks/manage',
-              icon: TaskIcon
+              route: "Task management",
+              url: "/dashboard/tasks/manage",
+              icon: TaskIcon,
             },
             {
-              route: 'Create schedule',
-              url: '/dashboard/tasks/schedule',
-              icon: ScheduleIcon
+              route: "Create schedule",
+              url: "/dashboard/tasks/schedule",
+              icon: ScheduleIcon,
             },
             {
-              route: 'Logs',
-              url: '/dashboard/tasks/logs',
-              icon: LogsIcon
-            }
-          ]
+              route: "Logs",
+              url: "/dashboard/tasks/logs",
+              icon: LogsIcon,
+            },
+          ],
         },
         {
-          title: 'Integrations',
+          title: "Integrations",
           children: [
             {
-              route: 'Alerts',
-              url: '/dashboard/integrations/alerts',
-              icon: AlertIcon
+              route: "Alerts",
+              url: "/dashboard/integrations/alerts",
+              icon: AlertIcon,
             },
             {
-              route: 'Notifications',
-              url: '/dashboard/integrations/notifications',
-              icon: NotificationIcon
-            }
-          ]
+              route: "Notifications",
+              url: "/dashboard/integrations/notifications",
+              icon: NotificationIcon,
+            },
+          ],
         },
         {
-          title: 'Settings',
+          title: "Settings",
           children: [
             {
-              route: 'Settings',
-              url: '/dashboard/settings',
-              icon: SettingsIcon
-            }
-          ]
-        }
-      ]
-    }
+              route: "Settings",
+              url: "/dashboard/settings",
+              icon: SettingsIcon,
+            },
+          ],
+        },
+      ],
+    };
   },
   computed: {
-    sidebarClasses () {
+    sidebarClasses() {
       return {
         sidebar: true,
-        open: this.collapse
-      }
-    }
+        open: this.collapse,
+      };
+    },
   },
   methods: {
-    onImageClick () {
-      this.collapse = !this.collapse
-    }
-  }
-}
+    onImageClick() {
+      this.collapse = !this.collapse;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

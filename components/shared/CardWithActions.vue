@@ -16,7 +16,8 @@
             </h3>
             <span
               class="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full"
-            >{{ item.tag }}</span>
+              >{{ item.tag }}</span
+            >
           </div>
           <p class="mt-1 text-gray-500 text-sm truncate">
             Last push at: {{ item.lastPushAt }} hours ago.
@@ -51,34 +52,34 @@
 </template>
 
 <script>
-import TaskIcon from '@/assets/icons/TaskIcon.svg?inline'
-import DeleteIcon from '@/assets/icons/DeleteIcon.svg?inline'
-import DeployIcon from '@/assets/icons/DeployIcon.svg?inline'
-import DockerIcon from '@/assets/icons/DockerColorIcon.svg?inline'
+import TaskIcon from "@/assets/icons/TaskIcon.svg?inline";
+import DeleteIcon from "@/assets/icons/DeleteIcon.svg?inline";
+import DeployIcon from "@/assets/icons/DeployIcon.svg?inline";
+import DockerIcon from "@/assets/icons/DockerColorIcon.svg?inline";
 export default {
-  name: 'CardWithActions',
+  name: "CardWithActions",
   components: { TaskIcon, DeleteIcon, DeployIcon, DockerIcon },
   props: {
     items: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     primaryActionName: {
       type: String,
-      default: () => 'Create'
+      default: () => "Create",
     },
     secondaryActionName: {
       type: String,
-      default: () => 'Delete'
+      default: () => "Delete",
     },
     primaryAction: {
-      type: Function
+      type: Function,
     },
     secondaryAction: {
-      type: Function
-    }
-  }
-}
+      type: Function,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss"></style>

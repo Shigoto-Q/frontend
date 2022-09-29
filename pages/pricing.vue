@@ -30,16 +30,16 @@
               {{ tier.name }}
             </h2>
             <p class="mt-4">
-              <span class="text-4xl font-extrabold text-gray-900">${{ tier.priceMonthly }}</span>
+              <span class="text-4xl font-extrabold text-gray-900"
+                >${{ tier.priceMonthly }}</span
+              >
               {{ " " }}
               <span class="text-base font-medium text-gray-500">/mo</span>
             </p>
             <p class="mt-4 text-sm text-gray-500">
               {{ tier.description }}
             </p>
-            <Button @click="handleCheckout">
-              Buy {{ tier.name }}
-            </Button>
+            <Button @click="handleCheckout"> Buy {{ tier.name }} </Button>
           </div>
 
           <table v-for="section in sections" :key="section.name" class="w-full">
@@ -52,12 +52,8 @@
             </caption>
             <thead>
               <tr>
-                <th class="sr-only" scope="col">
-                  Feature
-                </th>
-                <th class="sr-only" scope="col">
-                  Included
-                </th>
+                <th class="sr-only" scope="col">Feature</th>
+                <th class="sr-only" scope="col">Included</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -76,7 +72,8 @@
                   <span
                     v-if="typeof feature.tiers[tier.name] === 'string'"
                     class="block text-sm text-gray-700 text-right"
-                  >{{ feature.tiers[tier.name] }}</span>
+                    >{{ feature.tiers[tier.name] }}</span
+                  >
                   <template v-else>
                     <CheckIcon
                       v-if="feature.tiers[tier.name] === true"
@@ -99,9 +96,7 @@
               'border-t border-gray-200 px-4',
             ]"
           >
-            <Button @click="handleCheckout">
-              Buy {{ tier.name }}
-            </Button>
+            <Button @click="handleCheckout"> Buy {{ tier.name }} </Button>
           </div>
         </section>
       </div>
@@ -146,16 +141,16 @@
               >
                 <div class="relative h-full table">
                   <p>
-                    <span class="text-4xl font-extrabold text-gray-900">${{ tier.priceMonthly }}</span>
+                    <span class="text-4xl font-extrabold text-gray-900"
+                      >${{ tier.priceMonthly }}</span
+                    >
                     {{ " " }}
                     <span class="text-base font-medium text-gray-500">/mo</span>
                   </p>
                   <p class="mt-4 mb-16 text-sm text-gray-500">
                     {{ tier.description }}
                   </p>
-                  <Button @click="handleCheckout">
-                    Buy {{ tier.name }}
-                  </Button>
+                  <Button @click="handleCheckout"> Buy {{ tier.name }} </Button>
                 </div>
               </td>
             </tr>
@@ -180,7 +175,8 @@
                   <span
                     v-if="typeof feature.tiers[tier.name] === 'string'"
                     class="block text-sm text-gray-700"
-                  >{{ feature.tiers[tier.name] }}</span>
+                    >{{ feature.tiers[tier.name] }}</span
+                  >
                   <template v-else>
                     <CheckIcon
                       v-if="feature.tiers[tier.name] === true"
@@ -192,12 +188,14 @@
                       class="h-5 w-5 text-gray-400"
                       aria-hidden="true"
                     />
-                    <span class="sr-only">{{
-                      feature.tiers[tier.name] === true
-                        ? "Included"
-                        : "Not included"
-                    }}
-                      in {{ tier.name }}</span>
+                    <span class="sr-only"
+                      >{{
+                        feature.tiers[tier.name] === true
+                          ? "Included"
+                          : "Not included"
+                      }}
+                      in {{ tier.name }}</span
+                    >
                   </template>
                 </td>
               </tr>
@@ -205,14 +203,13 @@
           </tbody>
           <tfoot>
             <tr class="border-t border-gray-200">
-              <th class="sr-only" scope="row">
-                Choose your plan
-              </th>
+              <th class="sr-only" scope="row">Choose your plan</th>
               <td v-for="tier in tiers" :key="tier.name" class="pt-5 px-6">
                 <a
                   :href="tier.href"
                   class="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                >Buy {{ tier.name }}</a>
+                  >Buy {{ tier.name }}</a
+                >
               </td>
             </tr>
           </tfoot>
@@ -221,10 +218,9 @@
           <p class="text-sm text-comet self-center">
             Shigoto will contribute 0.5% of your purchase to remove CO₂ from the
             atmosphere. Read more
-            <a
-              class="text-link"
-              href="https://climate.stripe.com/GcbOW2"
-            >here.</a>
+            <a class="text-link" href="https://climate.stripe.com/GcbOW2"
+              >here.</a
+            >
           </p>
         </div>
       </div>
@@ -233,165 +229,165 @@
 </template>
 
 <script>
-import { loadStripe } from '@stripe/stripe-js'
-import CheckIcon from '@/assets/icons/CheckMark.svg?inline'
-import XIcon from '@/assets/icons/X.svg?inline'
-import Link from '@/components/shared/Link'
-import Button from '@/components/shared/Button'
+import { loadStripe } from "@stripe/stripe-js";
+import CheckIcon from "@/assets/icons/CheckMark.svg?inline";
+import XIcon from "@/assets/icons/X.svg?inline";
+import Link from "@/components/shared/Link";
+import Button from "@/components/shared/Button";
 
 export default {
-  name: 'Pricing',
+  name: "Pricing",
   components: {
     Button,
     Link,
     CheckIcon,
-    XIcon
+    XIcon,
   },
-  data () {
+  data() {
     return {
       stripe: null,
       sections: [
         {
-          name: 'Kubernetes',
+          name: "Kubernetes",
           features: [
             {
-              name: 'Deployments',
+              name: "Deployments",
               tiers: {
-                Personal: ' 1 deployments',
-                Professional: 'Up to 5 deployments',
-                Business: 'Up to 100 deployments'
-              }
+                Personal: " 1 deployments",
+                Professional: "Up to 5 deployments",
+                Business: "Up to 100 deployments",
+              },
             },
             {
-              name: 'Services',
+              name: "Services",
               tiers: {
-                Personal: '1 service',
-                Professional: 'Up to 5 services',
-                Business: 'Up to 100 services'
-              }
+                Personal: "1 service",
+                Professional: "Up to 5 services",
+                Business: "Up to 100 services",
+              },
             },
-            { name: 'Ingress', tiers: { Professional: true, Business: true } },
+            { name: "Ingress", tiers: { Professional: true, Business: true } },
             {
-              name: 'Ingress SSL/TLS',
-              tiers: { Personal: true, Professional: true, Business: true }
+              name: "Ingress SSL/TLS",
+              tiers: { Personal: true, Professional: true, Business: true },
             },
             {
-              name: 'Namespace',
+              name: "Namespace",
               tiers: {
-                Personal: '1 namespace',
-                Professional: '1 namespace',
-                Business: 'Up to 5 namespaces'
-              }
+                Personal: "1 namespace",
+                Professional: "1 namespace",
+                Business: "Up to 5 namespaces",
+              },
             },
-            { name: 'Persistent storage', tiers: { Business: true } }
-          ]
+            { name: "Persistent storage", tiers: { Business: true } },
+          ],
         },
         {
-          name: 'Docker',
+          name: "Docker",
           features: [
             {
-              name: 'Image build',
-              tiers: { Personal: true, Professional: true, Business: true }
+              name: "Image build",
+              tiers: { Personal: true, Professional: true, Business: true },
             },
             {
-              name: 'Image push',
-              tiers: { Personal: true, Professional: true, Business: true }
+              name: "Image push",
+              tiers: { Personal: true, Professional: true, Business: true },
             },
-            { name: 'Own registry', tiers: { Business: true } }
-          ]
+            { name: "Own registry", tiers: { Business: true } },
+          ],
         },
         {
-          name: 'Cron jobs',
+          name: "Cron jobs",
           features: [
             {
-              name: 'Simple HTTP Operator',
-              tiers: { Personal: true, Professional: true, Business: true }
+              name: "Simple HTTP Operator",
+              tiers: { Personal: true, Professional: true, Business: true },
             },
             {
-              name: 'Kubernetes job',
-              tiers: { Professional: true, Business: true }
+              name: "Kubernetes job",
+              tiers: { Professional: true, Business: true },
             },
             {
-              name: 'Docker job',
-              tiers: { Personal: true, Professional: true, Business: true }
-            }
-          ]
+              name: "Docker job",
+              tiers: { Personal: true, Professional: true, Business: true },
+            },
+          ],
         },
         {
-          name: 'Monitoring & Alerts',
+          name: "Monitoring & Alerts",
           features: [
             {
-              name: 'Discord integration',
-              tiers: { Personal: true, Professional: true, Business: true }
+              name: "Discord integration",
+              tiers: { Personal: true, Professional: true, Business: true },
             },
             {
-              name: 'Slack integration',
-              tiers: { Personal: true, Professional: true, Business: true }
+              name: "Slack integration",
+              tiers: { Personal: true, Professional: true, Business: true },
             },
             {
-              name: 'E-mail notifications',
-              tiers: { Personal: true, Professional: true, Business: true }
+              name: "E-mail notifications",
+              tiers: { Personal: true, Professional: true, Business: true },
             },
-            { name: 'SMS notifications', tiers: { Business: true } }
-          ]
-        }
+            { name: "SMS notifications", tiers: { Business: true } },
+          ],
+        },
       ],
       tiers: [
         {
-          name: 'Personal',
-          href: '#',
+          name: "Personal",
+          href: "#",
           priceMonthly: 15,
           description:
-            'Quis suspendisse ut fermentum neque vivamus non tellus.'
+            "Quis suspendisse ut fermentum neque vivamus non tellus.",
         },
         {
-          name: 'Professional',
-          href: '#',
+          name: "Professional",
+          href: "#",
           priceMonthly: 50,
           description:
-            'Quis eleifend a tincidunt pellentesque. A tempor in sed.'
+            "Quis eleifend a tincidunt pellentesque. A tempor in sed.",
         },
         {
-          name: 'Business',
-          href: '#',
+          name: "Business",
+          href: "#",
           priceMonthly: 500,
           description:
-            'Orci volutpat ut sed sed neque, dui eget. Quis tristique non.'
-        }
-      ]
-    }
+            "Orci volutpat ut sed sed neque, dui eget. Quis tristique non.",
+        },
+      ],
+    };
   },
-  created () {
-    this.loadStripeApi()
+  created() {
+    this.loadStripeApi();
   },
   methods: {
-    async loadStripeApi () {
-      this.stripe = await loadStripe(process.env.stripeSecretKey)
+    async loadStripeApi() {
+      this.stripe = await loadStripe(process.env.stripeSecretKey);
     },
-    handleCheckout () {
+    handleCheckout() {
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${
-            this.$auth.strategy.token.get().split(' ')[1]
-          }`
-        }
-      }
+            this.$auth.strategy.token.get().split(" ")[1]
+          }`,
+        },
+      };
       const body = {
-        priceId: 'price_1L3QDKItAhzYJ7dgF3wKWDHL'
-      }
+        priceId: "price_1L3QDKItAhzYJ7dgF3wKWDHL",
+      };
       this.$axios
-        .post('/api/v1/customer/subscription/session/create/', body, config)
+        .post("/api/v1/customer/subscription/session/create/", body, config)
         .then((res) => {
-          console.log(res)
-          this.stripe?.redirectToCheckout({ sessionId: res.data.sessionId })
+          console.log(res);
+          this.stripe?.redirectToCheckout({ sessionId: res.data.sessionId });
         })
         .catch((err) => {
-          console.log(err.response)
-        })
-    }
-  }
-}
+          console.log(err.response);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped></style>

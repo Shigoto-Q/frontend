@@ -54,7 +54,9 @@
                     </NuxtLink>
                   </span>
                 </h3>
-                <p class="text-base text-gray-500">{{ link.description }}</p>
+                <p class="text-base text-gray-500">
+                  {{ link.description }}
+                </p>
               </div>
               <div class="flex-shrink-0 self-center">
                 <ChevronRightIcon
@@ -68,8 +70,9 @@
             <NuxtLink
               to="/"
               class="text-base font-medium text-indigo-600 hover:text-indigo-500"
-              >Or go back home<span aria-hidden="true"> &rarr;</span></NuxtLink
             >
+              Or go back home<span aria-hidden="true"> &rarr;</span>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -79,12 +82,11 @@
 
 <script>
 import Vue from "vue";
+import VueCompositionAPI from "@vue/composition-api/dist/vue-composition-api";
 import ChevronRightIcon from "@/assets/icons/ChevronRightIcon.svg?inline";
 import DocsIcon from "@/assets/icons/DocsIcon.svg?inline";
 import ResourcesIcon from "@/assets/icons/ResourcesIcon.svg?inline";
 import ApiIcon from "@/assets/icons/ApiIcon.svg?inline";
-
-import VueCompositionAPI from "@vue/composition-api/dist/vue-composition-api";
 
 Vue.use(VueCompositionAPI);
 

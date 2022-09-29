@@ -12,22 +12,22 @@
 </template>
 
 <script>
-import { abstractField } from 'vue-form-generator'
-import Input from '~/components/shared/Input'
+import { abstractField } from "vue-form-generator";
+import Input from "~/components/shared/Input";
 
 export default {
-  name: 'FieldInput',
+  name: "FieldInput",
   components: { Input },
   mixins: [abstractField],
   methods: {
-    onInput (value) {
-      this.value = value
+    onInput(value) {
+      this.value = value;
     },
-    onChange (value) {
-      this.value = value
-    }
-  }
-}
+    onChange(value) {
+      this.value = value;
+    },
+  },
+};
 </script>
 
 <style scoped></style>

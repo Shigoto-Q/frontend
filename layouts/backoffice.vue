@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "backoffice",
+  name: "Backoffice",
 };
 </script>
 

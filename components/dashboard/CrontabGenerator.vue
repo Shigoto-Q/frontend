@@ -22,132 +22,86 @@
       <table class="crontab__table">
         <tbody>
           <tr>
-            <td data-label="">
-              *
-            </td>
-            <td data-label="Due Date">
-              any value
-            </td>
+            <td data-label="">*</td>
+            <td data-label="Due Date">any value</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Account">
-              ,
-            </td>
-            <td data-label="Due Date">
-              value list separator
-            </td>
+            <td scope="row" data-label="Account">,</td>
+            <td data-label="Due Date">value list separator</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Account">
-              -
-            </td>
-            <td data-label="Due Date">
-              rage of values
-            </td>
+            <td scope="row" data-label="Account">-</td>
+            <td data-label="Due Date">rage of values</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Acount">
-              /
-            </td>
-            <td data-label="Due Date">
-              step values
-            </td>
+            <td scope="row" data-label="Acount">/</td>
+            <td data-label="Due Date">step values</td>
           </tr>
           <tr v-show="isMinute">
-            <td scope="row" data-label="Acount">
-              0-59
-            </td>
-            <td data-label="Due Date">
-              allowed values
-            </td>
+            <td scope="row" data-label="Acount">0-59</td>
+            <td data-label="Due Date">allowed values</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Acount">
-              0-23
-            </td>
-            <td data-label="Due Date">
-              allowed values
-            </td>
+            <td scope="row" data-label="Acount">0-23</td>
+            <td data-label="Due Date">allowed values</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Acount">
-              1-31
-            </td>
-            <td data-label="Due Date">
-              allowed values
-            </td>
+            <td scope="row" data-label="Acount">1-31</td>
+            <td data-label="Due Date">allowed values</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Acount">
-              1-12
-            </td>
-            <td data-label="Due Date">
-              allowed values
-            </td>
+            <td scope="row" data-label="Acount">1-12</td>
+            <td data-label="Due Date">allowed values</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Acount">
-              JAN-DEC
-            </td>
-            <td data-label="Due Date">
-              alternative values
-            </td>
+            <td scope="row" data-label="Acount">JAN-DEC</td>
+            <td data-label="Due Date">alternative values</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Acount">
-              0-6
-            </td>
-            <td data-label="Due Date">
-              allowed values
-            </td>
+            <td scope="row" data-label="Acount">0-6</td>
+            <td data-label="Due Date">allowed values</td>
           </tr>
           <tr>
-            <td scope="row" data-label="Acount">
-              SUN-SAT
-            </td>
-            <td data-label="Due Date">
-              alternative values
-            </td>
+            <td scope="row" data-label="Acount">SUN-SAT</td>
+            <td data-label="Due Date">alternative values</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <Button class="crontab__button">
-      Create
-    </Button>
+    <Button class="crontab__button"> Create </Button>
   </div>
 </template>
 
 <script>
-import OTPInput from '@/components/OTP'
-import Button from '@/components/shared/Button'
+import OTPInput from "@/components/OTP";
+import Button from "@/components/shared/Button";
 
-const BACKSPACE = 8
-const LEFT_ARROW = 37
-const RIGHT_ARROW = 39
-const DELETE = 46
+const BACKSPACE = 8;
+const LEFT_ARROW = 37;
+const RIGHT_ARROW = 39;
+const DELETE = 46;
 
 export default {
-  name: 'CrontabGenerator',
+  name: "CrontabGenerator",
   components: { Button, OTPInput },
-  data () {
+  data() {
     return {
       numInputs: [
         {
-          label: 'minute'
+          label: "minute",
         },
         {
-          label: 'hour'
+          label: "hour",
         },
         {
-          label: 'day(month)'
+          label: "day(month)",
         },
         {
-          label: 'month'
+          label: "month",
         },
         {
-          label: 'day(week)'
-        }
+          label: "day(week)",
+        },
       ],
       activeInput: 0,
       crontab: [],
@@ -155,98 +109,98 @@ export default {
       isHour: false,
       isDayMonth: false,
       isMonth: false,
-      isDayWeek: false
-    }
+      isDayWeek: false,
+    };
   },
   methods: {
-    async verifyOtp () {
-      const crontab = Number(this.crontab.join(''))
+    async verifyOtp() {
+      const crontab = Number(this.crontab.join(""));
     },
-    async cancel2faAndGoBack () {},
-    handleOnFocus (index) {
-      this.activeInput = index
+    async cancel2faAndGoBack() {},
+    handleOnFocus(index) {
+      this.activeInput = index;
     },
-    handleOnBlur () {
-      this.activeInput = -1
+    handleOnBlur() {
+      this.activeInput = -1;
     },
-    checkFilledAllInputs () {
-      if (this.crontab.join('').length === this.numInputs) {
-        return this.$emit('on-complete', this.crontab.join(''))
+    checkFilledAllInputs() {
+      if (this.crontab.join("").length === this.numInputs) {
+        return this.$emit("on-complete", this.crontab.join(""));
       }
-      return 'Wait until the user enters the required number of characters'
+      return "Wait until the user enters the required number of characters";
     },
-    focusInput (input) {
-      this.activeInput = Math.max(Math.min(this.numInputs - 1, input), 0)
+    focusInput(input) {
+      this.activeInput = Math.max(Math.min(this.numInputs - 1, input), 0);
     },
-    focusNextInput () {
-      this.focusInput(this.activeInput + 1)
+    focusNextInput() {
+      this.focusInput(this.activeInput + 1);
     },
-    focusPrevInput () {
-      this.focusInput(this.activeInput - 1)
+    focusPrevInput() {
+      this.focusInput(this.activeInput - 1);
     },
-    changeCodeAtFocus (value) {
-      this.oldOtp = Object.assign([], this.crontab)
-      this.$set(this.crontab, this.activeInput, value)
-      if (this.oldOtp.join('') !== this.crontab.join('')) {
-        this.$emit('on-change', this.crontab.join(''))
-        this.checkFilledAllInputs()
+    changeCodeAtFocus(value) {
+      this.oldOtp = Object.assign([], this.crontab);
+      this.$set(this.crontab, this.activeInput, value);
+      if (this.oldOtp.join("") !== this.crontab.join("")) {
+        this.$emit("on-change", this.crontab.join(""));
+        this.checkFilledAllInputs();
       }
     },
-    handleOnPaste (event) {
-      event.preventDefault()
+    handleOnPaste(event) {
+      event.preventDefault();
       const pastedData = event.clipboardData
-        .getData('text/plain')
+        .getData("text/plain")
         .slice(0, this.numInputs - this.activeInput)
-        .split('')
-      if (this.inputType === 'number' && !pastedData.join('').match(/^\d+$/)) {
-        return 'Invalid pasted data'
+        .split("");
+      if (this.inputType === "number" && !pastedData.join("").match(/^\d+$/)) {
+        return "Invalid pasted data";
       }
-      const currentCharsInOtp = this.crontab.slice(0, this.activeInput)
-      const combinedWithPastedData = currentCharsInOtp.concat(pastedData)
+      const currentCharsInOtp = this.crontab.slice(0, this.activeInput);
+      const combinedWithPastedData = currentCharsInOtp.concat(pastedData);
       this.$set(
         this,
-        'crontab',
+        "crontab",
         combinedWithPastedData.slice(0, this.numInputs)
-      )
-      this.focusInput(combinedWithPastedData.slice(0, this.numInputs).length)
-      return this.checkFilledAllInputs()
+      );
+      this.focusInput(combinedWithPastedData.slice(0, this.numInputs).length);
+      return this.checkFilledAllInputs();
     },
-    handleOnChange (value) {
-      this.changeCodeAtFocus(value)
-      this.focusNextInput()
+    handleOnChange(value) {
+      this.changeCodeAtFocus(value);
+      this.focusNextInput();
     },
-    clearInput () {
+    clearInput() {
       if (this.crontab.length > 0) {
-        this.$emit('on-change', '')
+        this.$emit("on-change", "");
       }
-      this.crontab = []
-      this.activeInput = 0
+      this.crontab = [];
+      this.activeInput = 0;
     },
-    handleOnKeyDown (event) {
+    handleOnKeyDown(event) {
       switch (event.keyCode) {
         case BACKSPACE:
-          event.preventDefault()
-          this.changeCodeAtFocus('')
-          this.focusPrevInput()
-          break
+          event.preventDefault();
+          this.changeCodeAtFocus("");
+          this.focusPrevInput();
+          break;
         case DELETE:
-          event.preventDefault()
-          this.changeCodeAtFocus('')
-          break
+          event.preventDefault();
+          this.changeCodeAtFocus("");
+          break;
         case LEFT_ARROW:
-          event.preventDefault()
-          this.focusPrevInput()
-          break
+          event.preventDefault();
+          this.focusPrevInput();
+          break;
         case RIGHT_ARROW:
-          event.preventDefault()
-          this.focusNextInput()
-          break
+          event.preventDefault();
+          this.focusNextInput();
+          break;
         default:
-          break
+          break;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

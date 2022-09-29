@@ -3,9 +3,7 @@
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
       <div>
         <div>
-          <h3 class="text-lg leading-6 font-medium text-gray-900">
-            Profile
-          </h3>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
           <p class="mt-1 max-w-2xl text-sm text-gray-500">
             This information will be displayed publicly so be careful what you
             share.
@@ -19,7 +17,8 @@
             <label
               for="name"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-            >First name</label>
+              >First name</label
+            >
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <div class="max-w-lg flex">
                 <Input
@@ -38,7 +37,8 @@
             <label
               for="name"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-            >Last name</label>
+              >Last name</label
+            >
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <div class="max-w-lg flex">
                 <Input
@@ -57,7 +57,8 @@
             <label
               for="email"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-            >E-mail</label>
+              >E-mail</label
+            >
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <div class="max-w-lg flex">
                 <Input
@@ -76,7 +77,8 @@
             <label
               for="company"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-            >Company</label>
+              >Company</label
+            >
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <div class="max-w-lg flex">
                 <Input
@@ -95,7 +97,8 @@
             <label
               for="country"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-            >Country</label>
+              >Country</label
+            >
             <div class="mt-1 sm:mt-0 sm:col-span-2">
               <div class="max-w-lg flex">
                 <Input
@@ -114,9 +117,7 @@
 
     <div class="pt-5">
       <div class="flex justify-between">
-        <Button :secondary="true">
-          Cancel
-        </Button>
+        <Button :secondary="true"> Cancel </Button>
         <Button> Submit </Button>
       </div>
     </div>
@@ -124,12 +125,12 @@
 </template>
 
 <script>
-import Input from '@/components/shared/Input'
-import Button from '@/components/shared/Button'
+import Input from "@/components/shared/Input";
+import Button from "@/components/shared/Button";
 export default {
-  name: 'UserProfileSettings',
-  components: { Button, Input }
-}
+  name: "UserProfileSettings",
+  components: { Button, Input },
+};
 </script>
 
 <style scoped></style>

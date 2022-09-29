@@ -58,36 +58,36 @@
 </template>
 
 <script>
-import IngressIcon from '@/assets/icons/IngressIcon.svg?inline'
+import IngressIcon from "@/assets/icons/IngressIcon.svg?inline";
 
 export default {
-  name: 'StackedList',
+  name: "StackedList",
   components: {
-    IngressIcon
+    IngressIcon,
   },
-  data () {
+  data() {
     return {
       positions: [
         {
           id: 1,
-          title: 'ingress-shigoto-service',
-          type: 'Running',
-          location: '80, 443',
-          department: 'shigo.to, ws.shigo.to, api.shigo.to',
-          closeDate: '15d',
-          closeDateFull: '15d'
+          title: "ingress-shigoto-service",
+          type: "Running",
+          location: "80, 443",
+          department: "shigo.to, ws.shigo.to, api.shigo.to",
+          closeDate: "15d",
+          closeDateFull: "15d",
         },
         {
           id: 2,
-          title: 'ingress-test-service',
-          type: 'Running',
-          location: '80, 443',
-          department: 'shigo.to, ws.shigo.to, api.shigo.to',
-          closeDate: '15d',
-          closeDateFull: '15d'
-        }
-      ]
-    }
-  }
-}
+          title: "ingress-test-service",
+          type: "Running",
+          location: "80, 443",
+          department: "shigo.to, ws.shigo.to, api.shigo.to",
+          closeDate: "15d",
+          closeDateFull: "15d",
+        },
+      ],
+    };
+  },
+};
 </script>

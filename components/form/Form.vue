@@ -19,55 +19,57 @@
 </template>
 
 <script>
-import Button from '~/components/shared/Button'
+import Button from "~/components/shared/Button";
 
 export default {
-  name: 'Form',
+  name: "Form",
   components: {
-    Button
+    Button,
   },
   props: {
     vueForm: {
       type: String,
-      default: () => 'vue-form'
+      default: () => "vue-form",
     },
     model: {
       type: Object,
-      required: true
+      required: true,
     },
     schema: {
       type: Object,
-      required: true
+      required: true,
     },
     handleOnClick: {
       type: Function,
-      required: false
+      required: false,
     },
     showSubmitButton: {
       type: Boolean,
-      default: () => false
+      default: () => false,
     },
     classObject: {
       type: String,
-      default: () => ''
-    }
+      default: () => "",
+    },
   },
-  data () {
+  data() {
     return {
-      formKey: 0
-    }
+      formKey: 0,
+    };
   },
   methods: {
-    handleLocalOnClick () {
+    handleLocalOnClick() {
       if (this.handleOnClick) {
-        this.handleOnClick()
-      } else { console.log('Clicked!') }
+        this.handleOnClick();
+      } else {
+        console.log("Clicked!");
+      }
     },
-    localModelUpdated () {
-      this.$emit('modelUpdated', this.model)
-    }
-  }
-}
+    localModelUpdated() {
+      this.$emit("modelUpdated", this.model);
+    },
+  },
+};
 </script>
 
 <style lang="scss">

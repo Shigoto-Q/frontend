@@ -32,10 +32,9 @@
             >
               <div class="font-medium text-gray-900">
                 {{ plan.name }}
-                <span
-                  v-if="plan.isCurrent"
-                  class="text-indigo-600"
-                >(Current Plan)</span>
+                <span v-if="plan.isCurrent" class="text-indigo-600"
+                  >(Current Plan)</span
+                >
               </div>
               <div class="mt-1 flex flex-col text-gray-500 sm:block lg:hidden">
                 <span>{{ plan.age }} / {{ plan.cpu }}</span>
@@ -77,9 +76,7 @@
                 'px-3 py-3.5 text-sm text-gray-500',
               ]"
             >
-              <div class="sm:hidden">
-                {{ plan.ready }}/mo
-              </div>
+              <div class="sm:hidden">{{ plan.ready }}/mo</div>
               <div class="hidden sm:block">
                 {{ plan.ready }}
               </div>
@@ -90,9 +87,7 @@
                 'relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium',
               ]"
             >
-              <Button secondary>
-                Scale
-              </Button>
+              <Button secondary> Scale </Button>
               <div
                 v-if="planIdx !== 0"
                 class="absolute right-6 left-0 -top-px h-px bg-gray-200"
@@ -106,22 +101,22 @@
 </template>
 
 <script>
-import Button from '@/components/shared/Button'
+import Button from "@/components/shared/Button";
 export default {
-  name: 'SimpleTable',
+  name: "SimpleTable",
   components: { Button },
   props: {
     columns: {
       type: Array,
-      required: true
+      required: true,
     },
     items: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
-  data () {
-    return {}
-  }
-}
+  data() {
+    return {};
+  },
+};
 </script>

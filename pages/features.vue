@@ -67,7 +67,7 @@
                     class="object-cover transform"
                     src="../assets/images/dashboardKubernetes.png"
                     alt="App screenshot"
-                  >
+                  />
                 </div>
               </div>
             </div>
@@ -125,7 +125,7 @@
                     class="object-cover transform"
                     src="../assets/images/dashboardDocker.png"
                     alt="App screenshot"
-                  >
+                  />
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@
                     class="object-cover transform"
                     src="../assets/images/dashboardTasks.png"
                     alt="App screenshot"
-                  >
+                  />
                 </div>
               </div>
             </div>
@@ -195,11 +195,11 @@
 </template>
 
 <script>
-import LandingFeatures from '../components/LandingFeatures'
+import LandingFeatures from "../components/LandingFeatures";
 export default {
-  name: 'Features',
-  components: { LandingFeatures }
-}
+  name: "Features",
+  components: { LandingFeatures },
+};
 </script>
 
 <style scoped></style>

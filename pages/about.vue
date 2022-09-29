@@ -109,7 +109,8 @@
           <h1>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-primary-light sm:text-4xl"
-            >About us</span>
+              >About us</span
+            >
           </h1>
           <p class="mt-8 text-xl text-gray-500 leading-8">
             Welcome to Shigoto, your number one source for all your cloud needs.
@@ -135,9 +136,7 @@
             building them. If you have any questions or comments, please don't
             hesitate to contact us.
           </p>
-          <p class="space-y-2 -mt-2 -mb-2">
-            Sincerely,
-          </p>
+          <p class="space-y-2 -mt-2 -mb-2">Sincerely,</p>
           <p class="-mt-2">
             <span class="text-primary-light"> Simeon. </span>
           </p>
@@ -152,7 +151,7 @@
               class="logo"
               src="../assets/branding/logo/LogoWithoutText.png"
               alt="logo"
-            >
+            />
           </div>
         </div>
       </div>
@@ -162,8 +161,8 @@
 
 <script>
 export default {
-  name: 'About'
-}
+  name: "About",
+};
 </script>
 
 <style scoped>

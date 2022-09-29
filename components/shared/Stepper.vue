@@ -9,7 +9,8 @@
         >
           <span
             class="text-xs text-punch font-semibold tracking-wide uppercase group-hover:text-indigo-800"
-          >{{ step.id }}</span>
+            >{{ step.id }}</span
+          >
           <span class="text-sm font-medium">{{ step.name }}</span>
         </a>
         <a
@@ -20,7 +21,8 @@
         >
           <span
             class="text-xs text-punch font-semibold tracking-wide uppercase"
-          >{{ step.id }}</span>
+            >{{ step.id }}</span
+          >
           <span class="text-sm font-medium">{{ step.name }}</span>
         </a>
         <a
@@ -30,7 +32,8 @@
         >
           <span
             class="text-xs text-punch font-semibold tracking-wide uppercase group-hover:text-gray-700"
-          >{{ step.id }}</span>
+            >{{ step.id }}</span
+          >
           <span class="text-sm font-medium">{{ step.name }}</span>
         </a>
       </li>
@@ -40,12 +43,12 @@
 
 <script>
 export default {
-  name: 'Stepper',
+  name: "Stepper",
   props: {
     steps: {
       type: Array,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>

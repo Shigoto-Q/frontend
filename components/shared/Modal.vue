@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import Button from '~/components/shared/Button'
+import Button from "~/components/shared/Button";
 export default {
-  name: 'Modal',
+  name: "Modal",
   components: { Button },
-  inheritAttrs: false
-}
+  inheritAttrs: false,
+};
 </script>
 
 <style scoped></style>

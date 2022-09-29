@@ -13,22 +13,22 @@
 
 <script>
 export default {
-  name: 'SidebarElement',
+  name: "SidebarElement",
   props: {
     text: {
       type: String,
-      required: true
+      required: true,
     },
     icon: {
       type: Object,
-      required: true
+      required: true,
     },
     to: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped></style>

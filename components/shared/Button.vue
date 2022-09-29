@@ -12,29 +12,29 @@
 /* <button class="button-36" role="button">Button 36</button> */
 // inline-flex items-center px-3 py-2 text-sm text-sm leading-4 font-medium text-center self-center flex justify-center
 export default {
-  name: 'Button',
+  name: "Button",
   props: {
     text: {
       type: String,
-      default: () => 'Submit'
+      default: () => "Submit",
     },
     secondary: {
       type: Boolean,
-      default: () => false
-    }
+      default: () => false,
+    },
   },
-  data () {
+  data() {
     return {
-      primaryClass: 'primary',
-      secondaryClass: 'secondary'
-    }
+      primaryClass: "primary",
+      secondaryClass: "secondary",
+    };
   },
   methods: {
-    handleClick () {
-      this.$emit('click')
-    }
-  }
-}
+    handleClick() {
+      this.$emit("click");
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

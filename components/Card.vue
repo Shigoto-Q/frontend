@@ -21,7 +21,7 @@
           {{ title }}
         </p>
       </div>
-      <hr class="card__divider-solid">
+      <hr class="card__divider-solid" />
     </dt>
     <dd class="mt-2 text-base lg:text-lg text-club">
       <span>
@@ -32,18 +32,18 @@
 </template>
 <script>
 export default {
-  name: 'Card',
+  name: "Card",
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     body: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
 .card {

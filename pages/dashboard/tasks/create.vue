@@ -2,12 +2,12 @@
 
 <script>
 export default {
-  name: 'Create',
-  layout (context) {
-    return 'dashboard'
+  name: "Create",
+  layout(context) {
+    return "dashboard";
   },
-  middleware: 'auth'
-}
+  middleware: "auth",
+};
 </script>
 
 <style scoped></style>
