@@ -83,17 +83,17 @@ const people = [
     name: "Simeon Aleksov",
     role: "Co-Founder / CEO",
     imageUrl:
-      "https://media-exp1.licdn.com/dms/image/C4E03AQFuS9QwHa4msw/profile-displayphoto-shrink_800_800/0/1611577033260?e=1655337600&v=beta&t=pBNxafrdifEOLmxUOGbC5pCrV2tNfqrdcjILNiuhHbs",
-    twitterUrl: "#",
-    linkedinUrl: "#",
+      "https://i.imgur.com/TZ6AwNe.jpg",
+    twitterUrl: "https://twitter.com/dashinsyo",
+    linkedinUrl: "https://www.linkedin.com/in/simeonaleksov/",
   },
   {
     name: "Bogdan Petrović",
     role: "Co-Founder / CEO",
     imageUrl:
-      "https://media-exp1.licdn.com/dms/image/C5603AQEnfhpUdcG2Hg/profile-displayphoto-shrink_200_200/0/1586651604248?e=1655337600&v=beta&t=O8Gk1v_tV_tKq1oM-D7tLxFfOhBm2WMdGXJKYRslUT0",
+      "https://i.imgur.com/MEtfjVk.jpg",
     twitterUrl: "#",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/bogdan-petrovi%C4%87-996085193/",
   },
   // More people...
 ];
