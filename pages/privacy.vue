@@ -109,11 +109,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Privacy policy</span
-            >
+            >Privacy policy</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p class="mt-8 text-xl text-gray-500 leading-8">
             Your privacy is important to us. It is Shigoto&#39;s policy to
@@ -131,11 +130,10 @@
         <h1>
           <span
             class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-            >Information we collect</span
-          >
+          >Information we collect</span>
           <span
             class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-          ></span>
+          />
         </h1>
         <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
           <p>
@@ -147,11 +145,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Log Data</span
-            >
+            >Log Data</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             When you visit our website, our servers may automatically log the
@@ -170,11 +167,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Personal Information</span
-            >
+            >Personal Information</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             We may ask for personal information which may include one or more of
@@ -188,11 +184,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Collection and Use of Information</span
-            >
+            >Collection and Use of Information</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             We may collect personal information from you when you do any of the
@@ -226,11 +221,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Security of Your Personal Information</span
-            >
+            >Security of Your Personal Information</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             When we collect and process personal information, and while we
@@ -253,11 +247,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >How long we keep your personal Information</span
-            >
+            >How long we keep your personal Information</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             We keep your personal information only for as long as we need to.
@@ -275,11 +268,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Children's Privacy</span
-            >
+            >Children's Privacy</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             We do not aim any of our products or services directly at children
@@ -289,11 +281,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Disclosure of Personal Information to Third Parties</span
-            >
+            >Disclosure of Personal Information to Third Parties</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>We may disclose personal information to:</p>
           <ul>
@@ -325,11 +316,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >International Transfers of Personal Information</span
-            >
+            >International Transfers of Personal Information</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             The personal information we collect is stored and/or processed where
@@ -346,11 +336,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Your Rights and Controlling Your Personal Information</span
-            >
+            >Your Rights and Controlling Your Personal Information</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             You always retain the right to withhold personal information from
@@ -397,11 +386,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Use of Cookies</span
-            >
+            >Use of Cookies</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             We use &ldquo;cookies&rdquo; to collect information about you and
@@ -413,11 +401,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Limits of Our Policy</span
-            >
+            >Limits of Our Policy</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             Our website may link to external sites that are not operated by us.
@@ -428,11 +415,10 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Changes to This policy</span
-            >
+            >Changes to This policy</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             At our discretion, we may change our privacy policy to reflect
@@ -449,18 +435,17 @@
           <h1>
             <span
               class="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase"
-              >Contact us</span
-            >
+            >Contact us</span>
             <span
               class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-            ></span>
+            />
           </h1>
           <p>
             For any questions or concerns regarding your privacy, you may
             contact us using the following details:
           </p>
           <p>
-            simeon.aleksov@shigo.to<br />
+            simeon.aleksov@shigo.to<br>
             info@shigo.to
           </p>
         </div>
@@ -471,8 +456,8 @@
 
 <script>
 export default {
-  name: "privacy",
-};
+  name: 'Privacy'
+}
 </script>
 
 <style scoped></style>

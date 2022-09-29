@@ -10,18 +10,18 @@
 
 <script>
 export default {
-  name: "NavLink",
+  name: 'NavLink',
   props: {
     to: {
       type: String,
-      default: () => "/",
+      default: () => '/'
     },
     text: {
       type: String,
-      default: () => "Link",
-    },
-  },
-};
+      default: () => 'Link'
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

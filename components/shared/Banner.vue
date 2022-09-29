@@ -32,14 +32,14 @@
 
 <script>
 export default {
-  name: "Banner",
+  name: 'Banner',
   props: {
     text: {
       type: String,
-      required: true,
-    },
-  },
-};
+      required: true
+    }
+  }
+}
 </script>
 
 <style scoped>

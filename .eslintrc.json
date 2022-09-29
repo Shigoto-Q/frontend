@@ -1,9 +1,9 @@
 {
   "root": true,
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "sourceType": "module",
-    "requireConfigFile": false
-  },
-  "extends": ["@nuxtjs"]
+    "ecmaVersion": 12,
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false,
+    "sourceType": "module"
+  },  "extends": ["@nuxtjs"]
 }

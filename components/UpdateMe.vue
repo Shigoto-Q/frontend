@@ -24,48 +24,48 @@
 </template>
 
 <script>
-import Button from "./shared/Button";
-import Alert from "~/components/Alert";
-import Input from "./shared/Input";
-import Form from "@/components/form/Form";
+import Button from './shared/Button'
+import Input from './shared/Input'
+import Alert from '~/components/Alert'
+import Form from '@/components/form/Form'
 export default {
-  name: "UpdateMe",
+  name: 'UpdateMe',
   components: { Form, Input, Button, Alert },
-  data() {
+  data () {
     return {
-      alertType: "success",
-      alertMessage: "",
-      alertTitle: "",
+      alertType: 'success',
+      alertMessage: '',
+      alertTitle: '',
       showAlert: false,
-      model: {},
-    };
+      model: {}
+    }
   },
   computed: {
-    schema() {
+    schema () {
       return {
         fields: [
           {
-            type: "myInput",
-            styleClasses: "flex-100",
-            inputType: "text",
-            fieldLabel: "E-mail",
-            name: "email",
-            model: "email",
-          },
-        ],
-      };
-    },
+            type: 'myInput',
+            styleClasses: 'flex-100',
+            inputType: 'text',
+            fieldLabel: 'E-mail',
+            name: 'email',
+            model: 'email'
+          }
+        ]
+      }
+    }
   },
   methods: {
-    subscribe() {
-      this.$axios.post("/api/v1/users/subscribe/", this.model).then(() => {
-        this.showAlert = true;
-        this.alertTitle = "You have been successfully subscribed!";
-        this.alertMessage = "We will let you know as soon as we launch!";
-      });
-    },
-  },
-};
+    subscribe () {
+      this.$axios.post('/api/v1/users/subscribe/', this.model).then(() => {
+        this.showAlert = true
+        this.alertTitle = 'You have been successfully subscribed!'
+        this.alertMessage = 'We will let you know as soon as we launch!'
+      })
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

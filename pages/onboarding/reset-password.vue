@@ -19,59 +19,59 @@
 </template>
 
 <script>
-import Form from "~/components/form/Form";
-import Alert from "~/components/Alert";
-import { statusCodes } from "~/constants/onboarding";
-import Button from "~/components/shared/Button";
+import Form from '~/components/form/Form'
+import Alert from '~/components/Alert'
+import { statusCodes } from '~/constants/onboarding'
+import Button from '~/components/shared/Button'
 
 export default {
-  name: "reset-password",
+  name: 'ResetPassword',
   components: {
     Button,
     Form,
-    Alert,
+    Alert
   },
-  data() {
+  data () {
     return {
       model: {},
-      alertType: "error",
-      alertMessage: "",
-      alertTitle: "",
-      showAlert: false,
-    };
+      alertType: 'error',
+      alertMessage: '',
+      alertTitle: '',
+      showAlert: false
+    }
   },
   computed: {
-    schema() {
+    schema () {
       return {
         fields: [
           {
-            type: "myInput",
-            inputType: "email",
-            fieldLabel: "E-mail",
-            model: "username",
-            placeholder: "user@example.com",
-          },
-        ],
-      };
-    },
-  },
-  mounted() {},
-  methods: {
-    async onClick() {
-      try {
-        await this.$auth.loginWith("local", {
-          data: this.model,
-        });
-      } catch (error) {
-        this.alertType = "error";
-        this.alertMessage = error.response.data.detail + "\n Please try again.";
-        this.alertTitle =
-          error.response.status + " " + statusCodes[error.response.status];
-        this.showAlert = true;
+            type: 'myInput',
+            inputType: 'email',
+            fieldLabel: 'E-mail',
+            model: 'username',
+            placeholder: 'user@example.com'
+          }
+        ]
       }
-    },
+    }
   },
-};
+  mounted () {},
+  methods: {
+    async onClick () {
+      try {
+        await this.$auth.loginWith('local', {
+          data: this.model
+        })
+      } catch (error) {
+        this.alertType = 'error'
+        this.alertMessage = error.response.data.detail + '\n Please try again.'
+        this.alertTitle =
+          error.response.status + ' ' + statusCodes[error.response.status]
+        this.showAlert = true
+      }
+    }
+  }
+}
 </script>
 
 <style scoped></style>

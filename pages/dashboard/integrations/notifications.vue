@@ -1,13 +1,13 @@
-<template></template>
+<template />
 
 <script>
 export default {
-  name: "notifications",
-  middleware: "auth",
-  layout(context) {
-    return "dashboard";
+  name: 'Notifications',
+  layout (context) {
+    return 'dashboard'
   },
-};
+  middleware: 'auth'
+}
 </script>
 
 <style scoped></style>

@@ -17,8 +17,8 @@
         <button
           class="burger burger1 navbar__button md:hidden focus:outline-none"
           :class="burgerClassObject"
-          @click="onClick"
           aria-label="hidden"
+          @click="onClick"
         >
           <svg fill="#7353ba" viewBox="0 0 20 20" class="w-6 h-6">
             <path
@@ -26,14 +26,14 @@
               fill-rule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
               clip-rule="evenodd"
-            ></path>
+            />
             <path
               v-show="open"
               fill-rule="evenodd"
               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
               clip-rule="evenodd"
               style="display: none"
-            ></path>
+            />
           </svg>
         </button>
       </div>
@@ -58,54 +58,54 @@
 </template>
 
 <script>
-import LinkButton from "./shared/LinkButton";
-import NavLink from "./shared/NavLink";
-import ShigotoLogo from "assets/branding/logo/LogoWithText.svg?inline";
-import Button from "~/components/shared/Button";
+import ShigotoLogo from 'assets/branding/logo/LogoWithText.svg?inline'
+import LinkButton from './shared/LinkButton'
+import NavLink from './shared/NavLink'
+import Button from '~/components/shared/Button'
 
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   components: { Button, NavLink, LinkButton, ShigotoLogo },
-  data() {
+  beforeRouteLeave () {
+    this.open = !this.open
+  },
+  data () {
     return {
-      open: false,
-    };
+      open: false
+    }
   },
   computed: {
-    classObject() {
+    classObject () {
       return {
         flex: this.open,
-        "flex-col": true,
-        "items-center": true,
-        "flex-grow": true,
+        'flex-col': true,
+        'items-center': true,
+        'flex-grow': true,
         hidden: !this.open,
-        "px-5": true,
-        "md:pb-0": true,
-        "md:flex": true,
-        "md:justify-end": true,
-        "md:flex-row": true,
-        "mb-6": this.open,
-      };
+        'px-5': true,
+        'md:pb-0': true,
+        'md:flex': true,
+        'md:justify-end': true,
+        'md:flex-row': true,
+        'mb-6': this.open
+      }
     },
-    burgerClassObject() {
+    burgerClassObject () {
       return {
         unToggled: !this.open,
-        toggled: this.open,
-      };
-    },
+        toggled: this.open
+      }
+    }
   },
   methods: {
-    onClick() {
-      this.open = !this.open;
+    onClick () {
+      this.open = !this.open
     },
-    async logOut() {
-      await this.$auth.logout();
-    },
-  },
-  beforeRouteLeave() {
-    this.open = !this.open;
-  },
-};
+    async logOut () {
+      await this.$auth.logout()
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

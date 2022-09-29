@@ -25,13 +25,13 @@
 </template>
 
 <script>
-import EditIcon from "~/assets/icons/Edit.svg?inline";
-import ResetIcon from "~/assets/icons/Reset.svg?inline";
+import EditIcon from '~/assets/icons/Edit.svg?inline'
+import ResetIcon from '~/assets/icons/Reset.svg?inline'
 
 export default {
   components: {
     EditIcon,
-    ResetIcon,
-  },
-};
+    ResetIcon
+  }
+}
 </script>

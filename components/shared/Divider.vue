@@ -13,14 +13,14 @@
 
 <script>
 export default {
-  name: "Divider",
+  name: 'Divider',
   props: {
     title: {
       type: String,
-      required: true,
-    },
-  },
-};
+      required: true
+    }
+  }
+}
 </script>
 
 <style scoped></style>

@@ -3,21 +3,23 @@
     <div :class="sidebarClasses">
       <div class="logo">
         <img
+          id="logo_img"
           src="../../assets/branding/logo/LogoWithoutText.png"
           alt="logo"
-          id="logo_img"
           @click="onImageClick"
-        />
-        <div class="logo_text">SHIGOTO</div>
-        <i class="bx bx-menu-alt-right" id="btn" @click="onImageClick"></i>
+        >
+        <div class="logo_text">
+          SHIGOTO
+        </div>
+        <i id="btn" class="bx bx-menu-alt-right" @click="onImageClick" />
       </div>
       <div class="nav_list">
         <div v-for="route in routes">
-          <span v-show="collapse" class="route__title mt-4"> </span>
+          <span v-show="collapse" class="route__title mt-4" />
           <ul>
             <li v-for="r in route.children">
               <NuxtLink :to="r.url" active-class="route__active">
-                <component class="w-8 h-8 ml-6" :is="r.icon" />
+                <component :is="r.icon" class="w-8 h-8 ml-6" />
                 <span class="links_name">{{ r.route }}</span>
               </NuxtLink>
               <span class="tooltip">{{ r.route }}</span>
@@ -26,7 +28,7 @@
         </div>
         <div class="logout">
           <a href="#">
-            <i class="bx bx-log-out"></i>
+            <i class="bx bx-log-out" />
             <span class="links_name">Log out</span>
           </a>
           <span class="tooltip">Log out</span>
@@ -37,28 +39,28 @@
 </template>
 
 <script>
-import ShigotoIcon from "../../assets/logo.svg?inline";
-import KubernetesIcon from "../../assets/icons/kubernetes.svg?inline";
-import AvatarIcon from "../../assets/icons/Avatar.svg?inline";
-import ChevronLeftIcon from "../../assets/icons/ChevronLeft.svg?inline";
-import ChevronDownIcon from "../../assets/icons/ChevronDown.svg?inline";
-import ScheduleIcon from "../../assets/icons/Schedule.svg?inline";
-import LogsIcon from "../../assets/icons/Logs.svg?inline";
-import TaskIcon from "../../assets/icons/TaskIcon.svg?inline";
-import CreateTaskIcon from "../../assets/icons/CreateTask.svg?inline";
-import SettingsIcon from "../../assets/icons/SettingsIcon.svg?inline";
-import AlertIcon from "../../assets/icons/AlertIcon.svg?inline";
-import NotificationIcon from "../../assets/icons/NotificationIcon.svg?inline";
-import DockerIcon from "@/assets/icons/DockerColorIcon.svg?inline";
-import SidebarElement from "~/components/dashboard/SidebarElement";
-import Button from "~/components/shared/Button";
-import Input from "~/components/shared/Input";
-import ThemeToggle from "~/components/ThemeToggle";
-import ToggleInput from "~/components/shared/ToggleInput";
-import UserDropdown from "~/components/dashboard/UserDropdown";
+import ShigotoIcon from '../../assets/logo.svg?inline'
+import KubernetesIcon from '../../assets/icons/kubernetes.svg?inline'
+import AvatarIcon from '../../assets/icons/Avatar.svg?inline'
+import ChevronLeftIcon from '../../assets/icons/ChevronLeft.svg?inline'
+import ChevronDownIcon from '../../assets/icons/ChevronDown.svg?inline'
+import ScheduleIcon from '../../assets/icons/Schedule.svg?inline'
+import LogsIcon from '../../assets/icons/Logs.svg?inline'
+import TaskIcon from '../../assets/icons/TaskIcon.svg?inline'
+import CreateTaskIcon from '../../assets/icons/CreateTask.svg?inline'
+import SettingsIcon from '../../assets/icons/SettingsIcon.svg?inline'
+import AlertIcon from '../../assets/icons/AlertIcon.svg?inline'
+import NotificationIcon from '../../assets/icons/NotificationIcon.svg?inline'
+import DockerIcon from '@/assets/icons/DockerColorIcon.svg?inline'
+import SidebarElement from '~/components/dashboard/SidebarElement'
+import Button from '~/components/shared/Button'
+import Input from '~/components/shared/Input'
+import ThemeToggle from '~/components/ThemeToggle'
+import ToggleInput from '~/components/shared/ToggleInput'
+import UserDropdown from '~/components/dashboard/UserDropdown'
 
 export default {
-  name: "Sidebar",
+  name: 'Sidebar',
   components: {
     UserDropdown,
     ToggleInput,
@@ -76,89 +78,89 @@ export default {
     ChevronLeftIcon,
     ChevronDownIcon,
     LogsIcon,
-    CreateTaskIcon,
+    CreateTaskIcon
   },
-  data() {
+  data () {
     return {
       collapse: true,
       routes: [
         {
-          title: "Deployment",
+          title: 'Deployment',
           children: [
             {
-              route: "Kubernetes",
-              url: "/dashboard/deploy",
-              icon: KubernetesIcon,
+              route: 'Kubernetes',
+              url: '/dashboard/deploy',
+              icon: KubernetesIcon
             },
             {
-              route: "Docker",
-              url: "/dashboard/docker",
-              icon: DockerIcon,
-            },
-          ],
+              route: 'Docker',
+              url: '/dashboard/docker',
+              icon: DockerIcon
+            }
+          ]
         },
         {
-          title: "Cron",
+          title: 'Cron',
           children: [
             {
-              route: "Task management",
-              url: "/dashboard/tasks/manage",
-              icon: TaskIcon,
+              route: 'Task management',
+              url: '/dashboard/tasks/manage',
+              icon: TaskIcon
             },
             {
-              route: "Create schedule",
-              url: "/dashboard/tasks/schedule",
-              icon: ScheduleIcon,
+              route: 'Create schedule',
+              url: '/dashboard/tasks/schedule',
+              icon: ScheduleIcon
             },
             {
-              route: "Logs",
-              url: "/dashboard/tasks/logs",
-              icon: LogsIcon,
-            },
-          ],
+              route: 'Logs',
+              url: '/dashboard/tasks/logs',
+              icon: LogsIcon
+            }
+          ]
         },
         {
-          title: "Integrations",
+          title: 'Integrations',
           children: [
             {
-              route: "Alerts",
-              url: "/dashboard/integrations/alerts",
-              icon: AlertIcon,
+              route: 'Alerts',
+              url: '/dashboard/integrations/alerts',
+              icon: AlertIcon
             },
             {
-              route: "Notifications",
-              url: "/dashboard/integrations/notifications",
-              icon: NotificationIcon,
-            },
-          ],
+              route: 'Notifications',
+              url: '/dashboard/integrations/notifications',
+              icon: NotificationIcon
+            }
+          ]
         },
         {
-          title: "Settings",
+          title: 'Settings',
           children: [
             {
-              route: "Settings",
-              url: "/dashboard/settings",
-              icon: SettingsIcon,
-            },
-          ],
-        },
-      ],
-    };
+              route: 'Settings',
+              url: '/dashboard/settings',
+              icon: SettingsIcon
+            }
+          ]
+        }
+      ]
+    }
   },
   computed: {
-    sidebarClasses() {
+    sidebarClasses () {
       return {
         sidebar: true,
-        open: this.collapse,
-      };
-    },
+        open: this.collapse
+      }
+    }
   },
   methods: {
-    onImageClick() {
-      this.collapse = !this.collapse;
-    },
-  },
-};
+    onImageClick () {
+      this.collapse = !this.collapse
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

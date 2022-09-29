@@ -13,18 +13,18 @@
 
 <script>
 export default {
-  name: "Label",
+  name: 'Label',
   props: {
     label: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     context: {
       type: Object,
-      required: true,
-    },
-  },
-};
+      required: true
+    }
+  }
+}
 </script>
 
 <style scoped></style>

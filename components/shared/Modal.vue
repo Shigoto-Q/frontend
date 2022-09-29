@@ -11,22 +11,22 @@
         <slot
           class="text-lg leading-6 font-medium text-gray-900 mb-2"
           name="title"
-        ></slot>
+        />
       </span>
     </div>
     <div>
-      <slot class="text-sm text-gray-500" v-bind:params="params"></slot>
+      <slot class="text-sm text-gray-500" :params="params" />
     </div>
   </vue-final-modal>
 </template>
 
 <script>
-import Button from "~/components/shared/Button";
+import Button from '~/components/shared/Button'
 export default {
-  name: "Modal",
+  name: 'Modal',
   components: { Button },
-  inheritAttrs: false,
-};
+  inheritAttrs: false
+}
 </script>
 
 <style scoped></style>

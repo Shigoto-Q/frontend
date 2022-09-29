@@ -16,8 +16,7 @@
               </span>
               <span
                 class="ml-3 text-sm font-medium text-gray-500 group-hover:text-gray-900"
-                >{{ step.name }}</span
-              >
+              >{{ step.name }}</span>
             </span>
           </a>
           <a
@@ -61,19 +60,19 @@
 </template>
 
 <script>
-import CheckCircleIcon from "@/assets/icons/CheckCircleIcon.svg?inline";
+import CheckCircleIcon from '@/assets/icons/CheckCircleIcon.svg?inline'
 
 export default {
   components: {
-    CheckCircleIcon,
+    CheckCircleIcon
   },
   props: {
     steps: {
       type: Array,
-      require: true,
-    },
-  },
-};
+      require: true
+    }
+  }
+}
 </script>
 <style scoped lang="scss">
 .pulse {

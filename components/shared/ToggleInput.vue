@@ -1,14 +1,14 @@
 <template>
   <label>
-    <input type="checkbox" />
-    <span class="check"></span>
+    <input type="checkbox">
+    <span class="check" />
   </label>
 </template>
 
 <script>
 export default {
-  name: "ToggleInput",
-};
+  name: 'ToggleInput'
+}
 </script>
 
 <style scoped>

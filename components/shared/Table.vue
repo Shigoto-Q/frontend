@@ -49,16 +49,22 @@
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ task.lastRunAt }}</div>
+                  <div class="text-sm text-gray-900">
+                    {{ task.lastRunAt }}
+                  </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ task.taskType }}</div>
+                  <div class="text-sm text-gray-900">
+                    {{ task.taskType }}
+                  </div>
                   <div class="text-sm text-gray-500">
                     {{ types[task.taskType ? task.taskType : 0] }}
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ task.schedule }}</div>
+                  <div class="text-sm text-gray-900">
+                    {{ task.schedule }}
+                  </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <span
@@ -83,10 +89,14 @@
                   <XIcon v-else />
                 </td>
                 <td class="px-1 py-4 text-center">
-                  <Button @click="runTask(task.externalTaskId)">Run</Button>
+                  <Button @click="runTask(task.externalTaskId)">
+                    Run
+                  </Button>
                 </td>
                 <td class="px-1 py-1 text-center">
-                  <Button @click="show(task)">Edit</Button>
+                  <Button @click="show(task)">
+                    Edit
+                  </Button>
                 </td>
               </tr>
             </tbody>
@@ -95,7 +105,9 @@
       </div>
     </div>
     <Modal v-model="showModal">
-      <template v-slot:title>Edit task</template>
+      <template #title>
+        Edit task
+      </template>
       <ToolbarDivider class="mt-4" />
       <div class="flex flex-col">
         <Form
@@ -105,28 +117,32 @@
         />
       </div>
       <div class="flex justify-between mt-10">
-        <Button @click="showModal = false" secondary>Cancel</Button>
-        <Button @click="handleSubmit">Submit</Button>
+        <Button secondary @click="showModal = false">
+          Cancel
+        </Button>
+        <Button @click="handleSubmit">
+          Submit
+        </Button>
       </div>
     </Modal>
   </div>
 </template>
 
 <script>
-import Button from "~/components/shared/Button";
-import ToolbarDivider from "~/components/shared/ToolbarDivider";
-import { taskTypes } from "~/constants/tasks";
-import { notificationTypes } from "@/constants/notifications";
-import CheckMarkIcon from "~/assets/icons/CheckMark.svg?inline";
-import XIcon from "~/assets/icons/X.svg?inline";
-import Modal from "@/components/shared/Modal";
-import Form from "@/components/form/Form";
-import Input from "@/components/shared/Input";
-import Checkbox from "@/components/shared/Checkbox";
-import tasksApi from "@/api/tasks";
+import Button from '~/components/shared/Button'
+import ToolbarDivider from '~/components/shared/ToolbarDivider'
+import { taskTypes } from '~/constants/tasks'
+import { notificationTypes } from '@/constants/notifications'
+import CheckMarkIcon from '~/assets/icons/CheckMark.svg?inline'
+import XIcon from '~/assets/icons/X.svg?inline'
+import Modal from '@/components/shared/Modal'
+import Form from '@/components/form/Form'
+import Input from '@/components/shared/Input'
+import Checkbox from '@/components/shared/Checkbox'
+import tasksApi from '@/api/tasks'
 
 export default {
-  name: "Table",
+  name: 'Table',
   components: {
     Checkbox,
     Input,
@@ -135,102 +151,102 @@ export default {
     Button,
     CheckMarkIcon,
     XIcon,
-    ToolbarDivider,
+    ToolbarDivider
   },
   props: {
     columns: {
       type: Array,
-      required: true,
+      required: true
     },
     tasks: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
-  data() {
+  data () {
     return {
       types: taskTypes,
       showModal: false,
-      editFormModal: {},
-    };
+      editFormModal: {}
+    }
   },
   computed: {
-    schema() {
+    schema () {
       return {
         fields: [
           {
-            type: "myInput",
-            inputType: "text",
-            fieldLabel: "Name",
-            styleClasses: "flex-100",
-            name: "name",
-            placeholder: "My fabolous task",
-            model: "name",
+            type: 'myInput',
+            inputType: 'text',
+            fieldLabel: 'Name',
+            styleClasses: 'flex-100',
+            name: 'name',
+            placeholder: 'My fabolous task',
+            model: 'name'
           },
           {
-            type: "myInput",
-            inputType: "text",
-            styleClasses: "flex-100",
-            fieldLabel: "Type",
-            name: "type",
-            model: "type",
+            type: 'myInput',
+            inputType: 'text',
+            styleClasses: 'flex-100',
+            fieldLabel: 'Type',
+            name: 'type',
+            model: 'type'
           },
           {
-            type: "myCheckbox",
-            inputType: "switch",
-            styleClasses: "flex-100",
-            fieldLabel: "Enabled",
-            description: "If false, task will not be executed.",
-            model: "enabled",
-            default: false,
+            type: 'myCheckbox',
+            inputType: 'switch',
+            styleClasses: 'flex-100',
+            fieldLabel: 'Enabled',
+            description: 'If false, task will not be executed.',
+            model: 'enabled',
+            default: false
           },
           {
-            type: "myCheckbox",
-            inputType: "switch",
-            fieldLabel: "One off",
-            styleClasses: "flex-100",
+            type: 'myCheckbox',
+            inputType: 'switch',
+            fieldLabel: 'One off',
+            styleClasses: 'flex-100',
             description:
-              "If checked, the schedule will only run the task a single time.",
-            model: "oneOff",
-            default: false,
+              'If checked, the schedule will only run the task a single time.',
+            model: 'oneOff',
+            default: false
           },
           {
-            type: "myInput",
-            inputType: "text",
-            fieldLabel: "Schedule",
-            model: "schedule",
-            styleClasses: "flex-100",
-          },
-        ],
-      };
-    },
+            type: 'myInput',
+            inputType: 'text',
+            fieldLabel: 'Schedule',
+            model: 'schedule',
+            styleClasses: 'flex-100'
+          }
+        ]
+      }
+    }
   },
   methods: {
-    async runTask(externalTaskId) {
+    async runTask (externalTaskId) {
       await this.$store
-        .dispatch("tasks/runTask", { externalTaskId })
+        .dispatch('tasks/runTask', { externalTaskId })
         .then(() => {
           this.$notify({
-            title: "Task ran successfully",
+            title: 'Task ran successfully',
             duration: 3000,
             body: `Task with id ${externalTaskId} has been ran successfully.`,
-            type: notificationTypes.SUCCESS,
-          });
+            type: notificationTypes.SUCCESS
+          })
         })
         .catch((err) => {
           this.$notify({
             title: `Error status: ${err.response.status}`,
             duration: 3000,
             body: `${err.response.data.message}`,
-            type: notificationTypes.ERROR,
-          });
-        });
+            type: notificationTypes.ERROR
+          })
+        })
     },
-    show(task) {
-      this.editFormModal = task;
-      this.showModal = true;
+    show (task) {
+      this.editFormModal = task
+      this.showModal = true
     },
-    handleSubmit() {},
-  },
-};
+    handleSubmit () {}
+  }
+}
 </script>

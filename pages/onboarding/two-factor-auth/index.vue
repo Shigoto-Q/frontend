@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import OTP from "@/components/OTP";
+import OTP from '@/components/OTP'
 export default {
-  name: "index",
+  name: 'Index',
   components: {
-    OTP,
-  },
-};
+    OTP
+  }
+}
 </script>
 
 <style scoped></style>

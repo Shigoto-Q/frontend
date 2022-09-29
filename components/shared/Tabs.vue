@@ -38,12 +38,12 @@
 
 <script>
 export default {
-  name: "Tabs",
+  name: 'Tabs',
   props: {
     tabs: {
       type: Array,
-      required: true,
-    },
-  },
-};
+      required: true
+    }
+  }
+}
 </script>

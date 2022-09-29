@@ -3,7 +3,7 @@
     <div class="">
       <VerticalStep class="stepper" :steps="steps" />
     </div>
-    <div class="content-wrapper mt-6" v-if="isSecondStep">
+    <div v-if="isSecondStep" class="content-wrapper mt-6">
       <h2 class="content__subtitle">
         Launch your authenticator app and scan this QR code.
       </h2>
@@ -22,7 +22,7 @@
       <QRComponent class="content__qrcode" value="hehe" />
       <LinkButton class="content__button" text="Continue" />
     </div>
-    <div class="content-wrapper content__second-step mt-6" v-if="isFirstStep">
+    <div v-if="isFirstStep" class="content-wrapper content__second-step mt-6">
       <h1 class="content__title">
         We strongly encourage our users to enable 2-factor authorization.
       </h1>
@@ -49,24 +49,26 @@
           <AppStoreIcon class="content__store-icon" />
         </a>
       </div>
-      <Button @click="handleFirstStep">Continue</Button>
+      <Button @click="handleFirstStep">
+        Continue
+      </Button>
     </div>
-    <div class="empty"></div>
+    <div class="empty" />
   </div>
 </template>
 
 <script>
-import QRComponent from "@/components/shared/QRComponent";
-import Button from "@/components/shared/Button";
-import VerticalStep from "@/components/shared/VerticalStep";
-import LinkButton from "@/components/shared/LinkButton";
-import TwoFactorIcon from "@/assets/icons/TwoFactorIcon.svg?inline";
-import GooglePlayIcon from "@/assets/icons/GooglePlayIcon.svg?inline";
-import AppStoreIcon from "@/assets/icons/AppStoreIcon.svg?inline";
-import Link from "@/components/shared/Link";
+import QRComponent from '@/components/shared/QRComponent'
+import Button from '@/components/shared/Button'
+import VerticalStep from '@/components/shared/VerticalStep'
+import LinkButton from '@/components/shared/LinkButton'
+import TwoFactorIcon from '@/assets/icons/TwoFactorIcon.svg?inline'
+import GooglePlayIcon from '@/assets/icons/GooglePlayIcon.svg?inline'
+import AppStoreIcon from '@/assets/icons/AppStoreIcon.svg?inline'
+import Link from '@/components/shared/Link'
 
 export default {
-  name: "generate",
+  name: 'Generate',
   components: {
     Link,
     LinkButton,
@@ -75,33 +77,33 @@ export default {
     QRComponent,
     TwoFactorIcon,
     GooglePlayIcon,
-    AppStoreIcon,
+    AppStoreIcon
   },
-  data() {
+  data () {
     return {
       steps: [
         {
-          name: "Install two-factor authentication app",
-          href: "#",
-          status: "current",
+          name: 'Install two-factor authentication app',
+          href: '#',
+          status: 'current'
         },
-        { name: "Scan the QR code", href: "#", status: "upcoming" },
-        { name: "Connect and verify your code", href: "#", status: "upcoming" },
+        { name: 'Scan the QR code', href: '#', status: 'upcoming' },
+        { name: 'Connect and verify your code', href: '#', status: 'upcoming' }
       ],
       isFirstStep: true,
       isSecondStep: false,
-      isFinalStep: false,
-    };
+      isFinalStep: false
+    }
   },
   methods: {
-    handleFirstStep() {
-      this.isFirstStep = false;
-      this.isSecondStep = true;
-      this.steps[0].status = "complete";
-      this.steps[1].status = "current";
-    },
-  },
-};
+    handleFirstStep () {
+      this.isFirstStep = false
+      this.isSecondStep = true
+      this.steps[0].status = 'complete'
+      this.steps[1].status = 'current'
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

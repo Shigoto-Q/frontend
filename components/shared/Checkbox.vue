@@ -6,10 +6,10 @@
         :name="name"
         type="checkbox"
         class="form-control focus:ring-indigo-500 h-4 w-4 text-mana border-gray-300 rounded"
+        :checked="inputModel"
         @input="onInput"
         @change="onChange"
-        :checked="inputModel"
-      />
+      >
     </div>
     <div class="ml-3 text-sm">
       <label for="candidates" class="font-medium text-vulcan">{{
@@ -23,43 +23,43 @@
 </template>
 <script>
 export default {
-  name: "Checkbox",
+  name: 'Checkbox',
   props: {
     model: {
       type: Boolean,
-      default: () => false,
+      default: () => false
     },
     label: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     description: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     placeholder: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     name: {
       type: String,
-      default: () => "",
-    },
+      default: () => ''
+    }
   },
   computed: {
-    inputModel() {
-      return this.model;
-    },
+    inputModel () {
+      return this.model
+    }
   },
   methods: {
-    onInput(e) {
-      this.$emit("input", e.target.checked);
+    onInput (e) {
+      this.$emit('input', e.target.checked)
     },
-    onChange(e) {
-      this.$emit("change", e.target.checked);
-    },
-  },
-};
+    onChange (e) {
+      this.$emit('change', e.target.checked)
+    }
+  }
+}
 </script>
 
 <style scoped></style>

@@ -36,69 +36,69 @@
         fill="#3B2898"
       />
     </svg>
-    <div class="btn no-highlight" id="btn">
+    <div id="btn" class="btn no-highlight">
       <div class="knob no-highlight">
-        <div class="light no-highlight"></div>
-        <div class="top no-highlight"></div>
+        <div class="light no-highlight" />
+        <div class="top no-highlight" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { gsap } from "gsap";
+import { gsap } from 'gsap'
 
 export default {
-  name: "ThemeToggle",
-  data() {
+  name: 'ThemeToggle',
+  data () {
     return {
-      isChecked: false,
-    };
+      isChecked: false
+    }
   },
-  mounted() {
-    const btn = document.getElementById("btn");
-    btn.addEventListener("mousedown", this.onButtonDown);
-    btn.addEventListener("mouseup", this.onButtonUp);
+  mounted () {
+    const btn = document.getElementById('btn')
+    btn.addEventListener('mousedown', this.onButtonDown)
+    btn.addEventListener('mouseup', this.onButtonUp)
   },
   methods: {
-    onButtonDown() {
-      const tl = gsap.timeline();
-      tl.to("#rope-end", { duration: 0.2, y: 160 }, "start");
-      tl.to("#rope", { duration: 0.2, morphSVG: "#rope-extended" }, "start");
+    onButtonDown () {
+      const tl = gsap.timeline()
+      tl.to('#rope-end', { duration: 0.2, y: 160 }, 'start')
+      tl.to('#rope', { duration: 0.2, morphSVG: '#rope-extended' }, 'start')
     },
-    onButtonUp() {
-      const tl = gsap.timeline();
+    onButtonUp () {
+      const tl = gsap.timeline()
       tl.to(
-        "#rope",
-        { duration: 0.4, morphSVG: "#rope-compressed", ease: "bounce.out" },
-        "up"
-      );
+        '#rope',
+        { duration: 0.4, morphSVG: '#rope-compressed', ease: 'bounce.out' },
+        'up'
+      )
       tl.to(
-        "#rope",
-        { duration: 0.2, morphSVG: "#rope-original", ease: "bounce.out" },
-        "down"
-      );
-      tl.to("#rope-end", { duration: 0.4, y: 90, ease: "bounce.out" }, "up");
-      tl.to("#rope-end", { duration: 0.2, y: 120, ease: "bounce.out" }, "down");
+        '#rope',
+        { duration: 0.2, morphSVG: '#rope-original', ease: 'bounce.out' },
+        'down'
+      )
+      tl.to('#rope-end', { duration: 0.4, y: 90, ease: 'bounce.out' }, 'up')
+      tl.to('#rope-end', { duration: 0.2, y: 120, ease: 'bounce.out' }, 'down')
 
-      this.isChecked = !this.isChecked;
+      this.isChecked = !this.isChecked
 
-      let x = 0;
-      let backgroundColor = "#827D96";
-      let size = "100px";
+      let x = 0
+      let backgroundColor = '#827D96'
+      let size = '100px'
 
       if (this.isChecked) {
-        x = 160;
-        backgroundColor = "#FFFFFF";
-        size = "500px";
+        x = 160
+        backgroundColor = '#FFFFFF'
+        size = '500px'
       }
 
-      tl.to(".knob", { x, duration: 1 }, "up");
-      tl.to(".top", { backgroundColor, duration: 1 }, "up");
-      tl.to(".light", { width: size, height: size, duration: 1 }, "up");
-    },
-  },
-};
+      tl.to('.knob', { x, duration: 1 }, 'up')
+      tl.to('.top', { backgroundColor, duration: 1 }, 'up')
+      tl.to('.light', { width: size, height: size, duration: 1 }, 'up')
+    }
+  }
+}
 </script>
 
 <style scoped>

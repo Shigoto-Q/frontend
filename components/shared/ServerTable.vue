@@ -21,126 +21,128 @@
         {{ props.formattedRow[props.column.field] }}
       </span>
     </template>
-    <div class="table__actions-buttons" slot="table-actions">
+    <div slot="table-actions" class="table__actions-buttons">
       <Button v-show="showCreateButton" @click="handleCreateNew">
         Create new
       </Button>
-      <Button @click="resetTable" secondary>Reset filters</Button>
+      <Button secondary @click="resetTable">
+        Reset filters
+      </Button>
     </div>
   </VueGoodTable>
 </template>
 
 <script>
-import "vue-good-table/dist/vue-good-table.css";
-import { VueGoodTable } from "vue-good-table";
-import Button from "@/components/shared/Button";
+import 'vue-good-table/dist/vue-good-table.css'
+import { VueGoodTable } from 'vue-good-table'
+import Button from '@/components/shared/Button'
 
 export default {
-  name: "ServerTable",
+  name: 'ServerTable',
   components: {
     VueGoodTable,
-    Button,
+    Button
   },
   props: {
     columns: {
       type: Array,
-      required: true,
+      required: true
     },
     endpoint: {
       type: String,
-      required: true,
+      required: true
     },
     showCreateButton: {
       type: Boolean,
-      default: () => false,
+      default: () => false
     },
     createNew: {
       type: Function,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
       initRows: [],
       totalRows: 0,
       paginationOptions: {
-        enabled: true,
-      },
-    };
+        enabled: true
+      }
+    }
   },
   computed: {
     rows: {
-      get() {
-        return this.initRows;
+      get () {
+        return this.initRows
       },
-      set(newValue) {
-        this.initRows = newValue;
-      },
-    },
+      set (newValue) {
+        this.initRows = newValue
+      }
+    }
   },
-  mounted() {
+  mounted () {
     this.getFromServer({}).then((response) => {
-      this.rows = response.data;
-      this.totalRows = response.count;
-    });
+      this.rows = response.data
+      this.totalRows = response.count
+    })
   },
   methods: {
-    handleCreateNew() {
+    handleCreateNew () {
       if (this.createNew) {
-        this.createNew();
+        this.createNew()
       }
     },
-    resetTable() {
-      this.serverParams = {};
-      this.loadItems();
+    resetTable () {
+      this.serverParams = {}
+      this.loadItems()
     },
-    getFromServer(params) {
+    getFromServer (params) {
       const config = {
         headers: {
           Authorization: `Bearer ${
-            this.$auth.strategy.token.get().split(" ")[1]
-          }`,
+            this.$auth.strategy.token.get().split(' ')[1]
+          }`
         },
-        params,
-      };
+        params
+      }
       return this.$axios.get(this.endpoint, config).then((response) => {
-        return response.data;
-      });
+        return response.data
+      })
     },
-    updateParams(newProps) {
-      this.serverParams = Object.assign({}, this.serverParams, newProps);
-    },
-
-    onPageChange(params) {
-      this.updateParams({ page: params.currentPage });
-      this.loadItems();
+    updateParams (newProps) {
+      this.serverParams = Object.assign({}, this.serverParams, newProps)
     },
 
-    onPerPageChange(params) {
-      this.updateParams({ perPage: params.currentPerPage });
-      this.loadItems();
+    onPageChange (params) {
+      this.updateParams({ page: params.currentPage })
+      this.loadItems()
     },
 
-    onSortChange(params) {
+    onPerPageChange (params) {
+      this.updateParams({ perPage: params.currentPerPage })
+      this.loadItems()
+    },
+
+    onSortChange (params) {
       this.updateParams({
         type: params[0].type,
-        field: params[0].field,
-      });
-      this.loadItems();
+        field: params[0].field
+      })
+      this.loadItems()
     },
 
-    onColumnFilter(params) {
-      this.updateParams(params);
-      this.loadItems();
+    onColumnFilter (params) {
+      this.updateParams(params)
+      this.loadItems()
     },
-    loadItems() {
+    loadItems () {
       this.getFromServer(this.serverParams).then((response) => {
-        this.totalRecords = response.totalRecords;
-        this.rows = response.data;
-      });
-    },
-  },
-};
+        this.totalRecords = response.totalRecords
+        this.rows = response.data
+      })
+    }
+  }
+}
 </script>
 <style lang="scss">
 table {

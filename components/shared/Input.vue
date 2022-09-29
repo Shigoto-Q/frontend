@@ -2,16 +2,16 @@
   <div class="floating-form">
     <div class="floating-label">
       <input
-        class="floating-input"
+        :id="name"
         v-model="inputModel"
+        class="floating-input"
         :name="name"
         :type="type"
-        :id="name"
         :disabled="disabled"
+        placeholder=" "
         @input="onInput"
         @change="onChange"
-        placeholder=" "
-      />
+      >
       <div
         v-show="type === 'password'"
         class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
@@ -26,82 +26,82 @@
 </template>
 
 <script>
-import VisibilityIcon from "@/assets/icons/VisibilityIcon.svg?inline";
-const inputs = document.querySelectorAll("input");
+import VisibilityIcon from '@/assets/icons/VisibilityIcon.svg?inline'
+const inputs = document.querySelectorAll('input')
 
 inputs.forEach((input) => {
-  input.addEventListener("blur", (event) => {
+  input.addEventListener('blur', (event) => {
     if (event.target.value) {
-      input.classList.add("is-valid");
+      input.classList.add('is-valid')
     } else {
-      input.classList.remove("is-valid");
+      input.classList.remove('is-valid')
     }
-  });
-});
+  })
+})
 export default {
-  name: "Input",
+  name: 'Input',
   components: {
-    VisibilityIcon,
+    VisibilityIcon
   },
   props: {
     model: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     label: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     placeholder: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     name: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     type: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     disabled: {
       type: Boolean,
-      default: () => false,
+      default: () => false
     },
     inline: {
       type: Boolean,
-      default: () => true,
-    },
+      default: () => true
+    }
   },
-  data() {
+  data () {
     return {
-      localModel: "",
-    };
+      localModel: ''
+    }
   },
   computed: {
     inputModel: {
-      get() {
-        return this.localModel;
+      get () {
+        return this.localModel
       },
-      set(value) {
-        return (this.localModel = value);
-      },
-    },
+      set (value) {
+        return (this.localModel = value)
+      }
+    }
   },
   watch: {
-    model() {
-      this.localModel = this.model;
-    },
+    model () {
+      this.localModel = this.model
+    }
   },
   methods: {
-    onInput(e) {
-      this.$emit("input", e.target.value);
+    onInput (e) {
+      this.$emit('input', e.target.value)
     },
-    onChange(e) {
-      this.$emit("change", e.target.value);
-    },
-  },
-};
+    onChange (e) {
+      this.$emit('change', e.target.value)
+    }
+  }
+}
 </script>
 
 <style scoped>

@@ -8,46 +8,46 @@
 </template>
 
 <script>
-import "vue-good-table/dist/vue-good-table.css";
-import { VueGoodTable } from "vue-good-table";
-import ServerTable from "~/components/shared/ServerTable";
+import 'vue-good-table/dist/vue-good-table.css'
+import { VueGoodTable } from 'vue-good-table'
+import ServerTable from '~/components/shared/ServerTable'
 
 export default {
-  name: "users.vue",
-  layout(context) {
-    return "backoffice";
-  },
+  name: 'users.vue',
   components: {
     ServerTable,
-    VueGoodTable,
+    VueGoodTable
   },
-  data() {
+  layout (context) {
+    return 'backoffice'
+  },
+  data () {
     return {
       columns: [
         {
-          label: "First Name",
-          field: "firstName",
+          label: 'First Name',
+          field: 'firstName'
         },
         {
-          label: "Last Name",
-          field: "lastName",
+          label: 'Last Name',
+          field: 'lastName'
         },
         {
-          label: "E-mail",
-          field: "email",
+          label: 'E-mail',
+          field: 'email'
         },
         {
-          label: "Company",
-          field: "company",
+          label: 'Company',
+          field: 'company'
         },
         {
-          label: "Country",
-          field: "country",
-        },
-      ],
-    };
-  },
-};
+          label: 'Country',
+          field: 'country'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped></style>

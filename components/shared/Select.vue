@@ -4,11 +4,10 @@
   >
     <label
       class="absolute inline-block px-1 -mt-px text-xs font-medium bg-white text-stone -top-2 left-2"
-      >{{ label }}</label
-    >
+    >{{ label }}</label>
     <multiselect
-      class="block w-full py-1 bg-white border-0 text-vulcan placeholder-cat focus:ring-0 sm:text-sm rounded"
       v-model="inputModel"
+      class="block w-full py-1 bg-white border-0 text-vulcan placeholder-cat focus:ring-0 sm:text-sm rounded"
       track-by="name"
       open-direction="bottom"
       :label="name"
@@ -17,8 +16,8 @@
       :searchable="false"
       :allow-empty="true"
       :multiple="multiple"
-      @select="onChange"
       :preselect-first="true"
+      @select="onChange"
     >
       <template slot="singleLabel" slot-scope="props">
         <span class="option__desc">
@@ -37,61 +36,61 @@
 </template>
 <script>
 export default {
-  name: "Select",
+  name: 'Select',
   props: {
     model: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     label: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     placeholder: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     name: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     type: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     options: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     multiple: {
       type: Boolean,
-      default: () => false,
-    },
+      default: () => false
+    }
   },
-  data() {
+  data () {
     return {
-      value: this.model,
-    };
+      value: this.model
+    }
   },
   computed: {
     inputModel: {
-      get() {
-        return this.value;
+      get () {
+        return this.value
       },
-      set(newValue) {
-        this.value = newValue;
-      },
-    },
+      set (newValue) {
+        this.value = newValue
+      }
+    }
   },
   methods: {
-    onInput(e) {
-      this.$emit("input", e.target.value);
+    onInput (e) {
+      this.$emit('input', e.target.value)
     },
-    onChange(e) {
-      this.$emit("change", e);
-    },
-  },
-};
+    onChange (e) {
+      this.$emit('change', e)
+    }
+  }
+}
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css">

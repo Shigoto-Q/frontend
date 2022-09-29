@@ -44,7 +44,7 @@
     "vue-form-generator": "^2.3.4",
     "vue-good-table": "^2.21.11",
     "vue-multiselect": "^2.1.6",
-    "vue-server-renderer": "^2.6.14",
+    "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0"
   },

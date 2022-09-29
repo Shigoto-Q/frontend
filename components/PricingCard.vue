@@ -3,8 +3,8 @@
     <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
       <div>
         <h3
-          class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide uppercase text-club"
           id="tier-plain"
+          class="inline-flex px-4 py-1 text-sm font-semibold tracking-wide uppercase text-club"
         >
           {{ title }}
         </h3>
@@ -13,14 +13,16 @@
         ${{ price }}
         <span class="ml-1 text-2xl font-medium text-club"> /mo </span>
       </div>
-      <p class="mt-5 text-lg text-comet">Yeah, more features.</p>
+      <p class="mt-5 text-lg text-comet">
+        Yeah, more features.
+      </p>
     </div>
     <div
       class="flex flex-col justify-between flex-1 px-6 pt-6 pb-8 space-y-6 bg-white sm:p-10 sm:pt-6"
     >
       <ul role="list" class="space-y-4">
         <div v-for="feature in features" :key="feature.id">
-          <PricingFeature :feature="feature.title" :key="feature.id" />
+          <PricingFeature :key="feature.id" :feature="feature.title" />
         </div>
       </ul>
       <div class="">
@@ -31,37 +33,37 @@
 </template>
 
 <script>
-import LinkButton from "~/components/shared/LinkButton";
+import LinkButton from '~/components/shared/LinkButton'
 export default {
-  name: "PricingCard",
+  name: 'PricingCard',
   components: { LinkButton },
   props: {
     price: {
       type: Number,
-      required: true,
+      required: true
     },
     title: {
       type: String,
-      required: true,
+      required: true
     },
     features: {
       type: Array,
-      required: true,
+      required: true
     },
     isPromotional: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
-  data() {
+  data () {
     return {
       classObject: {
-        "flex flex-col overflow-hidden border-2 rounded-xl": true,
-        "border-oyster": this.isPromotional,
-      },
-    };
-  },
-};
+        'flex flex-col overflow-hidden border-2 rounded-xl': true,
+        'border-oyster': this.isPromotional
+      }
+    }
+  }
+}
 </script>
 
 <style scoped></style>

@@ -35,8 +35,8 @@
               </div>
               <div class="ml-4 flex-shrink-0 flex">
                 <button
-                  @click="closeAlert"
                   class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  @click="closeAlert"
                 >
                   <span class="sr-only">Close</span>
                   <CheckMarkIcon class="h-5 w-5" aria-hidden="true" />
@@ -50,42 +50,42 @@
   </div>
 </template>
 <script>
-import CheckMarkIcon from "~/assets/icons/CheckMark.svg?inline";
+import CheckMarkIcon from '~/assets/icons/CheckMark.svg?inline'
 export default {
-  name: "Alert",
+  name: 'Alert',
   components: {
-    CheckMarkIcon,
+    CheckMarkIcon
   },
   props: {
     showAlert: {
       type: Boolean,
-      default: () => false,
-    },
+      default: () => false
+    }
   },
-  data() {
+  data () {
     return {
-      notify: Boolean(this.showAlert),
-    };
+      notify: Boolean(this.showAlert)
+    }
   },
   computed: {
     show: {
-      get() {
-        return this.notify;
+      get () {
+        return this.notify
       },
-      set(value) {
-        this.notify = value;
-      },
-    },
+      set (value) {
+        this.notify = value
+      }
+    }
   },
   watch: {
-    showAlert: function (newVal, old) {
-      this.notify = newVal;
-    },
+    showAlert (newVal, old) {
+      this.notify = newVal
+    }
   },
   methods: {
-    closeAlert() {
-      this.show = false;
-    },
-  },
-};
+    closeAlert () {
+      this.show = false
+    }
+  }
+}
 </script>

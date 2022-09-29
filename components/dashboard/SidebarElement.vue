@@ -5,7 +5,7 @@
       active-class="text-primary font-bold bg-purple-100"
       :to="to"
     >
-      <component class="w-8 h-8 mr-4" :is="icon" />
+      <component :is="icon" class="w-8 h-8 mr-4" />
       {{ text }}
     </NuxtLink>
   </li>
@@ -13,22 +13,22 @@
 
 <script>
 export default {
-  name: "SidebarElement",
+  name: 'SidebarElement',
   props: {
     text: {
       type: String,
-      required: true,
+      required: true
     },
     icon: {
       type: Object,
-      required: true,
+      required: true
     },
     to: {
       type: String,
-      required: true,
-    },
-  },
-};
+      required: true
+    }
+  }
+}
 </script>
 
 <style scoped></style>

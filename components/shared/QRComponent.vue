@@ -3,25 +3,25 @@
 </template>
 
 <script>
-import QrcodeVue from "qrcode.vue";
+import QrcodeVue from 'qrcode.vue'
 export default {
-  name: "QRComponent",
+  name: 'QRComponent',
   components: {
-    QrcodeVue,
+    QrcodeVue
   },
   props: {
     value: {
       type: String,
-      required: true,
+      required: true
     },
     size: {
       type: Number,
-      default: () => 200,
+      default: () => 200
     },
     level: {
       type: String,
-      default: () => "H",
-    },
-  },
-};
+      default: () => 'H'
+    }
+  }
+}
 </script>

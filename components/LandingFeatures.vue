@@ -47,17 +47,17 @@
 </template>
 
 <script>
-import KubernetesIcon from "../assets/icons/kubernetes.svg?inline";
-import DockerIcon from "../assets/icons/DockerColorIcon.svg?inline";
-import TaskIcon from "../assets/icons/TaskIcon.svg?inline";
-import ScheduleIcon from "../assets/icons/Schedule.svg?inline";
-import MonitoringIcon from "../assets/icons/MonitoringIcon.svg?inline";
-import AlertIcon from "../assets/icons/AlertIcon.svg?inline";
-import WebhookIcon from "../assets/icons/WebhookIcon.svg?inline";
-import CloudAPIIcon from "../assets/icons/CloudAPIIcon.svg?inline";
+import KubernetesIcon from '../assets/icons/kubernetes.svg?inline'
+import DockerIcon from '../assets/icons/DockerColorIcon.svg?inline'
+import TaskIcon from '../assets/icons/TaskIcon.svg?inline'
+import ScheduleIcon from '../assets/icons/Schedule.svg?inline'
+import MonitoringIcon from '../assets/icons/MonitoringIcon.svg?inline'
+import AlertIcon from '../assets/icons/AlertIcon.svg?inline'
+import WebhookIcon from '../assets/icons/WebhookIcon.svg?inline'
+import CloudAPIIcon from '../assets/icons/CloudAPIIcon.svg?inline'
 
 export default {
-  name: "LandingFeatures",
+  name: 'LandingFeatures',
   components: {
     AlertIcon,
     KubernetesIcon,
@@ -65,60 +65,60 @@ export default {
     TaskIcon,
     ScheduleIcon,
     MonitoringIcon,
-    CloudAPIIcon,
+    CloudAPIIcon
   },
-  data() {
+  data () {
     return {
       features: [
         {
-          name: "Kubernetes",
+          name: 'Kubernetes',
           icon: KubernetesIcon,
           description:
-            "Flexible, and simple deployments, is what shigoto aims for with one-click deploys.",
+            'Flexible, and simple deployments, is what shigoto aims for with one-click deploys.'
         },
         {
-          name: "Cron jobs",
+          name: 'Cron jobs',
           icon: TaskIcon,
           description:
-            "Shigoto lets you schedule jobs, whether they are on your server, docker, or kubernetes.",
+            'Shigoto lets you schedule jobs, whether they are on your server, docker, or kubernetes.'
         },
         {
-          name: "Monitoring",
+          name: 'Monitoring',
           icon: MonitoringIcon,
           description:
-            "With its real-time monitoring capability, Shigoto lets you stay alerted on your running jobs and it also stores their run history.",
+            'With its real-time monitoring capability, Shigoto lets you stay alerted on your running jobs and it also stores their run history.'
         },
         {
-          name: "Scheduler",
+          name: 'Scheduler',
           icon: ScheduleIcon,
           description:
-            "Whether you want to run something every day, every second, every full moon, it is all possible with Shigoto.",
+            'Whether you want to run something every day, every second, every full moon, it is all possible with Shigoto.'
         },
         {
-          name: "Docker",
+          name: 'Docker',
           icon: DockerIcon,
           description:
-            "Not familiar with Docker? That is fine, shigoto does all the background work for you. From providing sample Dockerfiles, to building and pushing images.",
+            'Not familiar with Docker? That is fine, shigoto does all the background work for you. From providing sample Dockerfiles, to building and pushing images.'
         },
         {
-          name: "Alerts",
+          name: 'Alerts',
           icon: AlertIcon,
           description:
-            "Get notified immediately, whether something fails, or succeeds, you choose your own alerts",
+            'Get notified immediately, whether something fails, or succeeds, you choose your own alerts'
         },
         {
-          name: "REST API",
+          name: 'REST API',
           icon: CloudAPIIcon,
           description:
-            "If you want to integrate it in your own system, Shigoto provides its own API.",
+            'If you want to integrate it in your own system, Shigoto provides its own API.'
         },
         {
-          name: "Discord/Slack integrations",
+          name: 'Discord/Slack integrations',
           icon: WebhookIcon,
-          description: "Create discord or slack integrations on the fly.",
-        },
-      ],
-    };
-  },
-};
+          description: 'Create discord or slack integrations on the fly.'
+        }
+      ]
+    }
+  }
+}
 </script>

@@ -6,7 +6,7 @@
         <div class="flex items-center px-4 py-4 sm:px-6">
           <div class="min-w-0 flex-1 flex items-center">
             <div class="flex-shrink-0">
-              <component class="h-12 w-12" :is="application.icon" />
+              <component :is="application.icon" class="h-12 w-12" />
             </div>
             <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
               <div>
@@ -63,41 +63,41 @@
 </template>
 
 <script>
-import LoadBalancerIcon from "@/assets/icons/LoadBalancerIcon.svg?inline";
-import RouterIcon from "@/assets/icons/RouterIcon.svg?inline";
-import TrashBinIcon from "@/assets/icons/TrashBinIcon.svg?inline";
+import LoadBalancerIcon from '@/assets/icons/LoadBalancerIcon.svg?inline'
+import RouterIcon from '@/assets/icons/RouterIcon.svg?inline'
+import TrashBinIcon from '@/assets/icons/TrashBinIcon.svg?inline'
 
 export default {
   components: {
     LoadBalancerIcon,
     RouterIcon,
-    TrashBinIcon,
+    TrashBinIcon
   },
-  data() {
+  data () {
     return {
       applications: [
         {
-          name: "sgt-frontend",
-          type: "ClusterIP",
+          name: 'sgt-frontend',
+          type: 'ClusterIP',
           icon: RouterIcon,
-          date: "10.112.0.1",
-          ip: "10.112.0.1",
-          stage: "CLUSTER-IP",
-          stageTwo: "EXTERNAL-IP",
-          descriptionSecond: "34.116.232.253",
+          date: '10.112.0.1',
+          ip: '10.112.0.1',
+          stage: 'CLUSTER-IP',
+          stageTwo: 'EXTERNAL-IP',
+          descriptionSecond: '34.116.232.253'
         },
         {
-          name: "sgt-frontend-svc",
-          type: "LoadBalancer",
+          name: 'sgt-frontend-svc',
+          type: 'LoadBalancer',
           icon: LoadBalancerIcon,
-          date: "10.112.13.125",
-          ip: "10.112.13.125",
-          stage: "CLUSTER-IP",
-          stageTwo: "EXTERNAL-IP",
-          descriptionSecond: "<none>",
-        },
-      ],
-    };
-  },
-};
+          date: '10.112.13.125',
+          ip: '10.112.13.125',
+          stage: 'CLUSTER-IP',
+          stageTwo: 'EXTERNAL-IP',
+          descriptionSecond: '<none>'
+        }
+      ]
+    }
+  }
+}
 </script>

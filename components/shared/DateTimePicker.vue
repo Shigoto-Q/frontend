@@ -4,8 +4,8 @@
       <label>{{ label }}</label>
       <div class="input-group">
         <flat-pickr
-          class="form-control"
           v-model="inputModel"
+          class="form-control"
           :config="config"
           :placeholder="placeholder"
           name="date"
@@ -16,58 +16,58 @@
   </section>
 </template>
 <script>
-import flatPickr from "vue-flatpickr-component";
+import flatPickr from 'vue-flatpickr-component'
 
 export default {
-  name: "DateTimePicker",
+  name: 'DateTimePicker',
   components: {
-    flatPickr,
+    flatPickr
   },
   props: {
     model: {
       type: String,
-      default: () => "",
+      default: () => ''
     },
     label: {
       type: String,
-      default: "Select a date",
+      default: 'Select a date'
     },
     placeholder: {
       type: String,
-      default: "29/04/2022",
-    },
+      default: '29/04/2022'
+    }
   },
-  data() {
+  data () {
     return {
       date: null,
-      localModel: "",
+      localModel: '',
       config: {
-        altFormat: "F j, Y",
+        altFormat: 'F j, Y',
         altInput: true,
         enableTime: true,
-        dateFormat: "Y-m-d H:i",
-      },
-    };
+        dateFormat: 'Y-m-d H:i'
+      }
+    }
   },
   computed: {
     inputModel: {
-      get() {
-        return this.localModel;
+      get () {
+        return this.localModel
       },
-      set(value) {
-        return (this.localModel = value);
-      },
-    },
+      set (value) {
+        return (this.localModel = value)
+      }
+    }
   },
   watch: {
-    model() {
-      this.localModel = this.model;
-    },
+    model () {
+      this.localModel = this.model
+    }
   },
   methods: {
-    onChange(selectedDates, dateStr, instance) {
-      this.$emit("change", selectedDates, dateStr);
-    },
-  },
-};
+    onChange (selectedDates, dateStr, instance) {
+      this.$emit('change', selectedDates, dateStr)
+    }
+  }
+}
 </script>

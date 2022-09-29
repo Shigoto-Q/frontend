@@ -13,22 +13,22 @@
 </template>
 
 <script>
-import Checkbox from "~/components/shared/Checkbox";
-import { abstractField } from "vue-form-generator";
+import { abstractField } from 'vue-form-generator'
+import Checkbox from '~/components/shared/Checkbox'
 
 export default {
-  name: "FieldCheckbox",
+  name: 'FieldCheckbox',
   components: { Checkbox },
   mixins: [abstractField],
   methods: {
-    onInput(value) {
-      this.value = value;
+    onInput (value) {
+      this.value = value
     },
-    onChange(value) {
-      this.value = value;
-    },
-  },
-};
+    onChange (value) {
+      this.value = value
+    }
+  }
+}
 </script>
 
 <style scoped></style>

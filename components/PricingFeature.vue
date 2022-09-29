@@ -25,14 +25,14 @@
 
 <script>
 export default {
-  name: "PricingFeature",
+  name: 'PricingFeature',
   props: {
     feature: {
       type: String,
-      required: true,
-    },
-  },
-};
+      required: true
+    }
+  }
+}
 </script>
 
 <style scoped></style>

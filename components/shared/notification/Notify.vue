@@ -39,18 +39,22 @@
                 />
               </div>
               <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-xl font-medium text-cloud">{{ params.title }}</p>
-                <p class="mt-1 text-sm text-stone">{{ params.body }}</p>
+                <p class="text-xl font-medium text-cloud">
+                  {{ params.title }}
+                </p>
+                <p class="mt-1 text-sm text-stone">
+                  {{ params.body }}
+                </p>
               </div>
             </div>
           </div>
           <div class="h-3 relative max-w-xl rounded-full overflow-hidden">
-            <div class="w-full h-full bg-gray-200 absolute"></div>
+            <div class="w-full h-full bg-gray-200 absolute" />
             <div
               class="h-full relative w-0"
               :style="{ width: percentage + '%' }"
               :class="classObject"
-            ></div>
+            />
           </div>
         </div>
       </div>
@@ -58,94 +62,94 @@
   </Transition>
 </template>
 <script>
-import CheckMarkIcon from "~/assets/icons/CheckMark.svg?inline";
-import SuccessIcon from "~/assets/icons/SuccessIcon.svg?inline";
-import FailureIcon from "~/assets/icons/Failure.svg?inline";
-import WarningIcon from "~/assets/icons/Warning.svg?inline";
-import InfoIcon from "~/assets/icons/Info.svg?inline";
-import XIcon from "~/assets/icons/X.svg?inline";
-import { eventConstants } from "@/constants/events";
-import { notificationTypes } from "@/constants/notifications";
+import CheckMarkIcon from '~/assets/icons/CheckMark.svg?inline'
+import SuccessIcon from '~/assets/icons/SuccessIcon.svg?inline'
+import FailureIcon from '~/assets/icons/Failure.svg?inline'
+import WarningIcon from '~/assets/icons/Warning.svg?inline'
+import InfoIcon from '~/assets/icons/Info.svg?inline'
+import XIcon from '~/assets/icons/X.svg?inline'
+import { eventConstants } from '@/constants/events'
+import { notificationTypes } from '@/constants/notifications'
 
 export default {
-  name: "Notification",
+  name: 'Notification',
   components: {
     CheckMarkIcon,
     XIcon,
     SuccessIcon,
     FailureIcon,
     WarningIcon,
-    InfoIcon,
+    InfoIcon
   },
-  data() {
+  data () {
     return {
       notifications: notificationTypes,
       notify: false,
-      notificationName: "notification",
+      notificationName: 'notification',
       params: {},
       duration: 5000,
-      title: "Default title",
-      body: "Action successful!",
-      percentage: 0,
-    };
+      title: 'Default title',
+      body: 'Action successful!',
+      percentage: 0
+    }
   },
   computed: {
-    classObject() {
+    classObject () {
       if (this.params.type == notificationTypes.SUCCESS) {
-        return "bg-emerald-500";
+        return 'bg-emerald-500'
       } else if (this.params.type == notificationTypes.ERROR) {
-        return "bg-red-700";
+        return 'bg-red-700'
       } else if (this.params.type == notificationTypes.WARNING) {
-        return "bg-amber-500";
+        return 'bg-amber-500'
       } else {
-        return "bg-aqua";
+        return 'bg-aqua'
       }
     },
-    percent() {
-      return this.percentage.toFixed();
+    percent () {
+      return this.percentage.toFixed()
     },
     show: {
-      get() {
-        return this.notify;
+      get () {
+        return this.notify
       },
-      set(value) {
-        this.notify = value;
-      },
-    },
+      set (value) {
+        this.notify = value
+      }
+    }
   },
   watch: {
-    showAlert: function (newVal, old) {
-      this.notify = newVal;
-    },
+    showAlert (newVal, old) {
+      this.notify = newVal
+    }
   },
-  mounted() {
-    this.$nuxt.$on(eventConstants.SHOW_NOTIFICATION, this.onAdd);
-    this.$on("close", this.onClose);
+  mounted () {
+    this.$nuxt.$on(eventConstants.SHOW_NOTIFICATION, this.onAdd)
+    this.$on('close', this.onClose)
   },
   methods: {
-    onAdd(event) {
-      this.show = true;
-      this.params = event;
-      this.closeAlert();
+    onAdd (event) {
+      this.show = true
+      this.params = event
+      this.closeAlert()
     },
-    onClose() {
-      this.show = false;
-      this.percentage = 0;
+    onClose () {
+      this.show = false
+      this.percentage = 0
     },
-    closeAlert() {
-      const interval = this.params.duration / ((100 - this.percentage) * 0.1);
+    closeAlert () {
+      const interval = this.params.duration / ((100 - this.percentage) * 0.1)
       var intval = setInterval(() => {
         if (this.percentage < 100) {
-          this.percentage += 0.3;
+          this.percentage += 0.3
         } else {
-          clearInterval(intval);
+          clearInterval(intval)
         }
-      }, 10);
+      }, 10)
       setTimeout(() => {
-        this.$emit("close");
-        this.percentage = 0;
-      }, this.params.duration || this.duration);
-    },
-  },
-};
+        this.$emit('close')
+        this.percentage = 0
+      }, this.params.duration || this.duration)
+    }
+  }
+}
 </script>
