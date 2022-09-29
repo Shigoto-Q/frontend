@@ -1,4 +1,5 @@
 export default {
+  target: "static",
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL,
     wsUrl: process.env.WS_BASE_URL,
