@@ -82,16 +82,14 @@ const people = [
   {
     name: "Simeon Aleksov",
     role: "Co-Founder / CEO",
-    imageUrl:
-      "https://i.imgur.com/TZ6AwNe.jpg",
+    imageUrl: "https://i.imgur.com/TZ6AwNe.jpg",
     twitterUrl: "https://twitter.com/dashinsyo",
     linkedinUrl: "https://www.linkedin.com/in/simeonaleksov/",
   },
   {
     name: "Bogdan Petrović",
     role: "Co-Founder / CEO",
-    imageUrl:
-      "https://i.imgur.com/MEtfjVk.jpg",
+    imageUrl: "https://i.imgur.com/MEtfjVk.jpg",
     twitterUrl: "#",
     linkedinUrl: "https://www.linkedin.com/in/bogdan-petrovi%C4%87-996085193/",
   },

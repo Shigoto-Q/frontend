@@ -17,9 +17,9 @@
 import ArrowUp from "assets/icons/ArrowUp.svg?inline";
 import ArrowDown from "assets/icons/ArrowDown.svg?inline";
 import LineChart from "@/components/charts/LineChart";
-import * as chartConfigs from '@/components/charts/config';
-import config from '@/config';
-import {taskTypes, taskWsActions} from "@/constants/ws";
+import * as chartConfigs from "@/components/charts/config";
+import config from "@/config";
+import { taskTypes, taskWsActions } from "@/constants/ws";
 
 export default {
   name: "Card",
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       stats: {},
-      labels: ['14:00', "14:01", "14:02", "14:03", "14:04", "14:05", "14:06"],
+      labels: ["14:00", "14:01", "14:02", "14:03", "14:04", "14:05", "14:06"],
       successData: [20, 45, 65, 87, 121, 152, 252],
       failureData: [10, 32, 105, 93, 25, 10, 50],
       pendingData: new this.Cache(10),
@@ -61,22 +61,16 @@ export default {
     };
     this.connection.onmessage = (message) => {
       this.stats = JSON.parse(message.data);
-      const timestamp = new Date(this.stats[0].timestamp)
-      const st = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`
-      this.labels.store(st)
-      for(const n of this.stats) {
-          if (n.status === 'success')
-            this.successData.store(n.count)
-          else if (n.status === 'failure')
-            this.failureData.store(n.count)
-          else if (n.status === 'pending')
-            this.pendingData.store(n.count)
-           else if (n.status === 'started')
-            this.startedData.store(n.count)
-          else if (n.status === 'ignored')
-            this.ignoredData.store(n.count)
-          else if (n.status === 'rejected')
-            this.rejectedData.store(n.count)
+      const timestamp = new Date(this.stats[0].timestamp);
+      const st = `${timestamp.getHours()}:${timestamp.getMinutes()}:${timestamp.getSeconds()}`;
+      this.labels.store(st);
+      for (const n of this.stats) {
+        if (n.status === "success") this.successData.store(n.count);
+        else if (n.status === "failure") this.failureData.store(n.count);
+        else if (n.status === "pending") this.pendingData.store(n.count);
+        else if (n.status === "started") this.startedData.store(n.count);
+        else if (n.status === "ignored") this.ignoredData.store(n.count);
+        else if (n.status === "rejected") this.rejectedData.store(n.count);
       }
     };
   },
@@ -85,11 +79,11 @@ export default {
     next();
   },
   computed: {
-    chartStyles () {
+    chartStyles() {
       return {
-        height: '250px',
-        width: '100%'
-      }
+        height: "250px",
+        width: "100%",
+      };
     },
     chartData() {
       return {
@@ -98,14 +92,14 @@ export default {
           labels: this.labels,
           datasets: [
             {
-              label: 'Successful',
+              label: "Successful",
               fill: true,
               borderColor: config.colors.primary,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
               pointBackgroundColor: config.colors.primary,
-              pointBorderColor: 'rgba(255,255,255,0)',
+              pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.primary,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
@@ -114,14 +108,14 @@ export default {
               data: this.successData,
             },
             {
-              label: 'Failed',
+              label: "Failed",
               fill: true,
               borderColor: config.colors.danger,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
               pointBackgroundColor: config.colors.danger,
-              pointBorderColor: 'rgba(255,255,255,0)',
+              pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.purpleGradient,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
@@ -130,14 +124,14 @@ export default {
               data: this.failureData,
             },
             {
-              label: 'Pending',
+              label: "Pending",
               fill: true,
               borderColor: config.colors.orange,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
               pointBackgroundColor: config.colors.orange,
-              pointBorderColor: 'rgba(255,255,255,0)',
+              pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.purpleGradient,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
@@ -146,14 +140,14 @@ export default {
               data: this.pendingData.values,
             },
             {
-              label: 'Started',
+              label: "Started",
               fill: true,
               borderColor: config.colors.info,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
               pointBackgroundColor: config.colors.info,
-              pointBorderColor: 'rgba(255,255,255,0)',
+              pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.purpleGradient,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
@@ -162,14 +156,14 @@ export default {
               data: this.startedData.values,
             },
             {
-              label: 'Received',
+              label: "Received",
               fill: true,
               borderColor: config.colors.teal,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
               pointBackgroundColor: config.colors.teal,
-              pointBorderColor: 'rgba(255,255,255,0)',
+              pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.purpleGradient,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
@@ -178,14 +172,14 @@ export default {
               data: this.receivedData.values,
             },
             {
-              label: 'Rejected',
+              label: "Rejected",
               fill: true,
               borderColor: config.colors.magenta,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
               pointBackgroundColor: config.colors.magenta,
-              pointBorderColor: 'rgba(255,255,255,0)',
+              pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.purpleGradient,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
@@ -194,30 +188,30 @@ export default {
               data: this.rejectedData.values,
             },
             {
-              label: 'Ignored',
+              label: "Ignored",
               fill: true,
               borderColor: config.colors.marvel,
               borderWidth: 2,
               borderDash: [],
               borderDashOffset: 0.0,
               pointBackgroundColor: config.colors.marvel,
-              pointBorderColor: 'rgba(255,255,255,0)',
+              pointBorderColor: "rgba(255,255,255,0)",
               pointHoverBackgroundColor: config.colors.purpleGradient,
               pointBorderWidth: 20,
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
               pointRadius: 4,
               data: this.ignoredData.values,
-            }
-          ]
+            },
+          ],
         },
         gradientColors: config.colors.primaryGradient,
-        gradientStops: [1, 0.2, 0]
-      }
-    }
+        gradientStops: [1, 0.2, 0],
+      };
+    },
   },
   mounted() {
-    console.log(this.countData)
+    console.log(this.countData);
   },
   watch: {
     countData: function (newVal, oldVal) {
@@ -228,21 +222,21 @@ export default {
     Cache(maxLength) {
       this.values = [];
 
-      this.store = function(data) {
-        if(this.values.length >= maxLength) {
+      this.store = function (data) {
+        if (this.values.length >= maxLength) {
           this.getLast();
         }
         return this.values.push(data);
-      }
+      };
 
-      this.getLast = function() {
-        return this.values.splice(0,1)[0];
-      }
+      this.getLast = function () {
+        return this.values.splice(0, 1)[0];
+      };
     },
     sendMessage(message) {
       this.connection.send(JSON.stringify(message));
     },
-  }
+  },
 };
 </script>
 <style scoped lang="scss">

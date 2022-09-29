@@ -60,9 +60,8 @@ export default {
   methods: {
     handleLocalOnClick() {
       if (this.handleOnClick) {
-        this.handleOnClick()
-      } else
-        console.log('Clicked!')
+        this.handleOnClick();
+      } else console.log("Clicked!");
     },
     localModelUpdated() {
       this.$emit("modelUpdated", this.model);
@@ -94,7 +93,6 @@ input:focus + label {
 .form-group {
   width: 100%;
   flex: 40%;
-
 }
 
 fieldset {

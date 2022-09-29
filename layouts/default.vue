@@ -2,7 +2,9 @@
   <div class="flex flex-col h-screen">
     <Navbar />
     <div class="flex-grow flex flex-col">
-      <Banner text="Soon Shigoto will offer free deploys/hosting for open source projects. More details coming soon."/>
+      <Banner
+        text="Soon Shigoto will offer free deploys/hosting for open source projects. More details coming soon."
+      />
       <Nuxt />
     </div>
     <Footer />

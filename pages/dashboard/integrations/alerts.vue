@@ -1,6 +1,4 @@
-<template>
-
-</template>
+<template></template>
 
 <script>
 export default {
@@ -9,9 +7,7 @@ export default {
   layout(context) {
     return "dashboard";
   },
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

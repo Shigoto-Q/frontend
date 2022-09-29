@@ -21,50 +21,50 @@
     <div class="crontab__table-container">
       <table class="crontab__table">
         <tbody>
-        <tr>
-          <td data-label="">*</td>
-          <td data-label="Due Date">any value</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Account">,</td>
-          <td data-label="Due Date">value list separator</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Account">-</td>
-          <td data-label="Due Date">rage of values</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Acount">/</td>
-          <td data-label="Due Date">step values</td>
-        </tr>
-        <tr  v-show="isMinute">
-          <td scope="row" data-label="Acount">0-59</td>
-          <td data-label="Due Date">allowed values</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Acount">0-23</td>
-          <td data-label="Due Date">allowed values</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Acount">1-31</td>
-          <td data-label="Due Date">allowed values</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Acount">1-12</td>
-          <td data-label="Due Date">allowed values</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Acount">JAN-DEC</td>
-          <td data-label="Due Date">alternative values</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Acount">0-6</td>
-          <td data-label="Due Date">allowed values</td>
-        </tr>
-        <tr>
-          <td scope="row" data-label="Acount">SUN-SAT</td>
-          <td data-label="Due Date">alternative values</td>
-        </tr>
+          <tr>
+            <td data-label="">*</td>
+            <td data-label="Due Date">any value</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Account">,</td>
+            <td data-label="Due Date">value list separator</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Account">-</td>
+            <td data-label="Due Date">rage of values</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">/</td>
+            <td data-label="Due Date">step values</td>
+          </tr>
+          <tr v-show="isMinute">
+            <td scope="row" data-label="Acount">0-59</td>
+            <td data-label="Due Date">allowed values</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">0-23</td>
+            <td data-label="Due Date">allowed values</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">1-31</td>
+            <td data-label="Due Date">allowed values</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">1-12</td>
+            <td data-label="Due Date">allowed values</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">JAN-DEC</td>
+            <td data-label="Due Date">alternative values</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">0-6</td>
+            <td data-label="Due Date">allowed values</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">SUN-SAT</td>
+            <td data-label="Due Date">alternative values</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -83,24 +83,24 @@ const DELETE = 46;
 
 export default {
   name: "CrontabGenerator",
-  components: {Button, OTPInput},
+  components: { Button, OTPInput },
   data() {
     return {
       numInputs: [
         {
-          label: 'minute',
+          label: "minute",
         },
         {
-          label: 'hour',
+          label: "hour",
         },
         {
-          label: 'day(month)',
+          label: "day(month)",
         },
         {
-          label: 'month',
+          label: "month",
         },
         {
-          label: 'day(week)',
+          label: "day(week)",
         },
       ],
       activeInput: 0,
@@ -110,7 +110,7 @@ export default {
       isDayMonth: false,
       isMonth: false,
       isDayWeek: false,
-    }
+    };
   },
   methods: {
     async verifyOtp() {
@@ -157,7 +157,11 @@ export default {
       }
       const currentCharsInOtp = this.crontab.slice(0, this.activeInput);
       const combinedWithPastedData = currentCharsInOtp.concat(pastedData);
-      this.$set(this, "crontab", combinedWithPastedData.slice(0, this.numInputs));
+      this.$set(
+        this,
+        "crontab",
+        combinedWithPastedData.slice(0, this.numInputs)
+      );
       this.focusInput(combinedWithPastedData.slice(0, this.numInputs).length);
       return this.checkFilledAllInputs();
     },
@@ -196,7 +200,7 @@ export default {
       }
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -237,21 +241,20 @@ table {
   box-shadow: $shadow;
 }
 
-
 table tr {
   border: 1px solid #ddd;
-  padding: .10em;
+  padding: 0.1em;
 }
 
 table th,
 table td {
-  padding: .325em;
+  padding: 0.325em;
   text-align: center;
 }
 
 table th {
-  font-size: .85em;
-  letter-spacing: .1em;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -259,7 +262,6 @@ table th {
   table {
     border: 0;
   }
-
 
   table thead {
     border: none;
@@ -275,13 +277,13 @@ table th {
   table tr {
     border-bottom: 3px solid #ddd;
     display: block;
-    margin-bottom: .625em;
+    margin-bottom: 0.625em;
   }
 
   table td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: .8em;
+    font-size: 0.8em;
     text-align: right;
   }
 

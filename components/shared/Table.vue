@@ -162,7 +162,7 @@ export default {
             type: "myInput",
             inputType: "text",
             fieldLabel: "Name",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             name: "name",
             placeholder: "My fabolous task",
             model: "name",
@@ -170,7 +170,7 @@ export default {
           {
             type: "myInput",
             inputType: "text",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             fieldLabel: "Type",
             name: "type",
             model: "type",
@@ -178,7 +178,7 @@ export default {
           {
             type: "myCheckbox",
             inputType: "switch",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             fieldLabel: "Enabled",
             description: "If false, task will not be executed.",
             model: "enabled",
@@ -188,7 +188,7 @@ export default {
             type: "myCheckbox",
             inputType: "switch",
             fieldLabel: "One off",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             description:
               "If checked, the schedule will only run the task a single time.",
             model: "oneOff",
@@ -199,7 +199,7 @@ export default {
             inputType: "text",
             fieldLabel: "Schedule",
             model: "schedule",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
           },
         ],
       };

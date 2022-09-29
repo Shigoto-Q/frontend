@@ -15,7 +15,7 @@ import DateTimePicker from "@/components/shared/DateTimePicker";
 
 export default {
   name: "FieldDateTime",
-  components: {DateTimePicker, Input },
+  components: { DateTimePicker, Input },
   mixins: [abstractField],
   methods: {
     onChange(value) {

@@ -16,13 +16,12 @@
   </section>
 </template>
 <script>
-import flatPickr from 'vue-flatpickr-component';
-
+import flatPickr from "vue-flatpickr-component";
 
 export default {
-  name: 'DateTimePicker',
+  name: "DateTimePicker",
   components: {
-    flatPickr
+    flatPickr,
   },
   props: {
     model: {
@@ -31,12 +30,12 @@ export default {
     },
     label: {
       type: String,
-      default: 'Select a date'
+      default: "Select a date",
     },
     placeholder: {
       type: String,
-      default: '29/04/2022'
-    }
+      default: "29/04/2022",
+    },
   },
   data() {
     return {
@@ -47,8 +46,8 @@ export default {
         altInput: true,
         enableTime: true,
         dateFormat: "Y-m-d H:i",
-      }
-    }
+      },
+    };
   },
   computed: {
     inputModel: {
@@ -70,5 +69,5 @@ export default {
       this.$emit("change", selectedDates, dateStr);
     },
   },
-}
+};
 </script>

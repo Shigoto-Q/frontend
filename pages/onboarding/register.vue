@@ -1,15 +1,14 @@
 <template>
   <div class="flex flex-col">
-    <h1
-      class="form__title"
-    >
-      Welcome to Shigoto!
-    </h1>
-    <h2 class="form__subtitle">
-      To start, create an account.
-    </h2>
+    <h1 class="form__title">Welcome to Shigoto!</h1>
+    <h2 class="form__subtitle">To start, create an account.</h2>
     <div class="flex justify-center w-auto">
-      <Form :model="model" :schema="schema" :handle-on-click="submitForm" :show-submit-button="true" />
+      <Form
+        :model="model"
+        :schema="schema"
+        :handle-on-click="submitForm"
+        :show-submit-button="true"
+      />
     </div>
   </div>
 </template>
@@ -46,7 +45,7 @@ export default {
           {
             type: "myInput",
             inputType: "email",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             fieldLabel: "E-mail",
             model: "email",
           },
@@ -100,6 +99,6 @@ export default {
   }
 }
 .flex-100 {
-  flex: 100%
+  flex: 100%;
 }
 </style>

@@ -10,9 +10,7 @@
               class="landing__heading -mb-6 text-xl font-bold leading-snug tracking-tighter lg:text-5xl"
             >
               <div class="wrapper">
-                <span
-                  class="typing text-transparent bg-clip-text lg:block"
-                >
+                <span class="typing text-transparent bg-clip-text lg:block">
                   Shigoto,
                 </span>
               </div>
@@ -57,8 +55,13 @@ export default {
 }
 
 .typing {
-  font-family:"MonoLisa-Regular" !important;
-  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  font-family: "MonoLisa-Regular" !important;
+  background-image: linear-gradient(
+    92.88deg,
+    #455eb5 9.16%,
+    #5643cc 43.89%,
+    #673fd7 64.72%
+  );
   width: 22ch;
   animation: typing 2s steps(22), blink 0.8s step-end infinite alternate;
   white-space: nowrap;
@@ -78,6 +81,6 @@ export default {
   }
 }
 .landing__heading {
-  font-family:"MonoLisa-Regular" !important;
+  font-family: "MonoLisa-Regular" !important;
 }
 </style>

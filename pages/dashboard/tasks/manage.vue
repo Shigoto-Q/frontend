@@ -2,14 +2,11 @@
   <div>
     <Divider title="Execution statistics" class="mt-4 mb-4" />
     <div class="w-full">
-      <Card :count-data.sync="stats"/>
+      <Card :count-data.sync="stats" />
     </div>
     <Divider title="Tasks" class="mt-4 mb-4" />
     <div>
-      <Button
-        class="mb-4 px-2 py-2"
-        @click="showModal = true"
-      >
+      <Button class="mb-4 px-2 py-2" @click="showModal = true">
         Create new
       </Button>
       <Table :columns="columns" :tasks="tasks" />
@@ -24,18 +21,12 @@
           :model="formModel"
         />
         <div class="flex justify-between mt-10">
-          <Button @click="showModal = false" secondary>
-            Cancel
-          </Button>
+          <Button @click="showModal = false" secondary> Cancel </Button>
           <Button v-show="isUpcoming" @click="goBack" text="Back" secondary>
             Back
           </Button>
-          <Button v-show="!isLast" @click="handleNext">
-            Next
-          </Button>
-          <Button v-show="isLast" @click="handleSubmit">
-            Submit
-          </Button>
+          <Button v-show="!isLast" @click="handleNext"> Next </Button>
+          <Button v-show="isLast" @click="handleSubmit"> Submit </Button>
         </div>
       </div>
     </Modal>
@@ -43,7 +34,7 @@
 </template>
 
 <script>
-import {taskTypes, taskWsActions} from "~/constants/ws";
+import { taskTypes, taskWsActions } from "~/constants/ws";
 import Card from "~/components/shared/Card";
 import Table from "~/components/shared/Table";
 import Divider from "~/components/shared/Divider";
@@ -125,7 +116,7 @@ export default {
             inputType: "text",
             fieldLabel: "Name",
             name: "name",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             placeholder: "My fabolous task",
             model: "name",
           },
@@ -134,7 +125,7 @@ export default {
             fieldLabel: "Type",
             name: "name",
             model: "type",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             options: [
               { name: "Simple HTTP Operator", id: 0 },
               { name: "Kubernetes", id: 1 },
@@ -144,7 +135,7 @@ export default {
           {
             type: "myCheckbox",
             inputType: "switch",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             fieldLabel: "Enabled",
             description: "If false, task will not be executed.",
             model: "enabled",
@@ -153,7 +144,7 @@ export default {
           {
             type: "myCheckbox",
             inputType: "switch",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             fieldLabel: "One off",
             description:
               "If checked, the schedule will only run the task a single time.",

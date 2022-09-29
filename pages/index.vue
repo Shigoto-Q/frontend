@@ -345,7 +345,12 @@ export default {
 }
 
 .typing {
-  background-image: linear-gradient(92.88deg, $primary-color 9.16%, $primary-color-light 43.89%, #673FD7 64.72%);
+  background-image: linear-gradient(
+    92.88deg,
+    $primary-color 9.16%,
+    $primary-color-light 43.89%,
+    #673fd7 64.72%
+  );
   width: 22ch;
   animation: typing 2s steps(22), blink 0.8s step-end infinite alternate;
   white-space: nowrap;

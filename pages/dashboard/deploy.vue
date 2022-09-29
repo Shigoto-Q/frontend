@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Heading class="mt-4" title="Kubernetes"/>
+    <Heading class="mt-4" title="Kubernetes" />
     <div class="content__select">
       <div class="content__namespace-form">
         <Form :schema="namespaceSchema" :model="namespaceModel" />
@@ -8,10 +8,7 @@
           <Button @click="handleCreateNewNamespace">
             Create new namespace
           </Button>
-          <Button
-            @click="handleDeleteNamespace"
-            secondary
-          >
+          <Button @click="handleDeleteNamespace" secondary>
             Delete current namespace
           </Button>
         </div>
@@ -25,7 +22,7 @@
         @change="onChange"
       />
     </div>
-    <Divider title="Docker images" class="mb-4 mt-4"/>
+    <Divider title="Docker images" class="mb-4 mt-4" />
     <CardWithActions
       :items="images"
       primary-action-name="Deploy"
@@ -46,18 +43,16 @@
         <Button @click="handleSubmit">Submit</Button>
       </div>
     </Modal>
-    <Divider title="Deployments" class="mb-4 mt-4"/>
-    <SimpleTable :columns="columns" :items="items"/>
-    <Divider title="Pods" class="mb-4 mt-4"/>
-    <SimpleTable :columns="columnsDeploys" :items="items"/>
-    <Divider title="Services" class="mb-4 mt-4"/>
+    <Divider title="Deployments" class="mb-4 mt-4" />
+    <SimpleTable :columns="columns" :items="items" />
+    <Divider title="Pods" class="mb-4 mt-4" />
+    <SimpleTable :columns="columnsDeploys" :items="items" />
+    <Divider title="Services" class="mb-4 mt-4" />
     <div class="content__services-actions">
-      <Button @click="openServiceModal">
-        Create new service
-      </Button>
+      <Button @click="openServiceModal"> Create new service </Button>
     </div>
     <List />
-    <Divider title="Ingress" class="mb-4 mt-4"/>
+    <Divider title="Ingress" class="mb-4 mt-4" />
     <StackedList />
     <Modal v-model="showServiceModal">
       <template v-slot:title>Deploy</template>
@@ -87,7 +82,7 @@ import Divider from "@/components/shared/Divider";
 import SimpleTable from "@/components/shared/SimpleTable";
 import List from "@/components/shared/List";
 import Heading from "@/components/shared/Heading";
-import {notificationTypes} from "@/constants/notifications";
+import { notificationTypes } from "@/constants/notifications";
 import Select from "@/components/shared/Select";
 import Input from "@/components/shared/Input";
 
@@ -116,8 +111,8 @@ export default {
       serviceModel: {},
       value: [],
       namespaceModel: {},
-      columns: ['Name', 'Age', 'Status', 'Restarts', 'Ready'],
-      columnsDeploys: ['Name', 'Ready', 'Up to date', 'Available', 'Age'],
+      columns: ["Name", "Age", "Status", "Restarts", "Ready"],
+      columnsDeploys: ["Name", "Ready", "Up to date", "Available", "Age"],
       showModal: false,
       formModel: {
         image: "",
@@ -126,14 +121,14 @@ export default {
       items: [
         {
           id: 1,
-          name: 'sgt-frontend-789f8dd7fc-sr7b8',
-          age: '23h',
-          cpu: 'Running',
-          storage: '0',
-          ready: '1/1',
+          name: "sgt-frontend-789f8dd7fc-sr7b8",
+          age: "23h",
+          cpu: "Running",
+          storage: "0",
+          ready: "1/1",
           isCurrent: false,
         },
-      ]
+      ],
     };
   },
   computed: {
@@ -161,8 +156,8 @@ export default {
             name: "targetPort",
             model: "targetPort",
           },
-        ]
-      }
+        ],
+      };
     },
     namespaceSchema() {
       return {
@@ -174,8 +169,8 @@ export default {
             name: "name",
             model: "name",
           },
-        ]
-      }
+        ],
+      };
     },
     schema() {
       return {
@@ -224,12 +219,14 @@ export default {
       this.showServiceModal = true;
     },
     handleCreateNewService() {
-      console.log('handleCreateNewService')
+      console.log("handleCreateNewService");
     },
     handleDeleteNamespace() {
       return this.$axios
-        .post("/api/v1/kubernetes/namespace/delete/", {
-          name: this.value.name,
+        .post(
+          "/api/v1/kubernetes/namespace/delete/",
+          {
+            name: this.value.name,
           },
           {
             headers: {
@@ -246,31 +243,27 @@ export default {
             body: `Namespace has been successfully created.`,
             type: notificationTypes.SUCCESS,
           });
-        }).catch((err) => {
-
         })
+        .catch((err) => {});
     },
     handleCreateNewNamespace() {
       return this.$axios
-        .post("/api/v1/kubernetes/namespace/create/", this.namespaceModel,
-          {
-            headers: {
-              Authorization: `Bearer ${
-                this.$auth.strategy.token.get().split(" ")[1]
-              }`,
-            },
-          }
-        )
-            .then((response) => {
-              this.$notify({
-                title: "Successfully created!!",
-                duration: 3000,
-                body: `Namespace has been successfully created.`,
-                type: notificationTypes.SUCCESS,
-              });
-            }).catch((err) => {
-
+        .post("/api/v1/kubernetes/namespace/create/", this.namespaceModel, {
+          headers: {
+            Authorization: `Bearer ${
+              this.$auth.strategy.token.get().split(" ")[1]
+            }`,
+          },
         })
+        .then((response) => {
+          this.$notify({
+            title: "Successfully created!!",
+            duration: 3000,
+            body: `Namespace has been successfully created.`,
+            type: notificationTypes.SUCCESS,
+          });
+        })
+        .catch((err) => {});
     },
     handleDeployment(image) {
       this.formModel = { ...image };
@@ -278,14 +271,15 @@ export default {
     },
     handleSubmit() {
       if (this.value === null) {
-        return
+        return;
       }
       let postData = {
         image: this.formModel.imageName,
         name: this.formModel.name,
-        namespace: this.value.name
-      }
-      this.$axios.post('/api/v1/kubernetes/deploy/', postData)
+        namespace: this.value.name,
+      };
+      this.$axios
+        .post("/api/v1/kubernetes/deploy/", postData)
         .then(() => {
           this.$notify({
             title: "Successfully deployed!",
@@ -302,7 +296,7 @@ export default {
             body: `${err.response.data.message}`,
             type: notificationTypes.ERROR,
           });
-        })
+        });
     },
     handleDeleteImage(image) {
       console.log("handleDeleteImage", image);
@@ -317,7 +311,7 @@ export default {
           },
         })
         .then((response) => {
-          this.options = response.data.data
+          this.options = response.data.data;
         });
     },
     onInput(value) {
@@ -325,7 +319,7 @@ export default {
     },
     onChange(value) {
       this.value = value;
-      console.log(this.value)
+      console.log(this.value);
     },
   },
 };

@@ -10,7 +10,9 @@
                 {{ position.title }}
               </p>
               <div class="ml-2 flex-shrink-0 flex">
-                <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                <p
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                >
                   {{ position.type }}
                 </p>
               </div>
@@ -18,20 +20,33 @@
             <div class="mt-2 sm:flex sm:justify-between">
               <div class="sm:flex">
                 <p class="flex items-center text-sm text-gray-500">
-                  <IngressIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                  <IngressIcon
+                    class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
                   {{ position.department }}
                 </p>
-                <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
-                  <IngressIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                <p
+                  class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6"
+                >
+                  <IngressIcon
+                    class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
                   {{ position.location }}
                 </p>
               </div>
               <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                <IngressIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                <IngressIcon
+                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
                 <p>
                   Age
-                  {{ ' ' }}
-                  <time :datetime="position.closeDate">{{ position.closeDateFull }}</time>
+                  {{ " " }}
+                  <time :datetime="position.closeDate">{{
+                    position.closeDateFull
+                  }}</time>
                 </p>
               </div>
             </div>
@@ -43,10 +58,10 @@
 </template>
 
 <script>
-import IngressIcon from '@/assets/icons/IngressIcon.svg?inline'
+import IngressIcon from "@/assets/icons/IngressIcon.svg?inline";
 
 export default {
-  name: 'StackedList',
+  name: "StackedList",
   components: {
     IngressIcon,
   },
@@ -55,24 +70,24 @@ export default {
       positions: [
         {
           id: 1,
-          title: 'ingress-shigoto-service',
-          type: 'Running',
-          location: '80, 443',
-          department: 'shigo.to, ws.shigo.to, api.shigo.to',
-          closeDate: '15d',
-          closeDateFull: '15d',
+          title: "ingress-shigoto-service",
+          type: "Running",
+          location: "80, 443",
+          department: "shigo.to, ws.shigo.to, api.shigo.to",
+          closeDate: "15d",
+          closeDateFull: "15d",
         },
         {
           id: 2,
-          title: 'ingress-test-service',
-          type: 'Running',
-          location: '80, 443',
-          department: 'shigo.to, ws.shigo.to, api.shigo.to',
-          closeDate: '15d',
-          closeDateFull: '15d',
+          title: "ingress-test-service",
+          type: "Running",
+          location: "80, 443",
+          department: "shigo.to, ws.shigo.to, api.shigo.to",
+          closeDate: "15d",
+          closeDateFull: "15d",
         },
       ],
-    }
+    };
   },
-}
+};
 </script>

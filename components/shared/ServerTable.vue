@@ -13,9 +13,7 @@
   >
     <template slot="table-row" slot-scope="props" class="test-class">
       <span v-if="props.column.field === 'button'" class="yeet">
-        <Button
-          @click="props.column.action(props.row.id)"
-        >
+        <Button @click="props.column.action(props.row.id)">
           {{ props.column.buttonText }}
         </Button>
       </span>
@@ -24,10 +22,7 @@
       </span>
     </template>
     <div class="table__actions-buttons" slot="table-actions">
-      <Button
-        v-show="showCreateButton"
-        @click="handleCreateNew"
-      >
+      <Button v-show="showCreateButton" @click="handleCreateNew">
         Create new
       </Button>
       <Button @click="resetTable" secondary>Reset filters</Button>

@@ -46,7 +46,7 @@ export default {
         fields: [
           {
             type: "myInput",
-            styleClasses: 'flex-100',
+            styleClasses: "flex-100",
             inputType: "text",
             fieldLabel: "E-mail",
             name: "email",

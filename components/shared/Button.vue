@@ -4,7 +4,7 @@
     type="submit"
     :class="`btn button__${secondary ? secondaryClass : primaryClass}`"
   >
-      <slot />
+    <slot />
   </button>
 </template>
 
@@ -25,8 +25,8 @@ export default {
   },
   data() {
     return {
-      primaryClass: 'primary',
-      secondaryClass: 'secondary'
+      primaryClass: "primary",
+      secondaryClass: "secondary",
     };
   },
   methods: {
@@ -42,10 +42,11 @@ export default {
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   flex-shrink: 0;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   font-weight: 500;
   height: auto;
@@ -54,28 +55,32 @@ export default {
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
   line-height: normal;
-  transition: all .5s;
+  transition: all 0.5s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-
 }
 .button {
   &__primary {
-    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    background-image: linear-gradient(
+      92.88deg,
+      #455eb5 9.16%,
+      #5643cc 43.89%,
+      #673fd7 64.72%
+    );
   }
 
   &__primary:hover {
     box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
-    transition-duration: .1s;
+    transition-duration: 0.1s;
   }
   &__secondary {
     appearance: none;
     background-color: transparent;
-    border: 2px solid #1A1A1A;
-    color: #3B3B3B;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    border: 2px solid #1a1a1a;
+    color: #3b3b3b;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   &__secondary:disabled {
     pointer-events: none;
@@ -83,7 +88,7 @@ export default {
 
   &__secondary:hover {
     color: #fff;
-    background-color: #1A1A1A;
+    background-color: #1a1a1a;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   }
 
@@ -93,11 +98,9 @@ export default {
   }
 }
 
-
 @media (min-width: 768px) {
   .btn {
     padding: 0 2.6rem;
   }
 }
-
 </style>

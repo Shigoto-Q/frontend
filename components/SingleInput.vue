@@ -53,7 +53,7 @@ export default {
       },
     },
     label: {
-      type: String
+      type: String,
     },
     isLastChild: {
       type: Boolean,
